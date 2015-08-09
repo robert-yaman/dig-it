@@ -3,11 +3,13 @@ class StaticPagesController < ApplicationController
 
   end
 
+  def landing
+
+  end
+
   def root
-    if logged_in?
-      render :root
-    else
-      render :landing
+    unless logged_in?
+      redirect_to landing_url
     end
   end
 end
