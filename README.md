@@ -25,7 +25,7 @@ Dig-It is a clone of Soundcloud. Users can:
 
 ### Phase 1: User Authentication, Set up basic models (~1 day)
 I will implement user authentication in Rails based on the practices learned at
-App Academy. I will also set up the database, and the necessary models in both Rails and Backbone. Given the time, I will also set up the basic structure of the sign up/sign page
+App Academy. I will also set up the database, and the necessary models in both Rails and Backbone. Given the time, I will also set up the basic structure of the sign up/sign page. (Note: I will be using gravatar, and I will therefore store users' emails in the database)
 
 ### Phase 2: Set up page skeletons and navigation between pages (~3 days)
 I will set up the necessary Backbone views "from the bottom up". That is, I will first create the non-composite views, such as the user-list-item, then build the views which will contain those, and so on until all the basic views are constructed. I will not focus on styling at all at this point. By the end of this page, users should be able to click through all of the main pages of the website as they would for the finished product.
@@ -56,7 +56,7 @@ I will probably use a built in bootstrap style and customize from there.
   * [ ] As the song plays, a pointer will move along the heatmap (probably JQuery plugin)
   * [ ] Users will be able to skip to different parts of the song
 - [ ] Include Hot and Most Popular songs on the feed view
-- [ ] 
+- [ ] Users can add tags to songs and search by tag
 
 
 [phase-one]: ./docs/phases/phase1.md
