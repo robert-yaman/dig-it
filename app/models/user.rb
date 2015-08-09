@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   def self.find_by_credentials(username, password)
     user = User.find_by_username(username)
-    (user.is_password?(passowrd) ? user : nil) if user
+    (user.is_password?(password) ? user : nil) if user
   end
 
   validates :username, :email, :password_digest, :session_token, presence: true
