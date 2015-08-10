@@ -7,8 +7,8 @@
 ## Minimum Viable Product
 Dig-It is a clone of Soundcloud. Users can:
 
-- [ ] Create accounts
-- [ ] Create sessions (log in)
+- [X] Create accounts
+- [X] Create sessions (log in)
 - [ ] Upload songs
 - [ ] Visit other users' pages and view their songs
 - [ ] Listen to their own songs and other users' songs
@@ -23,7 +23,7 @@ Dig-It is a clone of Soundcloud. Users can:
 
 ## Implementation Timeline
 
-### Phase 1: User Authentication, Set up basic models (~1 day)
+### Phase 1: User Authentication, Set up basic models (~1 day) (done)
 I will implement user authentication in Rails based on the practices learned at
 App Academy. I will also set up the database, and the necessary models in both Rails and Backbone. Given the time, I will also set up the basic structure of the sign up/sign page. (Note: I will be using gravatar, and I will therefore store users' emails in the database)
 
