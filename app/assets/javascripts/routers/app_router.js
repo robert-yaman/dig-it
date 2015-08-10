@@ -1,4 +1,4 @@
-Capstone.Routers.LandingRouter = Backbone.Router.extend({
+Capstone.Routers.AppRouter = Backbone.Router.extend({
 
 
   routes: {

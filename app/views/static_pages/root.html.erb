@@ -1,7 +1,9 @@
 <script type="text/javascript">
   $(document).ready(function(){
-    Capstone.initialize({ router: "root" });
+    Capstone.initialize();
   });
 </script>
 
 <h1>Root</h1>
+
+<%= button_to "Logout", session_url, method: :delete %>
