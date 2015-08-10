@@ -4,6 +4,7 @@ Capstone.Models.Song = Backbone.Model.extend({
   length: function () {
     var minutes = Math.floor(this.get("length") / 60);
     var seconds = this.get("length") - (minutes * 60);
+    if (seconds < 10) seconds = "0" + seconds;
     return minutes + ":" + seconds;
   },
 
