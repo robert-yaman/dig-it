@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 20150809204052) do
 
   create_table "songs", force: :cascade do |t|
     t.integer  "user_id",                  null: false
+    t.string   "name",                     null: false
     t.integer  "length",                   null: false
     t.string   "artist_name"
     t.integer  "digs",        default: [],              array: true

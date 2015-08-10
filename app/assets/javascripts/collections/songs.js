@@ -1,4 +1,8 @@
-Capstone.Collections.Songs = Backbone.Collection.extend({
+Capstone.Collections.UserSongs = Backbone.Collection.extend({
   url: 'api/songs',
-  model: Backbone.Model.Song
+  model: Backbone.Model.Song,
+
+  initialize: function (options) {
+    this.user = options.user;
+  }
 });

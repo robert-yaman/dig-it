@@ -14,6 +14,7 @@ column name   | data type | details
 --------------|-----------|-----------------------
 id            | integer   | not null, primary key, indexed
 user_id       | integer   | not null, foreign key (references user who uploaded), indexed
+name          | string    | not null
 length (secs) | integer   | not null
 artist_name   | string    | (will be stored only if artist different from uploader)
 digs          | array     |
