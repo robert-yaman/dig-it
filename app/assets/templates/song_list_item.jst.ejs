@@ -1,0 +1,22 @@
+<div class="playback-button btn">
+  Play
+</div>
+
+<p class="song-name">
+  <%= song.escape("name") %>
+</p>
+
+<div class="song-artist">
+  <p class="song-user-name">
+    <%= song.userName() %>
+  </p>
+  <p class="song-artist-name">
+    <% if (song.escape("artist_name")) { %>
+      <%= "by " + song.escape("artist_name") %>
+    <% } %>
+  </p>
+</div>
+
+<p class="song-length">
+  <%= song.length() %>
+</p>

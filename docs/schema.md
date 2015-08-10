@@ -1,45 +1,21 @@
 # Schema Information
 
-## blogs
-column name | data type | details
-------------|-----------|-----------------------
-id          | integer   | not null, primary key
-owner_id    | integer   | not null, foreign key (references users)
-title       | string    | not null
-
-## followings
-column name | data type | details
-------------|-----------|-----------------------
-id          | integer   | not null, primary key
-blog_id     | integer   | not null, foreign key (references blogs)
-follower_id | integer   | not null, foreign key (references users)
-
-## posts
-column name | data type | details
-------------|-----------|-----------------------
-id          | integer   | not null, primary key
-author_id   | integer   | not null, foreign key (references users)
-title       | string    | not null
-body        | string    |
-
-## tags
-column name | data type | details
-------------|-----------|-----------------------
-id          | integer   | not null, primary key
-label       | string    | not null, unique
-
-## taggings
-column name | data type | details
-------------|-----------|-----------------------
-id          | integer   | not null, primary key
-post_id     | integer   | not null, foreign key (references posts)
-tag_id      | integer   | not null, foreign key (references tags)
-
 ## users
 column name     | data type | details
 ----------------|-----------|-----------------------
 id              | integer   | not null, primary key
-email           | string    | not null, unique
+username        | string    | not null, unique
+email           | string    | not null
 password_digest | string    | not null
-session_token   | string    | not null, unique
+session_token   | string    | not null, indexed
 
+## songs
+column name   | data type | details
+--------------|-----------|-----------------------
+id            | integer   | not null, primary key, indexed
+user_id       | integer   | not null, foreign key (references user who uploaded), indexed
+name          | string    | not null
+length (secs) | integer   | not null
+artist_name   | string    | (will be stored only if artist different from uploader)
+digs          | array     |
+file_path     | string    | not null (unsure of how to implement this)
