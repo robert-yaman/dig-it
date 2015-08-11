@@ -1,4 +1,4 @@
-json.extract! user, :id, :username, :email
+json.extract! user, :id, :username, :md5
 
 if with_songs
   json.songs do

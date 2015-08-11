@@ -1,5 +1,5 @@
 <div class="user-avatar">
-  <img src="<%= user.escape("email") %>" alt="" />
+  <img src="http://www.gravatar.com/avatar/<%= user.get("md5") %>" alt="" />
 </div>
 
 <p class="user-name">

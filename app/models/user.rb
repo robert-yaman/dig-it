@@ -17,6 +17,10 @@ class User < ActiveRecord::Base
     BCrypt::Password.new(password_digest).is_password?(attempt)
   end
 
+  def md5
+    Digest::MD5.hexdigest(email.downcase)
+  end
+
   def password=(value)
     @passowrd = value
     self.password_digest = BCrypt::Password.create(value)
