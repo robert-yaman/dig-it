@@ -1,7 +1,8 @@
 Capstone.Routers.AppRouter = Backbone.Router.extend({
   routes: {
     "" : "feed",
-    "profile" : "profile"
+    "profile" : "profile",
+    "users/:id" : "userShow"
   },
 
   initialize: function(options) {
@@ -17,7 +18,7 @@ Capstone.Routers.AppRouter = Backbone.Router.extend({
   },
 
   profile: function() {
-    var profile = new Capstone.Views.CurrentUserProfile({model: Capstone.currentUser});//temp
+    var profile = new Capstone.Views.CurrentUserProfile({model: Capstone.currentUser});
     this._switch(profile);
   },
 
@@ -28,6 +29,13 @@ Capstone.Routers.AppRouter = Backbone.Router.extend({
     view.$el.css("display", "none") //setting up modal
     view.render();
     $("#new-song-button").leanModal();
+  },
+
+  userShow: function(id) {
+    var user = new Capstone.Models.User({id: id});
+    user.fetch();
+    var show = new Capstone.Views.UserProfile({model: user});
+    this._switch(show);
   },
 
   _switch : function(view) {
