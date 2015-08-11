@@ -8,22 +8,32 @@ Capstone.Views.SongForm = Backbone.View.extend({
 
   //should I give this a user model that represents current user?
   initialize: function () {
-    this.listenTo(this.model, "sync", this.render);
+    this.listenTo(Capstone.currentUser, "sync", this.render);
   },
 
   render: function () {
     var content = this.template({ song: this.model });
     this.$el.html(content);
+    this.$("#song-artist").val(Capstone.currentUser.escape("username"))
     return this;
   },
 
   submit: function(event) {
     event.preventDefault();
     var data = $(event.currentTarget).serializeJSON();
-    this.model.save(data, {
-      success: function() {
-        this.remove();
-      
+    var newSong = new Capstone.Models.Song();
+    newSong.save(data, {
+      success: function(newSong) {
+        //this is close_modal from lean_modal
+        $("#lean_overlay").fadeOut(200);
+        $("#new-song-form").css({"display":"none"});
+        //
+
+        this.$("input").val("")
+        this.$("#song-artist").val(Capstone.currentUser.escape("username"))
+
+        Capstone.currentUser.songs().add(newSong);
+        alert("beginning playback of new song");
       }.bind(this)
     });
   }

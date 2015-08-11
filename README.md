@@ -10,7 +10,7 @@ Dig-It is a clone of Soundcloud. Users can:
 - [X] Create accounts
 - [X] Create sessions (log in)
 - [ ] Upload songs
-- [ ] Visit other users' pages and view their songs
+- [X] Visit other users' pages and view their songs
 - [ ] Listen to their own songs and other users' songs
 - [ ] Search songs and users by name
 
@@ -58,7 +58,7 @@ I will probably use a built in bootstrap style and customize from there.
 - [ ] Include Hot and Most Popular songs on the feed view
 <<<<<<< HEAD
 - [ ] Allow users to construct playlists and share playlists with other users
-- [ ] 
+- [ ]
 =======
 - [ ] Users can add tags to songs and search by tag
 >>>>>>> ed7256362456275757c9e860cd5a9f25aa6e8e61
