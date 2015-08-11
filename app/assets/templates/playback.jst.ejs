@@ -1,3 +1,19 @@
 <nav class="nav navbar-default navbar-fixed-bottom">
+  <div class="navbar-collapse collapse">
+    <button class="glyphicon glyphicon-play"></button>
 
+    <span><%= song.escape("name") %></span>
+    <span>
+      <% if (song.escape("artist_name")) { %>
+          <%= song.escape("artist_name") %>
+        <% } %>
+    </span>
+    <span> <%= song.userName() %> </span>
+
+    <span><%= song.length() %></span>
+  </div>
+
+  <div class="playback-bar"></div>
+
+  <button id="dig-button">DIG</button>
 </nav>

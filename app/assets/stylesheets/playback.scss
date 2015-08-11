@@ -1,0 +1,17 @@
+nav.navbar-fixed-bottom {
+  height: 160px;
+}
+
+
+// this is only for active
+button#dig-button {
+  position: relative;
+  float: right;
+  margin-right: 25px;
+  top: 25px;
+  height: 90px;
+  width: 90px;
+  border-radius: 15px;
+  background-color: #FF8C00;
+  color: black;
+}

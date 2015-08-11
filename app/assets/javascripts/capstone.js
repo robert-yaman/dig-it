@@ -10,6 +10,10 @@ window.Capstone = {
     var $rootEl = $('#content');
     new Capstone.Routers.AppRouter({$rootEl: $rootEl});
 
+    var playback = new Capstone.Views.Playback({model: new Capstone.Models.Song()});
+    $('#playback').html(playback.$el);
+    playback.render();
+
     Backbone.history.start();
   }
 };
