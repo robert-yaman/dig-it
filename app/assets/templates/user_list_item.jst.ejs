@@ -3,7 +3,7 @@
 </div>
 
 <p class="user-name">
-  <%= user.escape("username") %>
+  <a href="#users/<%= user.id %>"><%= user.escape("username") %></a>
 </p>
 
 <ul class="user-songs-list list-group">

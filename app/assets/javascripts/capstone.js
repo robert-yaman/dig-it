@@ -7,7 +7,7 @@ window.Capstone = {
     var $rootEl = $('#content');
     new Capstone.Routers.AppRouter({$rootEl: $rootEl});
 
-    Capstone.currentUser = new Capstone.Models.CurrentUser;
+    Capstone.currentUser = new Capstone.Models.CurrentUser();
     Capstone.currentUser.fetch();
 
     Backbone.history.start();
