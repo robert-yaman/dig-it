@@ -11,16 +11,13 @@ Capstone.Routers.AppRouter = Backbone.Router.extend({
 
   feed : function () {
     //this is temp
-    var user = new Capstone.Models.User({id: 1});
-    user.fetch();
-    var view = new Capstone.Views.SongList({ collection: user.songs() });
-    this._switch(view);
-
-    var users = new Capstone.Collections.Users();
-    users.fetch();
-    var userList = new Capstone.Views.UserList({collection: users});
-    this.$rootEl.append(userList.$el);
-    userList.render();
+    var feed = new Capstone.Views.Feed();
+    this._switch(feed)
+    // var users = new Capstone.Collections.Users();
+    // users.fetch();
+    // var userList = new Capstone.Views.UserList({collection: users});
+    // this.$rootEl.append(userList.$el);
+    // userList.render();
   },
 
   setupNewSongButton: function () {
