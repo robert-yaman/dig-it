@@ -2,10 +2,12 @@
   <img src="http://www.gravatar.com/avatar/<%= user.get("md5") %>?s=70" alt="" />
 </div>
 
-<p class="user-name">
-  <a href="#users/<%= user.id %>"><%= user.escape("username") %></a>
-</p>
+<div class="user-list-item-info">
+  <p class="user-name">
+    <a href="#users/<%= user.id %>"><%= user.escape("username") %></a>
+  </p>
 
-<ul class="user-songs-list list-group">
+  <ul class="user-songs-list list-group">
 
-</ul>
+  </ul>
+</div>

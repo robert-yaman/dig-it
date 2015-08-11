@@ -1,5 +1,6 @@
 Capstone.Views.About = Backbone.View.extend({
   template: JST["about"],
+  classname: "about",
 
   initialize: function() {
     this.listenTo(Capstone.currentUser, "sync", this.render)
