@@ -16,9 +16,11 @@ Capstone.Routers.AppRouter = Backbone.Router.extend({
     var view = new Capstone.Views.SongList({ collection: user.songs() });
     this._switch(view);
 
-    var userListItemView = new Capstone.Views.UserListItem({model: user});
-    this.$rootEl.append(userListItemView.$el);
-    userListItemView.render();
+    var users = new Capstone.Collections.Users();
+    users.fetch();
+    var userList = new Capstone.Views.UserList({collection: users});
+    this.$rootEl.append(userList.$el);
+    userList.render();
   },
 
   setupNewSongButton: function () {
