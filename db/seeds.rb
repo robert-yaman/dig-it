@@ -14,3 +14,5 @@ u4 = User.create!(username: "bill", email: "bill@bill.com", password: "bill")
 u1.songs.create!(name: "Happy Song", length: 3, digs: [0,0,0], file_path: "aeraeraser")
 u1.songs.create!(name: "Sad Song", length: 3, digs: [0,3,43], file_path: "aeraeraser")
 u1.songs.create!(name: "Love Song", length: 10, digs: [0,0,0,0,0,0,0,0,0,0], file_path: "aeraeraser")
+
+u2.songs.create!(name: "Silly Song", length: 10, digs: [0,0,0,0,0,0,0,0,0,0], file_path: "aeraeraser")

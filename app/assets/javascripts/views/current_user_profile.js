@@ -2,7 +2,21 @@ Capstone.Views.CurrentUserProfile = Backbone.CompositeView.extend({
   template: JST["current_user_profile"],
 
   initialize: function () {
-    this.listenTo(this.model, "sync", this.render);
+    // this.listenTo(this.model, "sync", this.render);
+    //do I need this listener or will subviews take care of it?
+
+    this.addUserInfo();
+    this.addUserSongList();
+  },
+
+  addUserInfo: function () {
+    var userInfoView = new Capstone.Views.CurrentUserInfo({model: this.model});
+    this.addSubview(".current-user-info", userInfoView);
+  },
+
+  addUserSongList: function () {
+    var userSongList = new Capstone.Views.SongList({collection: this.model.songs()});
+    this.addSubview(".current-user-songs-list", userSongList);
   },
 
   render: function () {

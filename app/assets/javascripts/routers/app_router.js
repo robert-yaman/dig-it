@@ -17,12 +17,7 @@ Capstone.Routers.AppRouter = Backbone.Router.extend({
   },
 
   profile: function() {
-    //this is temp -- wil be current user
-    var user = new Capstone.Models.User({id: 1});
-    user.fetch();
-    //temp
-
-    var profile = new Capstone.Views.CurrentUserProfile({model: user});//temp
+    var profile = new Capstone.Views.CurrentUserProfile({model: Capstone.currentUser});//temp
     this._switch(profile);
   },
 
