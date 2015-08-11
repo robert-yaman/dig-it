@@ -6,9 +6,10 @@ class Api::SongsController < ApplicationController
   def create
     @song = Song.new(song_params)
     @song.user_id = current_user.id
-    @song.length = 3 #temp
-    @song.digs = [0,0,0] #temp
+    @song.length = 68 #temp
+    @song.create_digs_array #temp
 
+    @song.artist_name = nil if @song.artist_name == current_user.username
     if @song.save
       render :show
     else

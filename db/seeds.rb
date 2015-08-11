@@ -11,8 +11,8 @@ u2 = User.create!(username: "michaela", email: "digitmichaela@gmail.com", passwo
 u3 = User.create!(username: "linda", email: "digitlinda@gmail.com", password: "lindadigit123")
 u4 = User.create!(username: "bill", email: "digitbill@gmail.com", password: "billdigit")
 
-u1.songs.create!(name: "Happy Song", length: 3, digs: [0,0,0], file_path: "aeraeraser")
-u1.songs.create!(name: "Sad Song", length: 3, digs: [0,3,43], file_path: "aeraeraser")
-u1.songs.create!(name: "Love Song", length: 10, digs: [0,0,0,0,0,0,0,0,0,0], file_path: "aeraeraser")
+u1.songs.create!(name: "Happy Song", length: 1, file_path: "aeraeraser")
+u1.songs.create!(name: "Sad Song", length: 100, file_path: "aeraeraser")
+u1.songs.create!(name: "Love Song", length: 67, file_path: "aeraeraser")
 
-u2.songs.create!(name: "Silly Song", length: 10, digs: [0,0,0,0,0,0,0,0,0,0], file_path: "aeraeraser")
+u2.songs.create!(name: "Silly Song", length: 500, file_path: "aeraeraser")
