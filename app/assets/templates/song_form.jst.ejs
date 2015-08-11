@@ -1,0 +1,12 @@
+<form class="new-song-form">
+  <label for="song-name">Name</label>
+  <input type="text" name="song[name]" value="<%= song.escape("name") %>" id="song-name">
+
+  <label for="song-artist">Artist</label>
+  <input type="text" name="song[name]" value="<%= song.escape("artist_name") %>" id="song-artist">
+
+  <label for="song-filepath">FilePathWillGoHere</label>
+  <input type="text" name="song[file_path]" value="<%= song.escape("file_path") %>" id="song-filepath">
+
+  <button>Go!</button>
+</form>
