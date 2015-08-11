@@ -1,12 +1,20 @@
+<h2>New Song</h2>
+
 <form class="new-song-form">
-  <label for="song-name">Name</label>
-  <input type="text" name="song[name]" value="<%= song.escape("name") %>" id="song-name">
+  <div class="form-group">
+    <label for="song-name">Name</label>
+    <input type="text" class="form-control" name="song[name]" value="<%= song.escape("name") %>" id="song-name">
+  </div>
 
-  <label for="song-artist">Artist</label>
-  <input type="text" name="song[name]" value="<%= song.escape("artist_name") %>" id="song-artist">
+  <div class="form-group">
+    <label for="song-artist">Artist</label>
+    <input type="text" class="form-control" name="song[name]" value="<%= song.escape("artist_name") %>" id="song-artist">
+  </div>
 
-  <label for="song-filepath">FilePathWillGoHere</label>
-  <input type="text" name="song[file_path]" value="<%= song.escape("file_path") %>" id="song-filepath">
+  <div class="">
+    <label for="song-filepath">FilePathWillGoHere</label>
+    <input type="text" class="form-control" name="song[file_path]" value="<%= song.escape("file_path") %>" id="song-filepath">
+  </div>
 
-  <button>Go!</button>
+  <button class="btn btn-default">Go!</button>
 </form>

@@ -1,5 +1,6 @@
 Capstone.Views.SongForm = Backbone.View.extend({
   template: JST["song_form"],
+  id: "new-song-form",
 
   events: {
     "submit form" : "submit"
@@ -21,7 +22,8 @@ Capstone.Views.SongForm = Backbone.View.extend({
     var data = $(event.currentTarget).serializeJSON();
     this.model.save(data, {
       success: function() {
-        alert("success!")
+        this.remove();
+      
       }.bind(this)
     });
   }

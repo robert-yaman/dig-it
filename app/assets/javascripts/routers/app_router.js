@@ -5,6 +5,8 @@ Capstone.Routers.AppRouter = Backbone.Router.extend({
 
   initialize: function(options) {
     this.$rootEl = options.$rootEl;
+
+    this.setupNewSongButton();
   },
 
   feed : function () {
@@ -13,11 +15,15 @@ Capstone.Routers.AppRouter = Backbone.Router.extend({
     user.fetch();
     var view = new Capstone.Views.SongList({ collection: user.songs() });
     this._switch(view);
+  },
 
-    var song = new Capstone.Models.Song({})
-    var form = new Capstone.Views.SongForm({model: song});
-    this.$rootEl.append(form.$el)
-    form.render();
+  setupNewSongButton: function () {
+    var song = new Capstone.Models.Song();
+    var view = new Capstone.Views.SongForm({model: song});
+    $("body").append(view.$el);
+    view.$el.css("display", "none") //setting up modal
+    view.render();
+    $("#new-song-button").leanModal();
   },
 
   _switch : function(view) {

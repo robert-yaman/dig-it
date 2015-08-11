@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require underscore
 //= require serialize_json
+//= require lean_modal
 //= require backbone
 //= require capstone
 //= require_tree ./utils

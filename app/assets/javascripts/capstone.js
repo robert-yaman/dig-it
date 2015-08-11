@@ -1,7 +1,7 @@
 window.Capstone = {
   Models: {},
   Collections: {},
-  Views: {},
+  Views: {Modals: {}},
   Routers: {},
   initialize: function(options) {
     var $rootEl = $('#content');

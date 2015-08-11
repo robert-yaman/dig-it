@@ -1,3 +1,26 @@
 // Place all the styles related to the StaticPages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#new-song-button {
+  background-color: #FF8C00;
+  color: #272B30;
+  font-size: 24px;
+  font-weight: bold;
+  margin-right: 17px;
+  margin-top: 5px;
+  width: 37px;
+  height: 37px;
+  border-radius: 6px;
+}
+
+#lean_overlay {
+    position: fixed;
+    z-index:100;
+    top: 0px;
+    left: 0px;
+    height:100%;
+    width:100%;
+    background: #000;
+    display: none;
+}
