@@ -1,6 +1,7 @@
 Capstone.Routers.AppRouter = Backbone.Router.extend({
   routes: {
-    "" : "feed"
+    "" : "feed",
+    "profile" : "profile"
   },
 
   initialize: function(options) {
@@ -10,14 +11,19 @@ Capstone.Routers.AppRouter = Backbone.Router.extend({
   },
 
   feed : function () {
-    //this is temp
+    //this is temp -- might add extra stuff to feed page besides feed
     var feed = new Capstone.Views.Feed();
-    this._switch(feed)
-    // var users = new Capstone.Collections.Users();
-    // users.fetch();
-    // var userList = new Capstone.Views.UserList({collection: users});
-    // this.$rootEl.append(userList.$el);
-    // userList.render();
+    this._switch(feed);
+  },
+
+  profile: function() {
+    //this is temp -- wil be current user
+    var user = new Capstone.Models.User({id: 1});
+    user.fetch();
+    //temp
+
+    var profile = new Capstone.Views.CurrentUserProfile({model: user});//temp
+    this._switch(profile);
   },
 
   setupNewSongButton: function () {
