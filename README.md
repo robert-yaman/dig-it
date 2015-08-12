@@ -9,9 +9,9 @@ Dig-It is a clone of Soundcloud. Users can:
 
 - [X] Create accounts
 - [X] Create sessions (log in)
-- [ ] Upload songs
+- [X] Upload songs
 - [X] Visit other users' pages and view their songs
-- [ ] Listen to their own songs and other users' songs
+- [X] Listen to their own songs and other users' songs
 - [ ] Search songs and users by name
 
 ## Design Docs
@@ -23,7 +23,7 @@ Dig-It is a clone of Soundcloud. Users can:
 
 ## Implementation Timeline
 
-### Phase 1: User Authentication, Set up basic models (~1 day) (done)
+### ~~Phase 1: User Authentication, Set up basic models (~1 day)~~
 I will implement user authentication in Rails based on the practices learned at
 App Academy. I will also set up the database, and the necessary models in both Rails and Backbone. Given the time, I will also set up the basic structure of the sign up/sign page. (Note: I will be using gravatar, and I will therefore store users' emails in the database)
 
@@ -33,7 +33,7 @@ I will set up the necessary Backbone views "from the bottom up". That is, I will
 ### Phase 3: Set up Feed and Search (~1 day)
 In this phase, I will create methods in the Rails song and user models to compute which songs and users should be displayed when. I will then hook this into the front end so that the feed on the landing page is functional, and so that users can search by songs and username/artists. (Note: the song-search will match based on either name or artist, and the user search will match only based on username).
 
-### Phase 4: Storing/Playing/Uploading music files (~1 day)
+### ~~Phase 4: Storing/Playing/Uploading music files (~1 day)~~
 In this phase, I will figure out the best way to store music files. Once this is understood, I will figure out the best way to fetch these files from the database so they can be played, and the best way for users to upload these files. By the end of this phase, all the basic functionality for the MVP should be in place, but there will still be no styling.
 
 ### Phase 5: Heatmap Playback (~3 days)
