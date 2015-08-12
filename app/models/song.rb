@@ -1,4 +1,8 @@
 class Song < ActiveRecord::Base
+  def self.search_by_query_string(string)
+    where("name LIKE '%#{string}%' OR artist_name LIKE '%#{string}%'")
+  end
+
   validates :user, :length, :file_path, presence: true
   validate :digs_array_length_equals_length
   # after_initialize :create_digs_array

@@ -1,4 +1,8 @@
 class User < ActiveRecord::Base
+  def self.search_by_query_string(string)
+    where("username LIKE '%#{string}%'")
+  end
+
   def self.find_by_credentials(username, password)
     user = User.find_by_username(username)
     (user.is_password?(password) ? user : nil) if user

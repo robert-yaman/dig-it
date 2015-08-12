@@ -15,7 +15,7 @@ class Api::SongsController < ApplicationController
 
   def index
     if params[:query]
-      @songs = Song.search_by(params[:query])
+      @songs = Song.search_by_query_string(params[:query])
     else
       @songs = Song.all
     end

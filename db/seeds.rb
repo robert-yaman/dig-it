@@ -14,7 +14,7 @@ u5 = User.create!(username: "Death Grips", email: "dg@lalala.com", password: "de
 
 u5.songs.create!(name: "The Fever (Aye Aye)", length: 200, file_path: "https://www.filepicker.io/api/file/N8If2Ko5TD2gx10iDmea")
 u5.songs.create!(name: "I've Seen Footage", length: 223, file_path: "https://www.filepicker.io/api/file/PHXQCL4OTuR5rLc1rskT")
-u5.songs.create!(name: "Get Got", length: 110, file_path: "https://www.filepicker.io/api/file/N8If2Ko5TD2gx10iDmea")
+u5.songs.create!(name: "Get Got", length: 110, file_path: "https://www.filepicker.io/api/file/dXkOr1w0TCmkW7JazFJS")
 
 u1.songs.create!(name: "Zonnestraal", artist_name: "De Hofnar", length: 203, file_path: "https://www.filepicker.io/api/file/9np5MpBQlyod6DOgGzFi")
 u1.songs.create!(name: "Emily", length: 200, artist_name: "Gaba Kulka", file_path: "https://www.filepicker.io/api/file/xuKVsP81Ti2u3uGyGNPh")
