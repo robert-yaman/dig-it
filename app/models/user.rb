@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   def self.search_by_query_string(string)
-    where("username LIKE '%#{string}%'")
+    where("LOWER(username) LIKE '%#{string.downcase}%'")
   end
 
   def self.find_by_credentials(username, password)

@@ -1,6 +1,6 @@
 class Song < ActiveRecord::Base
   def self.search_by_query_string(string)
-    where("name LIKE '%#{string}%' OR artist_name LIKE '%#{string}%'")
+    where("LOWER(name) LIKE '%#{string.downcase}%' OR LOWER(artist_name) LIKE '%#{string.downcase}%'")
   end
 
   validates :user, :length, :file_path, presence: true
