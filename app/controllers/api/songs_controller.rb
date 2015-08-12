@@ -13,7 +13,7 @@ class Api::SongsController < ApplicationController
     if @song.save
       render :show
     else
-      render @songs.errors.full_messages
+      render @songs.errors.full_messages, status: 422
     end
   end
 

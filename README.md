@@ -56,10 +56,7 @@ I will probably use a built in bootstrap style and customize from there.
   * [ ] As the song plays, a pointer will move along the heatmap (probably JQuery plugin)
   * [ ] Users will be able to skip to different parts of the song
 - [ ] Include Hot and Most Popular songs on the feed view
-<<<<<<< HEAD
 - [ ] Allow users to construct playlists and share playlists with other users
-- [ ]
-=======
 - [ ] Users can add tags to songs and search by tag
 >>>>>>> ed7256362456275757c9e860cd5a9f25aa6e8e61
 

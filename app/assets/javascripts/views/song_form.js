@@ -9,12 +9,18 @@ Capstone.Views.SongForm = Backbone.View.extend({
   //should I give this a user model that represents current user?
   initialize: function () {
     this.listenTo(Capstone.currentUser, "sync", this.render);
+
+    filepicker.setKey("AyAZuXgnZQEa0BfWshuLAz");
   },
 
   render: function () {
     var content = this.template({ song: this.model });
     this.$el.html(content);
-    this.$("#song-artist").val(Capstone.currentUser.escape("username"))
+
+    this.$("#song-artist").val(Capstone.currentUser.escape("username"));
+
+    filepicker.constructWidget(this.$("#filepicker-input")[0]);
+
     return this;
   },
 
@@ -22,9 +28,10 @@ Capstone.Views.SongForm = Backbone.View.extend({
     event.preventDefault();
     var data = $(event.currentTarget).serializeJSON();
     var newSong = new Capstone.Models.Song();
+
     newSong.save(data.song, {
       success: function(newSong) {
-        //this is close_modal from lean_modal
+        //this is close_modal from leanModal
         $("#lean_overlay").fadeOut(200);
         $("#new-song-form").css({"display":"none"});
         //
