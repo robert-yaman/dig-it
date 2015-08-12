@@ -1,0 +1,29 @@
+<div class="container-fluid">
+    <div class="navbar-header">
+      <a href="#" class="navbar-brand">Dig-It</a>
+    </div>
+
+  <div class="collapse navbar-collapse">
+    <form class="navbar-form navbar-left">
+      <div class="form-group">
+        <input type="text" class="form-control" placeholder="Find cool stuff" id="search-bar">
+        <button class="btn btn-default glyphicon glyphicon-search"></button>
+      </div>
+    </form>
+
+    <ul class="nav navbar-nav navbar-right">
+      <li id="new-song-button-li">
+        <button class="glyphicon glyphicon-plus" id="new-song-button" href="#new-song-form"></button>
+      </li>
+      <li>
+        <a href="#">Feed</a>
+      </li>
+      <li>
+        <a href="#profile">
+          Profile
+          <img src="http://www.gravatar.com/avatar/<%= Capstone.currentUser.get("md5") %>?s=20" alt="" />
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>

@@ -4,43 +4,11 @@
   });
 </script>
 
-<nav id="navbar" class="navbar navbar-default navbar-fixed-top">
-  <div class="container-fluid">
-      <div class="navbar-header">
-        <a href="#" class="navbar-brand">Dig-It</a>
-      </div>
-
-    <div class="collapse navbar-collapse">
-      <form class="navbar-form navbar-left">
-        <div class="form-group">
-           <input type="text" class="form-control" placeholder="Find cool stuff" id="search-bar">
-         </div>
-         <button class="btn btn-default glyphicon glyphicon-search"></button>
-      </form>
-
-      <ul class="nav navbar-nav navbar-right">
-        <li id="new-song-button-li">
-          <button class="glyphicon glyphicon-plus" id="new-song-button" href="#new-song-form"></button>
-        </li>
-        <li>
-          <a href="#">Feed</a>
-        </li>
-        <li>
-          <a href="#profile">
-            Profile
-            <img src="http://www.gravatar.com/avatar/<%= current_user.md5 %>?s=20" alt="" />
-          </a>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>
+<div id="app-navbar"></div>
 
 <div id="content" class="container-fluid"></div>
 
 <%= button_to "Logout", session_url, method: :delete %>
 
 
-<div id="playback" class="container-fluid">
-
-</div>
+<div id="playback" class="container-fluid"></div>
