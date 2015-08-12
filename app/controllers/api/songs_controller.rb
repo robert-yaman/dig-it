@@ -1,8 +1,4 @@
 class Api::SongsController < ApplicationController
-  def show
-    @song = Song.find(params[:id])
-  end
-
   def create
     @song = Song.new(song_params)
     @song.user_id = current_user.id
@@ -15,6 +11,18 @@ class Api::SongsController < ApplicationController
     else
       render @songs.errors.full_messages, status: 422
     end
+  end
+
+  def index
+    if params[:query]
+      @songs = Song.search_by(params[:query])
+    else
+      @songs = Song.all
+    end
+  end
+
+  def show
+    @song = Song.find(params[:id])
   end
 
   private

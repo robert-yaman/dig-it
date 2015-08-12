@@ -2,13 +2,16 @@ Capstone.Routers.AppRouter = Backbone.Router.extend({
   routes: {
     "" : "feedPage",
     "profile" : "profile",
-    "users/:id" : "userShow"
+    "users/:id" : "userShow",
+    "search" : "search"
   },
 
   initialize: function(options) {
     this.$rootEl = options.$rootEl;
+    this.userSearchResults = options.userSearchResults;
+    this.songSearchResults = options.songSearchResults;
 
-    this.setupNewSongButton();
+    // this.setupNewSongButton();
   },
 
   feedPage : function () {
@@ -25,13 +28,12 @@ Capstone.Routers.AppRouter = Backbone.Router.extend({
     this._switch(profile);
   },
 
-  setupNewSongButton: function () {
-    var song = new Capstone.Models.Song();
-    var view = new Capstone.Views.SongForm({model: song});
-    $("body").append(view.$el);
-    view.$el.css("display", "none") //setting up modal
-    view.render();
-    $("#new-song-button").leanModal();
+  search: function() {
+    var searchResults = new Capstone.Views.SearchResults({
+      userSearchResults: this.userSearchResults,
+      songSearchResults: this.songSearchResults
+    });
+    this._switch(searchResults);
   },
 
   userShow: function(id) {

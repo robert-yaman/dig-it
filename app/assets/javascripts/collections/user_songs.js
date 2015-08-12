@@ -7,6 +7,8 @@ Capstone.Collections.UserSongs = Backbone.Collection.extend({
   //   if (song1.get("updated_at") <)
   // },
 
+  //integrate with normal songs?
+
   initialize: function (options) {
     this.user = options.user;
   }

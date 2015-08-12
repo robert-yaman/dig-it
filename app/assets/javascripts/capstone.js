@@ -7,10 +7,20 @@ window.Capstone = {
     window.Capstone.currentUser = new Capstone.Models.CurrentUser();
     window.Capstone.currentUser.fetch();
 
-    $("#app-navbar").html(new Capstone.Views.Navbar().render().$el);
+    var userSearchResults = new Capstone.Collections.Users();
+    var songSearchResults = new Capstone.Collections.Songs();
+
+    $("#app-navbar").html(new Capstone.Views.Navbar({
+      userSearchResults: userSearchResults,
+      songSearchResults: songSearchResults
+    }).render().$el);
 
     var $rootEl = $('#content');
-    new Capstone.Routers.AppRouter({$rootEl: $rootEl});
+    new Capstone.Routers.AppRouter({
+      $rootEl: $rootEl,
+      userSearchResults: userSearchResults,
+      songSearchResults: songSearchResults
+    });
 
     var playback = new Capstone.Views.Playback({model: new Capstone.Models.Song()});
     $('#playback').html(playback.$el);

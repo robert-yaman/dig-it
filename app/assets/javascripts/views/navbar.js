@@ -9,13 +9,17 @@ Capstone.Views.Navbar = Backbone.View.extend({
     "click button.search" : "fireSearch"
   },
 
-  initialize: function () {
+  initialize: function (options) {
+    this.userSearchResults = options.userSearchResults;
+    this.songSearchResults = options.songSearchResults;
+
     this.listenTo(Capstone.currentUser, "sync", this.render);
   },
 
   render: function () {
     var content = this.template();
     this.$el.html(content);
+    this.setupNewSongbutton();
     return this;
   },
 
@@ -24,7 +28,19 @@ Capstone.Views.Navbar = Backbone.View.extend({
     var searchString = $("#search-bar").val();
     if (searchString === "") return;
 
-    Backbone.history.navigate("#search/" + searchString, {trigger: true}) ///need to encode
-    var searchString = $("#search-bar").val("");
+    this.userSearchResults.fetch({ data : {query: decodeURI(searchString)} })
+    this.songSearchResults.fetch({ data : {query: decodeURI(searchString)} })
+
+    Backbone.history.navigate("#search", {trigger: true})
+    $("#search-bar").val("");
+  },
+
+  setupNewSongbutton: function () {
+    var song = new Capstone.Models.Song();
+    var view = new Capstone.Views.SongForm({model: song});
+    $("body").append(view.$el);
+    view.$el.css("display", "none") //setting up modal
+    view.render();
+    $("#new-song-button").leanModal();
   }
 });
