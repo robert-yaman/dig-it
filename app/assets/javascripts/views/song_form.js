@@ -36,8 +36,6 @@ Capstone.Views.SongForm = Backbone.View.extend({
         $("#new-song-form").css({"display":"none"});
         //
 
-        // this.$("input").val("")
-        // this.$("#song-artist").val(Capstone.currentUser.escape("username"))
         this.render()
 
         Capstone.currentUser.songs().add(newSong);

@@ -3,6 +3,9 @@ Capstone.Views.Playback = Backbone.View.extend({
 
   playSong: function(song) {
     alert("playing " + song.escape("name"))
+    this.$(".audio-tag").html(
+      '<audio autoplay src="' + song.escape("file_path") + '"></audio>'
+    )
   },
 
   render: function () {
