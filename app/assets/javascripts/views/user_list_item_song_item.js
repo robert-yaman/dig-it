@@ -3,8 +3,16 @@ Capstone.Views.UserListItemSongItem = Backbone.View.extend({
   tagName: "li",
   className: "user-list-item-song-item list-group-item",
 
+  events: {
+    "click button" : "playSong"
+  },
+
   initialize: function () {
     this.listenTo(this.model, "sync", this.render);
+  },
+
+  playSong: function(event) {
+    Capstone.playSong(this.model);
   },
 
   render: function () {

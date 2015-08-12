@@ -14,6 +14,8 @@ window.Capstone = {
     $('#playback').html(playback.$el);
     playback.render();
 
+    Capstone.playSong = playback.playSong.bind(playback)
+
     Backbone.history.start();
   }
 };

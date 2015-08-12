@@ -21,7 +21,6 @@ Capstone.Views.SongForm = Backbone.View.extend({
   submit: function(event) {
     event.preventDefault();
     var data = $(event.currentTarget).serializeJSON();
-    debugger
     var newSong = new Capstone.Models.Song();
     newSong.save(data.song, {
       success: function(newSong) {
@@ -34,7 +33,7 @@ Capstone.Views.SongForm = Backbone.View.extend({
         this.$("#song-artist").val(Capstone.currentUser.escape("username"))
 
         Capstone.currentUser.songs().add(newSong);
-        alert("beginning playback of new song");
+        Capstone.playSong(newSong);
       }.bind(this)
     });
   }
