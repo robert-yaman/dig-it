@@ -3,7 +3,8 @@ Capstone.Routers.AppRouter = Backbone.Router.extend({
     "" : "feedPage",
     "profile" : "profile",
     "users/:id" : "userShow",
-    "search" : "search"
+    "search" : "search",
+    "log_out" : "logOut"
   },
 
   initialize: function(options) {
@@ -17,6 +18,16 @@ Capstone.Routers.AppRouter = Backbone.Router.extend({
   feedPage : function () {
     var feed = new Capstone.Views.FeedPage();
     this._switch(feed);
+  },
+
+  logOut: function () {
+    $.ajax({
+      url: "session",
+      type: "DELETE",
+      success: function () {
+        window.location.href = "session/new";
+      }
+    });
   },
 
   //TODO combine with userShow so that there is not one current user show page that current user can't edit

@@ -42,5 +42,6 @@ Capstone.Views.Navbar = Backbone.View.extend({
     view.$el.css("display", "none") //setting up modal
     view.render();
     $("#new-song-button").leanModal();
+    $(".dropdown-toggle").dropdown();
   }
 });

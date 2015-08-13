@@ -30,7 +30,7 @@ App Academy. I will also set up the database, and the necessary models in both R
 ### ~~Phase 2: Set up page skeletons and navigation between pages (~3 days)~~
 I will set up the necessary Backbone views "from the bottom up". That is, I will first create the non-composite views, such as the user-list-item, then build the views which will contain those, and so on until all the basic views are constructed. I will not focus on styling at all at this point. By the end of this page, users should be able to click through all of the main pages of the website as they would for the finished product.
 
-### Phase 3: Set up Feed and Search (~1 day)
+### ~~Phase 3: Set up Feed and Search (~1 day)~~
 In this phase, I will create methods in the Rails song and user models to compute which songs and users should be displayed when. I will then hook this into the front end so that the feed on the landing page is functional, and so that users can search by songs and username/artists. (Note: the song-search will match based on either name or artist, and the user search will match only based on username).
 
 ### ~~Phase 4: Storing/Playing/Uploading music files (~1 day)~~

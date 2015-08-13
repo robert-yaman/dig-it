@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
 
   def destroy
     logout!
-    redirect_to landing_url
+    render "logged out"
   end
 
   def new
