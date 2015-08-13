@@ -1,25 +1,29 @@
-
 .user-info {
   background-color: #7A8288;
   border-radius: 15px;
   padding-top: 20px;
   padding-bottom: 20px;
+  border-radius: 4px;
 }
 
 .user-list-item {
-  height: 102px;
+  height: 120px;
 }
 
 .user-list-item .user-avatar {
   float: left;
+  margin-left: 2%;
+  margin-right: 4%;
+  margin-top: 5px;
 }
 .user-list-item .user-list-item-info {
   float: left;
-  padding-left: 20px;
 }
 
 .user-list-item .user-name {
   font-size: 20px;
+  color: #C8C8C8;
+  margin-bottom: 4px;
 }
 
 .user-list-item:after {
@@ -31,8 +35,21 @@
 .user-list-item-song-item {
   border: none;
   padding: 0;
+  height: 22px;
+  overflow: hidden;
 }
 
 .user-list-item-song-item button {
+  font-size: 10px;
+  color: #FF8C00;
+  border-radius: 100%;
+  border: none;
+  background-color: #32383E;
+  margin-right: .5%;
+  margin-bottom: 4px;
+  padding-left: 0;
+}
 
+.user-list-item-info {
+  width: 200px;
 }
