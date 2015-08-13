@@ -1,3 +1,7 @@
+<video autoplay loop muted id="bgvid">
+  <source src="https://www.filepicker.io/api/file/BSOnF03RwGt2ULYJwIWd" type="video/mp4">
+</video>
+
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -11,7 +15,7 @@
 
 </nav>
 
-<div class="col-xs-4 col-xs-offset-8 sign-in-form">
+<div class="col-xs-3 col-xs-offset-9 sign-in-form">
   <form action="<%= session_url %>" method="post">
     <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token%>">
     <input type="text" class="form-control" name="user[username]" placeholder="Username">
