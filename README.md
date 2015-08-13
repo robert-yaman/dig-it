@@ -12,7 +12,7 @@ Dig-It is a clone of Soundcloud. Users can:
 - [X] Upload songs
 - [X] Visit other users' pages and view their songs
 - [X] Listen to their own songs and other users' songs
-- [ ] Search songs and users by name
+- [X] Search songs and users by name
 
 ## Design Docs
 * [View Wireframes][views]
@@ -27,7 +27,7 @@ Dig-It is a clone of Soundcloud. Users can:
 I will implement user authentication in Rails based on the practices learned at
 App Academy. I will also set up the database, and the necessary models in both Rails and Backbone. Given the time, I will also set up the basic structure of the sign up/sign page. (Note: I will be using gravatar, and I will therefore store users' emails in the database)
 
-### Phase 2: Set up page skeletons and navigation between pages (~3 days)
+### ~~Phase 2: Set up page skeletons and navigation between pages (~3 days)~~
 I will set up the necessary Backbone views "from the bottom up". That is, I will first create the non-composite views, such as the user-list-item, then build the views which will contain those, and so on until all the basic views are constructed. I will not focus on styling at all at this point. By the end of this page, users should be able to click through all of the main pages of the website as they would for the finished product.
 
 ### Phase 3: Set up Feed and Search (~1 day)
@@ -58,6 +58,7 @@ I will probably use a built in bootstrap style and customize from there.
 - [ ] Include Hot and Most Popular songs on the feed view
 - [ ] Allow users to construct playlists and share playlists with other users
 - [ ] Users can add tags to songs and search by tag
+- [ ] Feed view has "more" button that loads the next X for that criterion
 >>>>>>> ed7256362456275757c9e860cd5a9f25aa6e8e61
 
 

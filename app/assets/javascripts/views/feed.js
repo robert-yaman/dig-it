@@ -3,49 +3,58 @@ Capstone.Views.Feed = Backbone.CompositeView.extend({
   className: "feed",
 
   events: {
-    "click .some-songs" : "someSongs",
-    "click .some-users" : "someUsers"
+    "click .recent" : "recentSongs",
+    "click .top" : "topSongs",
+    "click .new-user" :"newUsers"
   },
 
-  initialize: function () {
-    //this is temp
-    var user = new Capstone.Models.User({id: 1});
-    user.fetch();
-    var view = new Capstone.Views.SongList({ collection: user.songs() });
+  newUsers: function() { //lots of repetition here
+    event.preventDefault();
+    this.$(".nav-tabs").children().removeClass("active");
+    $(event.currentTarget).addClass("active");
 
-    this.addSubview(".current-list", view)
+    var newUsers = new Capstone.Collections.Users();
+    newUsers.fetch({data: {new_user: true}});
+    var view = new Capstone.Views.UserList({ collection: newUsers });
+
+    this.subviews(".current-list").each(function (view) {view.remove(); });
+    this.addSubview(".current-list", view);
+  },
+
+  recentSongs: function(event) {
+    event.preventDefault();
+    this.$(".nav-tabs").children().removeClass("active");
+    $(event.currentTarget).addClass("active");
+
+    var recents = new Capstone.Collections.Songs();
+    recents.fetch({data: {recent: true}});
+    var view = new Capstone.Views.SongList({ collection: recents });
+
+    this.subviews(".current-list").each(function (view) {view.remove(); });
+    this.addSubview(".current-list", view);
   },
 
   render: function () {
     var content = this.template({ });
     this.$el.html(content);
     this.attachSubviews();
+
+    //click on whatever tab I have chosen to be active
+    this.$("li.active").trigger("click");
+
     return this;
   },
 
-  someSongs: function(event) {
+  topSongs: function(event) {
     event.preventDefault();
     this.$(".nav-tabs").children().removeClass("active");
     $(event.currentTarget).addClass("active");
 
-    var user = new Capstone.Models.User({id: 1});
-    user.fetch();
-    var view = new Capstone.Views.SongList({ collection: user.songs() });
+    var tops = new Capstone.Collections.Songs();
+    tops.fetch({data: {top: true}});
+    var view = new Capstone.Views.SongList({ collection: tops });
 
     this.subviews(".current-list").each(function (view) {view.remove(); });
     this.addSubview(".current-list", view);
-  },
-
-  someUsers: function(event) {
-    event.preventDefault();
-    this.$(".nav-tabs").children().removeClass("active");
-    $(event.currentTarget).addClass("active");
-
-    var users = new Capstone.Collections.Users();
-    users.fetch();
-    var userList = new Capstone.Views.UserList({collection: users});
-
-    this.subviews(".current-list").each(function (view) {view.remove(); });
-    this.addSubview(".current-list", userList);
   }
 });

@@ -7,6 +7,8 @@ class Api::UsersController < ApplicationController
   def index
     if params[:query]
       @users = User.search_by_query_string(params[:query])
+    elsif params[:new_user]
+      @users = User.recent
     else
       @users = User.all
     end

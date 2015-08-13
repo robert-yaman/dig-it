@@ -1,11 +1,15 @@
 class User < ActiveRecord::Base
-  def self.search_by_query_string(string)
-    where("LOWER(username) LIKE '%#{string.downcase}%'")
+  def self.recent
+    order(created_at: :desc)[0..4]
   end
 
   def self.find_by_credentials(username, password)
     user = User.find_by_username(username)
     (user.is_password?(password) ? user : nil) if user
+  end
+
+  def self.search_by_query_string(string)
+    where("LOWER(username) LIKE '%#{string.downcase}%'")
   end
 
   validates :username, :email, :password_digest, :session_token, presence: true
