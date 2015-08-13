@@ -1,3 +1,25 @@
+<script type="text/javascript">
+  $(function(){
+    //this is to fix position of the sign up form
+    setTimeout($(".sign-in-form").addClass("unhidden"), 0)
+    //roundabout so user can't fill out form while hidden, and to get transition
+    $("#sign-in-button").click(function(){
+      if ($(".sign-in-form").hasClass("active")) {
+        $(".sign-in-form").removeClass("active")
+        $(".sign-in-form").transitionend(function() {
+          $(".sign-in-form").removeClass("unhidden")
+        });
+      } else {
+        $(".sign-in-form").addClass("unhidden")
+        setTimeout(function(){
+          $(".sign-in-form").addClass("active")
+        }, 0);
+      }
+    });
+  });
+</script>
+
+
 <video autoplay loop muted id="bgvid">
   <source src="https://www.filepicker.io/api/file/BSOnF03RwGt2ULYJwIWd" type="video/mp4">
 </video>
@@ -9,7 +31,7 @@
     </div>
 
     <ul class="nav navbar-nav navbar-right">
-      <li><a href="#" class="sign-in-button">Sign In</a></li>
+      <li><a href="#" id="sign-in-button">Sign In</a></li>
     </ul>
   </div>
 
@@ -25,7 +47,7 @@
 </div>
 
 <div class="row sign-up-form col-xs-5 col-xs-offset-4">
-  <h2 id="sign-up">Sign Up</h2>
+  <h2 id="sign-up-title">Sign Up</h2>
 
   <form action="<%= users_url %>" method="post">
     <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token%>">
