@@ -16,8 +16,8 @@ class Api::SongsController < ApplicationController
   def index
     if params[:query]
       @songs = Song.search_by_query_string(params[:query])
-    elsif params[:recent]
-      @songs = Song.recent
+    # elsif params[:recent]
+    #   @songs = Song.recent
     elsif params[:top]
       @songs = Song.top
     else

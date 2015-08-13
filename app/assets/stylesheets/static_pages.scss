@@ -28,3 +28,9 @@
 #content {
   padding-top: 80px;
 }
+
+#content:after {
+  background-color: #272B30;
+  width: 100%;
+  height: 140px;
+}
