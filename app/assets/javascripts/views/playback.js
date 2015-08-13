@@ -38,6 +38,7 @@ Capstone.Views.Playback = Backbone.CompositeView.extend({
   playSong: function(song) {
     if (!this.$("nav").hasClass("active")) {
       this.$("nav").addClass("active");
+      this.$("#dig-button").html("DIG")
     }
 
     if (Capstone.currentSong && Capstone.currentSong.id === song.id) {
