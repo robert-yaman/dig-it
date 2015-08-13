@@ -26,7 +26,9 @@ window.Capstone = {
     $('#playback').html(playback.$el);
     playback.render();
 
-    Capstone.playSong = playback.playSong.bind(playback)
+    // overkill?
+    Capstone.playSong = playback.playSong.bind(playback);
+    Capstone.pauseSong = playback.pauseSong.bind(playback);
 
     Backbone.history.start();
   }

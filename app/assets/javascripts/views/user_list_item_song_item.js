@@ -12,7 +12,7 @@ Capstone.Views.UserListItemSongItem = Backbone.View.extend({
   },
 
   playSong: function(event) {
-    Capstone.playSong(this.model);
+    this.model.play();
   },
 
   render: function () {
