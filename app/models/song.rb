@@ -28,4 +28,8 @@ class Song < ActiveRecord::Base
       errors[:digs] << "array needs to have one element per second"
     end
   end
+
+  def username
+    user.username
+  end
 end

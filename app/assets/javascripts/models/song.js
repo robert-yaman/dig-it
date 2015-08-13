@@ -9,15 +9,15 @@ Capstone.Models.Song = Backbone.Model.extend({
     return minutes + ":" + seconds;
   },
 
-  user: function() {
-    if (!this.collection) {
-      return null;
-    }
-
-    return this.collection.user;
-  },
-
-  userName: function() {
-    return this.user() && this.user().escape("name");
-  }
+  // user: function() {
+  //   if (!this.collection) {
+  //     return null;
+  //   }
+  //
+  //   return this.collection.user;
+  // },
+  //
+  // userName: function() {
+  //   return this.user() && this.user().escape("name");
+  // }
 });

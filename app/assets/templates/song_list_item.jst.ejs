@@ -1,15 +1,15 @@
-<div class="playback-button btn glyphicon glyphicon-play"></div>
 
-<p class="song-name">
+<div class="playback-button btn"><div class="glyphicon glyphicon-play"></div></div>
+
+<h4 class="song-name">
   <%= song.escape("name") %>
-</p>
+</h4>
 
 <div class="song-artist">
   <p class="song-user-name">
-    <%= song.userName() %>
-  </p>
-  <p class="song-artist-name">
+    <%= song.get("username") %>
     <% if (song.escape("artist_name")) { %>
+      <span class="song-artist-divider">|</span>
       <%= "by " + song.escape("artist_name") %>
     <% } %>
   </p>

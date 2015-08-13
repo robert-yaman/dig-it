@@ -1,0 +1,48 @@
+.song-list-item {
+  height: 102px;
+}
+
+.playback-button {
+  float: left;
+  position:relative;
+  height: 80px;
+  width: 80px;
+  border-radius: 100%;
+  border: 5px solid #4CBB17;
+  transition: border .5s;
+  padding: 0;
+  margin-left: 2%;
+  margin-right: 4%;
+  font-size: 40px;
+}
+
+.playback-button .glyphicon-play {
+  position: absolute;
+  top: 14px;
+  left: 17px;
+  transition: .5s;
+}
+
+.playback-button:hover .glyphicon-play {
+  top: 10px;
+  left: 12px;
+  transition: .5s;
+}
+
+.playback-button:hover {
+  transition: .5s;
+  border: 10px solid #4CBB17;
+}
+
+.song-artist-divider {
+  opacity: .4;
+  padding: 0 1.5%;
+}
+
+.song-name {
+  margin-top: 3px;
+}
+
+.song-user-name {
+  margin-bottom: 7px;
+}
