@@ -6,6 +6,12 @@ Capstone.Views.Playback = Backbone.View.extend({
   },
 
   playSong: function(song) {
+    if (!this.$("nav").hasClass("active")) {
+      this.$("nav").addClass("active")
+      this.model = song;
+      this.render();
+    }
+
     if (Capstone.currentSong && Capstone.currentSong.id === song.id) {
       this.$("audio")[0].play();
     } else {
