@@ -1,9 +1,9 @@
 nav.navbar-fixed-bottom {
   height: 160px;
+  background-image: radial-gradient(ellipse 90% 95px, #565656, #2b3035);
+  border-top: 1px solid black;
 }
 
-
-// this is only for active
 button#dig-button {
   position: relative;
   float: right;
@@ -12,6 +12,42 @@ button#dig-button {
   height: 90px;
   width: 90px;
   border-radius: 15px;
+  background-color: #32383E;
+}
+
+nav.active button#dig-button {
+  content: "DIG";
   background-color: #FF8C00;
   color: black;
+}
+
+nav .playback-song-info {
+  height: 75px;
+}
+
+nav .playback-song-info .artist-info {
+  font-size: 22px;
+}
+
+nav .playback-song-info .playback-song-length {
+  position: relative;
+  font-size: 18px;
+  float: right;
+  right: -11%;
+}
+
+nav .playback-song-info .playback-divider {
+  padding: 0 5%;
+  opacity: .4;
+}
+
+nav .playback-bar {
+  background-color: #32383E;
+  width: 112%;
+  height: 46px;
+  border: 1px solid black;
+}
+
+nav.active .playback-bar {
+  background-color: pink;
 }

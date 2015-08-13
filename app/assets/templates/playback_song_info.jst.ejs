@@ -1,0 +1,10 @@
+<h2><%= song.escape("name") %> </h2>
+
+<span class="artist-info username"> <%= song.get("username") %> </span>
+<span class="artist-info artist_name">
+  <% if (song.escape("artist_name")) { %>
+      <span class="playback-divider">|</span>by <%= song.escape("artist_name") %>
+    <% } %>
+</span>
+
+<span class="playback-song-length"><%= song.length() %></span>

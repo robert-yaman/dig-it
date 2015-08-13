@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   def self.recent
-    order(created_at: :desc)[0..4]
+    order(created_at: :desc).includes(:songs).limit(5)
   end
 
   def self.find_by_credentials(username, password)
