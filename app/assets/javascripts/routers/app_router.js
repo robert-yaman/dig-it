@@ -25,7 +25,7 @@ Capstone.Routers.AppRouter = Backbone.Router.extend({
       url: "session",
       type: "DELETE",
       success: function () {
-        window.location.href = "session/new";
+        window.location.href = "/landing";
       }
     });
   },

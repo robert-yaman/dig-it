@@ -13,9 +13,6 @@ class SessionsController < ApplicationController
 
   def destroy
     logout!
-    render "logged out"
-  end
-
-  def new
+    render json: current_user, status: 200
   end
 end
