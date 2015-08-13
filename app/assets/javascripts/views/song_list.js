@@ -10,7 +10,12 @@ Capstone.Views.SongList = Backbone.CompositeView.extend({
   },
 
   addSong: function(song) {
-    var view = new Capstone.Views.SongListItem({model: song});
+    var view
+    if (song.id === (Capstone.currentSong && Capstone.currentSong.id)) {
+      view = new Capstone.Views.SongListItem({model: Capstone.currentSong});
+    } else {
+      view = new Capstone.Views.SongListItem({model: song});
+    }
     this.addSubview(".songs-list", view);
   },
 
@@ -26,6 +31,7 @@ Capstone.Views.SongList = Backbone.CompositeView.extend({
     var content = this.template();
     this.$el.html(content);
     this.attachSubviews();
+
     return this;
   }
 });

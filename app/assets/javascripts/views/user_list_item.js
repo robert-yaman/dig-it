@@ -15,10 +15,16 @@ Capstone.Views.UserListItem = Backbone.CompositeView.extend({
   addThreeSongs: function () {
     //TODO: maybe three most popular songs?
     var songs = this.model.songs();
+    var cur; var view;
 
     for (var i = 0; i < 3; i++) {
-      if (songs.at(i)) {
-        var view = new Capstone.Views.UserListItemSongItem({model: songs.at(i)});
+      cur = songs.at(i)
+      if (cur) {
+        if (cur.id === (Capstone.currentSong && Capstone.currentSong.id)) {
+          view = new Capstone.Views.UserListItemSongItem({model: Capstone.currentSong})
+        } else {
+          view = new Capstone.Views.UserListItemSongItem({model: songs.at(i)});
+        }
         this.addSubview(".user-songs-list", view);
       }
     }

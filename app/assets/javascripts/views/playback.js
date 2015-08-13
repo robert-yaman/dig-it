@@ -6,14 +6,15 @@ Capstone.Views.Playback = Backbone.View.extend({
   },
 
   playSong: function(song) {
-    if (this._currentSong && this._currentSong.id === song.id) {
+    if (Capstone.currentSong && Capstone.currentSong.id === song.id) {
       this.$("audio")[0].play();
     } else {
       this.$(".audio-tag").html(
         '<audio autoplay src="' + song.escape("file_path") + '"></audio>'
       )
 
-      this._currentSong = song
+      Capstone.currentSong && Capstone.currentSong.trigger("pause")
+      Capstone.currentSong = song
     }
   },
 
