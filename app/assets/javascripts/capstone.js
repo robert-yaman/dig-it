@@ -30,6 +30,9 @@ window.Capstone = {
     Capstone.playSong = playback.playSong.bind(playback);
     Capstone.pauseSong = playback.pauseSong.bind(playback);
 
+    // So that models representing the same song are the same model. Array so that two can both be in w/ same id
+    Capstone.onPageSongs = [];
+
     Backbone.history.start();
   }
 };

@@ -32,6 +32,8 @@ Capstone.Views.SongList = Backbone.CompositeView.extend({
     this.$el.html(content);
     this.attachSubviews();
 
+    this.collection.each(function(song) {Capstone.onPageSongs.push(song)})
+
     return this;
   }
 });

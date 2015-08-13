@@ -59,5 +59,7 @@ Capstone.Routers.AppRouter = Backbone.Router.extend({
     this._currentView = view;
     this.$rootEl.html(view.$el);
     view.render();
+
+    Capstone.onPageSongs.length = 0;
   }
 });
