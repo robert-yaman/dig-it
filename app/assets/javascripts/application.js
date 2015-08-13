@@ -17,6 +17,7 @@
 //= require lean_modal
 //= require backbone
 //= require capstone
+//= require bootstrap
 //= require_tree ./utils
 //= require_tree ../templates
 //= require_tree ./models
