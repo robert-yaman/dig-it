@@ -72,6 +72,7 @@ Capstone.Views.Playback = Backbone.CompositeView.extend({
   pauseSong: function(song) {
     this.$(".audio-tag")[0].pause();
     this.wrapUpSong();
+    Capstone.currentSong.playing = false;
   },
 
   playSong: function(song) {
@@ -84,7 +85,6 @@ Capstone.Views.Playback = Backbone.CompositeView.extend({
     if (Capstone.currentSong && Capstone.currentSong.id === song.id) {
       //unpause current song
       this.$(".audio-tag")[0].play();
-
     } else {
       //wrap up currently playing Song
       if (Capstone.currentSong) this.wrapUpSong()
@@ -102,6 +102,7 @@ Capstone.Views.Playback = Backbone.CompositeView.extend({
       this.replaceSongInfo();
     }
 
+    Capstone.currentSong.playing = true
     this.setDigInterval();
   },
 

@@ -9,10 +9,11 @@ Capstone.Views.SongListItem = Backbone.View.extend({
 
   initialize: function () {
     //so doesn't re-render when digs array is saved
-    this.model.on("sync", function(model, resp, options) {
-      if (options.silent) return
-      this.render;
-    })
+    // this.model.on("sync", function(model, resp, options) {
+    //   if (options.silent) return
+    //   this.render;
+    // })
+    this.listenTo(this.model, "sync", this.render)
     this.listenTo(this.model, "play", this.activate)
     this.listenTo(this.model, "pause", this.deactivate)
   },
@@ -30,6 +31,7 @@ Capstone.Views.SongListItem = Backbone.View.extend({
   },
 
   togglePlay: function () {
+    //can I just use the currentSong.playing attribute here?
     if (this.$(".playback-button").hasClass("playing")) {
       this.model.pause();
     } else {
@@ -41,7 +43,7 @@ Capstone.Views.SongListItem = Backbone.View.extend({
     var content = this.template({ song: this.model });
     this.$el.html(content);
 
-    if (this.model === Capstone.currentSong) this.activate();
+    if (this.model === Capstone.currentSong && Capstone.currentSong.playing) this.activate();
 
     return this;
   }
