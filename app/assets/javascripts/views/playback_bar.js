@@ -16,6 +16,7 @@ Capstone.Views.PlaybackBar = Backbone.View.extend({
   },
 
   renderPlaybackBar: function () {
+    this.$("canvas").remove();
     this.model.fetch({data: { canvas_width : this.$el.width() } , success: function(model, response) {
       var heatmap = h337.create({container: $(".playback-bar")[0], radius: response.radius});
       delete response.radius;
