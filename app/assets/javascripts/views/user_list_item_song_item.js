@@ -8,11 +8,11 @@ Capstone.Views.UserListItemSongItem = Backbone.View.extend({
   },
 
   initialize: function () {
-    // this.model.on("sync", function(model, resp, options) {
-    //   if (options.silent) return
-    //   this.render;
-    // })
-    this.listenTo(this.model, "sync", this.render)
+    this.model.on("sync", function(model, resp, options) {
+      if (options.silent) return
+      this.render;
+    })
+    // this.listenTo(this.model, "sync", this.render)
     this.listenTo(this.model, "play", this.activate)
     this.listenTo(this.model, "pause", this.deactivate)
   },

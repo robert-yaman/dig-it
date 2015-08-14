@@ -44,7 +44,11 @@ Capstone.Views.SongForm = Backbone.View.extend({
 
         Capstone.currentUser.songs().add(newSong);
         Capstone.playSong(newSong);
-      }.bind(this)
+      }.bind(this),
+
+      error: function() {
+        alert("error");
+      }
     });
   }
 });

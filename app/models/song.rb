@@ -13,7 +13,7 @@ class Song < ActiveRecord::Base
     where("LOWER(name) LIKE '%#{string.downcase}%' OR LOWER(artist_name) LIKE '%#{string.downcase}%'")
   end
 
-  validates :user, :file_path, presence: true
+  validates :name, :user, :file_path, presence: true
   validate :digs_array_length_equals_length
   after_initialize :create_digs_array
   before_validation :add_length_if_not_there

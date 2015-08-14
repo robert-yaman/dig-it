@@ -32,6 +32,6 @@ Capstone.Views.PlaybackBar = Backbone.View.extend({
 
       delete response.radius;
       heatmap.setData(response);
-    }.bind(this), no_heatmap: true}); //silent true is to avoid infinite loop with listener made in initialize (should I also create that conditional for list items?)
+    }.bind(this), silent: true}); //silent true is to avoid infinite loop with listener made in initialize (should I also create that conditional for list items?)
   }
 });
