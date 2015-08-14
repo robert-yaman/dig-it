@@ -46,9 +46,9 @@ I will probably use a built in bootstrap style and customize from there.
 
 ### Bonus Features/Stretch Goals (TBD)
 - [ ] "Heatmap" playback (this is not necessary for the MVP, but I would like to implement it if at all possible)
-  * [ ] During playback, users can "dig" the portion (~1 second) of the song they are currently listening to (akin to "liking")
+  * [X] During playback, users can "dig" the portion (~1 second) of the song they are currently listening to (akin to "liking")
     - [ ] When a user digs, there will be some instant feedback, e.g. the playback will light up
-  * [ ] The database will keep track of the number of digs each portion has
+  * [X] The database will keep track of the number of digs each portion has
   * [ ] When playback begins, the database will createan array of colors. Each color will correspond to one portion of the song and represent how "hot" that portion is (e.g. proportion of its own likes to the total number of likes for the song)
     - an alternative to this would be to have a jQuery heatmap plugin (third party options exist) that generates the heatmap from the data directly in the browser
     - http://www.patrick-wied.at/static/heatmapjs/

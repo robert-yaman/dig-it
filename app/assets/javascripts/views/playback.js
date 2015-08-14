@@ -113,7 +113,7 @@ Capstone.Views.Playback = Backbone.CompositeView.extend({
       this.secondsCounter++
       if (this.secondsCounter === this.model.get("length")) {
         this.model.pause();
-        Capstone.currentSong = nil;
+        Capstone.currentSong = null;
       }
       console.log(this.secondsCounter)
     }.bind(this), 1000)

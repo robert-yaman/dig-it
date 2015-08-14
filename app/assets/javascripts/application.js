@@ -18,6 +18,7 @@
 //= require backbone
 //= require capstone
 //= require bootstrap
+//= require heatmap.min.js
 //= require_tree ./utils
 //= require_tree ../templates
 //= require_tree ./models
