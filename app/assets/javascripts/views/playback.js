@@ -5,8 +5,8 @@ Capstone.Views.Playback = Backbone.CompositeView.extend({
     //maybe move the button to the song-info -- or make its own view!
     this.installListeners();
 
+    //do these here to achieve consistent positioning b/w active and inactive
     this.replaceQueue();
-    this.replacePlaybackBar();
     this.replaceSongInfo();
   },
 
