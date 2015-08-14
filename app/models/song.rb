@@ -41,7 +41,7 @@ class Song < ActiveRecord::Base
     response_data = []
 
     digs.each_with_index do |dig, i|
-      response_data << {x: i * radius, y: 1, value: dig} if dig > 0
+      response_data << {x: i * radius, y: 0, value: dig} if dig > 0
       highest_dig_count = dig if dig > highest_dig_count
     end
 

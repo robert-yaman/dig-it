@@ -28,7 +28,12 @@ Capstone.Views.Playback = Backbone.CompositeView.extend({
 
   digNow: function () {
     console.log("dug at " + this.secondsCounter);
+    //add to model for db
     this.model.get("digs")[this.secondsCounter]++;
+
+    //add to canvas for live update
+    var heatmap = this.subviews(".playback-bar").first().heatmap;
+    heatmap.addData({x : this.secondsCounter * heatmap.radius, y : 0, value: 1 / heatmap.max});
   },
 
   installListeners: function () {
