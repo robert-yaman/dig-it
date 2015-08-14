@@ -27,6 +27,9 @@ Capstone.Views.PlaybackBar = Backbone.View.extend({
       this.radius = response.radius;
       this.max = response.max
 
+      //stretch the canvas so the heatmap appears 2D
+      $(".playback-bar canvas").css("height", this.model.get("length") * 15);
+
       delete response.radius;
       heatmap.setData(response);
     }.bind(this), no_heatmap: true}); //silent true is to avoid infinite loop with listener made in initialize (should I also create that conditional for list items?)

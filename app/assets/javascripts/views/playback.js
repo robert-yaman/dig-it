@@ -78,7 +78,7 @@ Capstone.Views.Playback = Backbone.CompositeView.extend({
     this.$(".audio-tag")[0].pause();
     this.wrapUpSong();
     Capstone.currentSong.playing = false;
-    //re-render the heatmap
+    //re-render the heatmap (actually, do I need to do this?)
     this.subviews(".playback-bar").first().render();
   },
 
