@@ -6,7 +6,6 @@
   background-color: #FF8C00;
   color: #272B30;
   font-size: 18px;
-  font-weight: bold;
   margin-right: 17px;
   margin-top: 5px;
   width: 37px;
@@ -16,7 +15,7 @@
 
 #lean_overlay {
     position: fixed;
-    z-index:100;
+    z-index: 901;
     top: 0px;
     left: 0px;
     height:100%;

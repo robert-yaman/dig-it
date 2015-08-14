@@ -49,10 +49,10 @@ I will probably use a built in bootstrap style and customize from there.
   * [X] During playback, users can "dig" the portion (~1 second) of the song they are currently listening to (akin to "liking")
     - [ ] When a user digs, there will be some instant feedback, e.g. the playback will light up
   * [X] The database will keep track of the number of digs each portion has
-  * [ ] When playback begins, the database will createan array of colors. Each color will correspond to one portion of the song and represent how "hot" that portion is (e.g. proportion of its own likes to the total number of likes for the song)
+  * [X] When playback begins, the database will createan array of colors. Each color will correspond to one portion of the song and represent how "hot" that portion is (e.g. proportion of its own likes to the total number of likes for the song)
     - an alternative to this would be to have a jQuery heatmap plugin (third party options exist) that generates the heatmap from the data directly in the browser
     - http://www.patrick-wied.at/static/heatmapjs/
-  * [ ] The browser will convert this array into a solid "heatmap". Users will then be able to see the "hottest" parts of the son
+  * [X] The browser will convert this array into a solid "heatmap". Users will then be able to see the "hottest" parts of the son
   * [ ] As the song plays, a pointer will move along the heatmap (probably JQuery plugin)
   * [ ] Users will be able to skip to different parts of the song
 - [ ] Include Hot and Most Popular songs on the feed view

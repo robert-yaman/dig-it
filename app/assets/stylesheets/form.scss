@@ -1,0 +1,23 @@
+#new-song-form {
+  width: 400px;
+  padding: 20px;
+  background-color: #c8c8c8;
+  color: #272b30;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  border: 8px solid #7A8288;
+}
+
+.fp__btn {
+  width: 100%;
+}
+
+.fp__btn + div {
+  width: 100%;
+  padding-top: 5px;
+}
+
+.new-song-form button.submit {
+  position: relative;
+  left: 43%;
+}

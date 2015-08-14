@@ -16,14 +16,14 @@
   font-size: 40px;
 }
 
-.playback-button .glyphicon-play {
+.playback-button .glyphicon {
   position: absolute;
   top: 14px;
   left: 17px;
   transition: .5s;
 }
 
-.playback-button:hover .glyphicon-play {
+.playback-button:hover .glyphicon {
   top: 9px;
   left: 12px;
   transition: .5s;
