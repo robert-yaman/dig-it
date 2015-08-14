@@ -58,7 +58,7 @@ I will probably use a built in bootstrap style and customize from there.
 - [ ] Include Hot and Most Popular songs on the feed view
 - [ ] Allow users to construct playlists and share playlists with other users
 - [ ] Users can add tags to songs and search by tag
-- [ ] Feed view has "more" button that loads the next X for that criterion
+- [ ] Feed view has "more" button that loads the next X for that criterion (or load more when user has scrolled to the bottom)
 >>>>>>> ed7256362456275757c9e860cd5a9f25aa6e8e61
 
 

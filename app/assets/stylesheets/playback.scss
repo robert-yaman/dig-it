@@ -12,7 +12,9 @@ button#dig-button {
   height: 90px;
   width: 120px;
   border-radius: 15px;
+  border: 1px solid black;
   background-color: #32383E;
+  cursor: default;
 }
 
 nav .song-controls {
@@ -23,7 +25,8 @@ nav.active button#dig-button {
   background-color: #FF8C00;
   color: black;
   font-size: 48px;
-  font-weight: bold;
+  border: 10px solid black;
+  cursor: pointer;
 }
 
 nav .playback-song-info {
@@ -53,14 +56,12 @@ nav .playback-bar {
   border: 1px solid black;
 }
 
-nav.active .playback-bar {
-}
-
 nav .placeholder {
   height: 40px;
 }
 
 nav .playback-play-button {
+  cursor: default;
   top: 41px;
   background-color: #32383E;
   float: right;
@@ -72,9 +73,12 @@ nav .playback-play-button {
 
 nav.active .playback-play-button {
   border: 4px solid #4CBB17;
+  cursor: pointer;
 }
 
 nav ul.vol-bars {
+  position: relative;
+  top: 5px;
   padding-left: 0;
   float: left;
   width: 17px;
@@ -84,12 +88,17 @@ nav ul.vol-bars {
 nav li.vol-bar {
   width: 100%;
   height: 8px;
-  margin: 4px 0;
+  margin: 3px 0;
   background-color: #32383E;
+  border: 1px solid black;
 }
 
 nav.active li.vol-bar {
   background-color: #C8C8C8;
+}
+
+nav.active li.vol-bar:hover {
+  background-color: pink;
 }
 
 nav li.vol {

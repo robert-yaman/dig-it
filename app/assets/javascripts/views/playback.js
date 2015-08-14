@@ -11,13 +11,18 @@ Capstone.Views.Playback = Backbone.CompositeView.extend({
   },
 
   events: {
-    "click .playback-play-button" : "playOrPause"
+    "click .playback-play-button" : "playOrPause",
+    "click .vol-bar" : "changeVol"
   },
 
   activate: function () {
     this.$(".playback-play-button").addClass("playing");
     this.$(".playback-play-button").removeClass("glyphicon-play");
     this.$(".playback-play-button").addClass("glyphicon-pause");
+  },
+
+  changeVol: function () {
+
   },
 
   deactivate: function () {
@@ -43,6 +48,7 @@ Capstone.Views.Playback = Backbone.CompositeView.extend({
   },
 
   playOrPause: function (event) {
+    if (!this.$("nav").hasClass("active")) return
     if (this.$(".playback-play-button").hasClass("playing")) {
       this.model.pause();
     } else {
