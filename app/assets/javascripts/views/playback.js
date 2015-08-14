@@ -7,6 +7,11 @@ Capstone.Views.Playback = Backbone.CompositeView.extend({
     this.replaceSongInfo();
   },
 
+  digNow: function () {
+    console.log("dug at " + this.secondsCounter)
+    this.model.get("digs")[this.secondsCounter]++
+  },
+
   replaceQueue: function () {
     if (this.subviews(".queue").first()) {
       this.removeSubview(".queue", this.subviews(".queue").first());
@@ -33,6 +38,7 @@ Capstone.Views.Playback = Backbone.CompositeView.extend({
 
   pauseSong: function(song) {
     this.$(".audio-tag")[0].pause();
+    this.wrapUpSong()
   },
 
   playSong: function(song) {
@@ -44,9 +50,15 @@ Capstone.Views.Playback = Backbone.CompositeView.extend({
     if (Capstone.currentSong && Capstone.currentSong.id === song.id) {
       //unpause current song
       this.$(".audio-tag")[0].play();
+
     } else {
+      //wrap up currently playing Song
+      if (Capstone.currentSong) this.wrapUpSong()
+
       this.$(".audio-tag").attr("src", song.escape("file_path"))
       this.$(".audio-tag")[0].play();
+
+      this.secondsCounter = 0
 
       Capstone.currentSong && Capstone.currentSong.trigger("pause");
       Capstone.currentSong = song;
@@ -54,6 +66,24 @@ Capstone.Views.Playback = Backbone.CompositeView.extend({
       this.replacePlaybackBar();
       this.replaceSongInfo();
     }
+
+    this.setDigInterval();
+  },
+
+  setDigInterval: function () {
+    //remember to remove listener on stop
+    $("#dig-button").click(this.digNow.bind(this))
+    this.digInterval = setInterval(function(){
+      this.secondsCounter++
+      if (this.secondsCounter === this.model.length) this.wrapUpSong()
+      console.log(this.secondsCounter)
+    }.bind(this), 1000)
+  },
+
+  wrapUpSong: function () {
+    clearInterval(this.digInterval)
+    $("#dig-button").off("click");
+    this.model.save();
   },
 
   render: function () {
@@ -61,5 +91,5 @@ Capstone.Views.Playback = Backbone.CompositeView.extend({
     this.$el.html(content);
     this.attachSubviews();
     return this;
-  }
+  },
 });

@@ -26,7 +26,9 @@ class Api::SongsController < ApplicationController
   def update
     @song = Song.find(params[:id])
 
-    if @song.update(song_params)
+    @song.assign_attributes(song_params)
+    @song.digs = params[:song][:digs] || []
+    if @song.save
       render :show
     else
       render @songs.errors.full_messages, status: 422
@@ -40,6 +42,6 @@ class Api::SongsController < ApplicationController
   private
 
   def song_params
-    params.require(:song).permit(:name, :artist_name, :file_path, :length)
+    params.require(:song).permit(:name, :artist_name, :file_path, :length, :digs)
   end
 end

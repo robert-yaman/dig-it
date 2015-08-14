@@ -26,7 +26,7 @@ class Song < ActiveRecord::Base
   end
 
   def create_digs_array
-    length.times { digs << 0} if length
+    length.times { digs << 0} if digs == [] && length
   end
 
   def digs_array_length_equals_length

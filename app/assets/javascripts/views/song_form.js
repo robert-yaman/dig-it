@@ -27,15 +27,16 @@ Capstone.Views.SongForm = Backbone.View.extend({
     event.preventDefault();
     var data = $(event.currentTarget).serializeJSON();
     var song = new Capstone.Models.Song();
-    debugger
-
     song.save(data.song, {
       success: function(newSong) {
+
         //this is close_modal from leanModal
         $("#lean_overlay").fadeOut(200);
         $("#new-song-form").css({"display":"none"});
 
+        //reset fields
         this.render()
+
         $("audio").one('loadedmetadata', function(){
           newSong.set("length", Math.ceil($("audio")[0].duration))
           newSong.save();
