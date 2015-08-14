@@ -99,10 +99,12 @@ Capstone.Views.Playback = Backbone.CompositeView.extend({
   },
 
   playSong: function(song) {
+    //if this is the first song played
     if (!this.$("nav").hasClass("active")) {
       this.$("nav").addClass("active");
       this.$("#dig-button").html("DIG");
       this.$(".playback-play-button").addClass("playing").addClass("glyphicon-pause");
+      this.setUpVolBars();
     }
 
     if (Capstone.currentSong && Capstone.currentSong.id === song.id) {
@@ -140,6 +142,16 @@ Capstone.Views.Playback = Backbone.CompositeView.extend({
       }
       console.log(this.secondsCounter)
     }.bind(this), 1000)
+  },
+
+  setUpVolBars: function () {
+    this.$(".vol-bar").each(function() {
+      if ($(this).data("vol-level") <= 4) {
+        $(this).addClass("active");
+      }
+    });
+
+    this.$(".audio-tag")[0].volume = 4 / 6
   },
 
   render: function () {
