@@ -2,7 +2,10 @@ Capstone.Views.PlaybackBar = Backbone.View.extend({
   template: JST["playback_bar"],
 
   initialize: function() {
-    this.listenTo(this.model, "sync", this.render)
+    this.model.on("sync", function(model, response, options) {
+      if (options.silent) return
+      this.render()
+    }.bind(this));
   },
 
   render: function () {
@@ -13,9 +16,10 @@ Capstone.Views.PlaybackBar = Backbone.View.extend({
   },
 
   renderPlaybackBar: function () {
-    this.model.fetch({data: { heatmap_length : this.$el.width() } , success: function(model, response) {
-      var heatmap = h337.create({container: $(".playback-bar")[0]})
-      heatmap.setData(response)
-    }});
+    this.model.fetch({data: { canvas_width : this.$el.width() } , success: function(model, response) {
+      var heatmap = h337.create({container: $(".playback-bar")[0], radius: response.radius});
+      delete response.radius;
+      heatmap.setData(response);
+    }, silent: true}); //silent true is to avoid infinite loop with listener made in initialize (should I also create that conditional for list items?)
   }
 });

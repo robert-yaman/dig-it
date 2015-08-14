@@ -35,8 +35,17 @@ class Song < ActiveRecord::Base
     end
   end
 
-  def heatmap_data
-    {text: "here is some data"}
+  def heatmap_data(canvas_width)
+    radius = canvas_width.to_f / length
+    highest_dig_count = 1
+    response_data = []
+
+    digs.each_with_index do |dig, i|
+      response_data << {x: i * radius, y: 1, value: dig} if dig > 0
+      highest_dig_count = dig if dig > highest_dig_count
+    end
+
+    {data: response_data, max: highest_dig_count, min: 0, radius: radius}
   end
 
   def username
