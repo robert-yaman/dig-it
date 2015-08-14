@@ -35,6 +35,10 @@ class Song < ActiveRecord::Base
     end
   end
 
+  def heatmap_data
+    {text: "here is some data"}
+  end
+
   def username
     user.username
   end

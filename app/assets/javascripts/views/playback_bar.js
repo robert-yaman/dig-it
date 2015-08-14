@@ -13,8 +13,9 @@ Capstone.Views.PlaybackBar = Backbone.View.extend({
   },
 
   renderPlaybackBar: function () {
-    var heatmap = h337.create({container: $(".playback-bar")[0]})
-    //temp
-    heatmap.setData({max: 15, data: [{ x: 800, y: 2, value: 15}, { x: 700, y: 2, value: 15}, { x: 300, y: 2, value: 10}]})
+    this.model.fetch({data: { heatmap_length : this.$el.width() } , success: function(model, response) {
+      var heatmap = h337.create({container: $(".playback-bar")[0]})
+      heatmap.setData(response)
+    }});
   }
 });

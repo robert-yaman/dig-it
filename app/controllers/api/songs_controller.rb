@@ -37,6 +37,10 @@ class Api::SongsController < ApplicationController
 
   def show
     @song = Song.find(params[:id])
+
+    if params[:heatmap_length]
+      render json: @song.heatmap_data
+    end
   end
 
   private
