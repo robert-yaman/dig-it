@@ -8,7 +8,11 @@ Capstone.Views.SongListItem = Backbone.View.extend({
   },
 
   initialize: function () {
-    this.listenTo(this.model, "sync", this.render);
+    //so doesn't re-render when digs array is saved
+    this.model.on("sync", function(model, resp, options) {
+      if (options.silent) return
+      this.render;
+    })
     this.listenTo(this.model, "play", this.activate)
     this.listenTo(this.model, "pause", this.deactivate)
   },
