@@ -32,7 +32,7 @@ Capstone.Views.Playback = Backbone.CompositeView.extend({
   },
 
   pauseSong: function(song) {
-    this.$("audio")[0].pause();
+    this.$(".audio-tag")[0].pause();
   },
 
   playSong: function(song) {
@@ -43,11 +43,10 @@ Capstone.Views.Playback = Backbone.CompositeView.extend({
 
     if (Capstone.currentSong && Capstone.currentSong.id === song.id) {
       //unpause current song
-      this.$("audio")[0].play();
+      this.$(".audio-tag")[0].play();
     } else {
-      this.$(".audio-tag").html(
-        '<audio autoplay src="' + song.escape("file_path") + '"></audio>'
-      );
+      this.$(".audio-tag").attr("src", song.escape("file_path"))
+      this.$(".audio-tag")[0].play();
 
       Capstone.currentSong && Capstone.currentSong.trigger("pause");
       Capstone.currentSong = song;

@@ -6,7 +6,6 @@ Capstone.Views.SongForm = Backbone.View.extend({
     "submit form" : "submit"
   },
 
-  //should I give this a user model that represents current user?
   initialize: function () {
     this.listenTo(Capstone.currentUser, "sync", this.render);
 
@@ -27,16 +26,20 @@ Capstone.Views.SongForm = Backbone.View.extend({
   submit: function(event) {
     event.preventDefault();
     var data = $(event.currentTarget).serializeJSON();
-    var newSong = new Capstone.Models.Song();
+    var song = new Capstone.Models.Song();
+    debugger
 
-    newSong.save(data.song, {
+    song.save(data.song, {
       success: function(newSong) {
         //this is close_modal from leanModal
         $("#lean_overlay").fadeOut(200);
         $("#new-song-form").css({"display":"none"});
-        //
 
         this.render()
+        $("audio").one('loadedmetadata', function(){
+          newSong.set("length", Math.ceil($("audio")[0].duration))
+          newSong.save();
+        });
 
         Capstone.currentUser.songs().add(newSong);
         Capstone.playSong(newSong);
