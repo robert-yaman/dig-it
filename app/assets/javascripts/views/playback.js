@@ -78,6 +78,8 @@ Capstone.Views.Playback = Backbone.CompositeView.extend({
     this.$(".audio-tag")[0].pause();
     this.wrapUpSong();
     Capstone.currentSong.playing = false;
+    //re-render the heatmap
+    this.subviews(".playback-bar").first().render();
   },
 
   playSong: function(song) {
@@ -136,8 +138,6 @@ Capstone.Views.Playback = Backbone.CompositeView.extend({
     $("#dig-button").off("click");
     //Can't do this here b/c won't be able to continue playing
     // Capstone.currentSong = null;
-    //re-render the heatmap
-    this.subviews(".playback-bar").first().render();
     this.model.save({}, {silent: true});
   }
 });
