@@ -97,8 +97,8 @@ nav.active li.vol-bar {
   background-color: #C8C8C8;
 }
 
-nav.active li.vol-bar:hover {
-  background-color: pink;
+nav.active li.vol-bar.active {
+  background-color: #4CBB17;
 }
 
 nav li.vol {

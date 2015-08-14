@@ -21,8 +21,16 @@ Capstone.Views.Playback = Backbone.CompositeView.extend({
     this.$(".playback-play-button").addClass("glyphicon-pause");
   },
 
-  changeVol: function () {
-
+  changeVol: function (event) {
+    if (!this.$("nav").hasClass("active")) return;
+    var $volBar = $(event.currentTarget);
+    this.$(".vol-bar").each(function() {
+      if ($(this).data("vol-level") <= $volBar.data("vol-level")) {
+        $(this).addClass("active");
+      } else {
+        $(this).removeClass("active");
+      }
+    });
   },
 
   deactivate: function () {
