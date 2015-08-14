@@ -12,7 +12,7 @@ Capstone.Views.Playback = Backbone.CompositeView.extend({
 
   events: {
     "click .playback-play-button" : "playOrPause",
-    "click .vol-bar" : "changeVol"
+    "click .vol" : "changeVol"
   },
 
   activate: function () {
@@ -31,6 +31,8 @@ Capstone.Views.Playback = Backbone.CompositeView.extend({
         $(this).removeClass("active");
       }
     });
+
+    this.$(".audio-tag")[0].volume = $volBar.data("vol-level") / 6
   },
 
   deactivate: function () {
