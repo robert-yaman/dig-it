@@ -113,3 +113,9 @@ nav li.vol.glyphicon {
 .playback-bar {
   overflow: hidden;
 }
+
+.next-song-info {
+  height: 20px;
+  width: 100px;
+  text-overflow: clip;
+}

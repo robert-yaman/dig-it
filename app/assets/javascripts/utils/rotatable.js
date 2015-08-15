@@ -1,0 +1,6 @@
+$.fn.rotatable = function () p{
+  
+
+
+
+};
