@@ -107,7 +107,7 @@ Capstone.Views.Playback = Backbone.CompositeView.extend({
       this.$("#dig-button").html("DIG");
       this.$(".playback-play-button").addClass("playing").addClass("glyphicon-pause");
       this.setUpVolBars();
-
+      this.setUpPointers();
     }
 
     if (Capstone.currentSong && Capstone.currentSong.id === song.id) {
@@ -116,18 +116,19 @@ Capstone.Views.Playback = Backbone.CompositeView.extend({
     } else {
       //wrap up currently playing Song
       if (Capstone.currentSong) this.wrapUpSong()
-      
+
+      Capstone.currentSong && Capstone.currentSong.trigger("pause"); //is this needed?
+      Capstone.currentSong = song;
+      this.model = song;
+
       this.subviews(".time-counter").first().time = "0:00"
       this.subviews(".time-counter").first().render();
+
+      this.secondsCounter = 0
 
       this.$(".audio-tag").attr("src", song.escape("file_path"))
       this.$(".audio-tag")[0].play();
 
-      this.secondsCounter = 0
-
-      Capstone.currentSong && Capstone.currentSong.trigger("pause");
-      Capstone.currentSong = song;
-      this.model = song;
       this.installListeners();
       this.replacePlaybackBar();
       this.replaceSongInfo();
@@ -148,8 +149,11 @@ Capstone.Views.Playback = Backbone.CompositeView.extend({
       }
       this.subviews(".time-counter").first().time = Capstone.timify(this.secondsCounter);
       this.subviews(".time-counter").first().render();
-      console.log(this.secondsCounter)
     }.bind(this), 1000)
+  },
+
+  setUpPointers: function () {
+    this.$(".playback-pointers").html("<span class='glyphicon glyphicon-chevron-down'></span><span class='glyphicon glyphicon-chevron-up'></span>")
   },
 
   setUpVolBars: function () {

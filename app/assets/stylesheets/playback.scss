@@ -69,7 +69,7 @@ nav .placeholder {
 
 nav .playback-play-button {
   cursor: default;
-  top: 41px;
+  top: 32px;
   background-color: #32383E;
   float: right;
   border-radius: 100%;
@@ -102,6 +102,7 @@ nav li.vol-bar {
 
 nav.active li.vol-bar {
   background-color: #C8C8C8;
+  border: none;
 }
 
 nav.active li.vol-bar.active {
@@ -133,4 +134,20 @@ nav li.vol.glyphicon {
   top: -2px;
   right: -11%;
   font-size: 14px;
+}
+
+.playback-pointers {
+  position: relative;
+}
+
+.playback-pointers .glyphicon-chevron-down {
+  position: absolute;
+  left: -5px;
+  top: -5px;
+}
+
+.playback-pointers .glyphicon-chevron-up {
+  position: absolute;
+  top: -69px;
+  left: -5px
 }
