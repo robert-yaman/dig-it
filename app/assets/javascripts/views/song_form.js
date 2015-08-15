@@ -46,9 +46,18 @@ Capstone.Views.SongForm = Backbone.View.extend({
         Capstone.playSong(newSong);
       }.bind(this),
 
-      error: function() {
-        alert("error");
-      }
+      error: function(model, response) {
+        if (response.responseText.match("Name can't be blank")) {
+          this.$("#song-name").addClass("error")
+        }
+
+        if (response.responseText.match("File path can't be blank")) {
+          var $error = $("<p>Please choose a file</p>")
+          $error.css("color", "red").css("margin-top", 5).css("margin-bottom", 5)
+          this.$(".form-group.fp").append($error)
+        }
+
+      }.bind(this)
     });
   }
 });

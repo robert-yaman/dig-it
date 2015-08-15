@@ -21,3 +21,8 @@
   position: relative;
   left: 43%;
 }
+
+form input#song-name.error {
+  border-color: red;
+  box-shadow: 0 0 10px red;
+}

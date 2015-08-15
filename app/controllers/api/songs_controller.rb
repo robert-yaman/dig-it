@@ -3,11 +3,12 @@ class Api::SongsController < ApplicationController
     @song = Song.new(song_params)
     @song.user_id = current_user.id
 
+    #only store artist if different than submitting user
     @song.artist_name = nil if @song.artist_name == current_user.username
     if @song.save
       render :show
     else
-      render @song.errors.full_messages, status: 422
+      render json: @song.errors.full_messages, status: 422
     end
   end
 
