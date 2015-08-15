@@ -135,34 +135,47 @@ Capstone.Views.Playback = Backbone.CompositeView.extend({
     }
 
     Capstone.currentSong.playing = true
-    this.setPointerInterval();
+    // this.setPointerInterval();
     this.setDigInterval();
   },
 
   setDigInterval: function () {
+    var fps = 12
+    var pointerPos = 0
+    var counter = 0
     //remember to remove listener on stop
     $("#dig-button").click(this.digNow.bind(this))
     this.digInterval = setInterval(function(){
-      this.secondsCounter++
-      if (this.secondsCounter === this.model.get("length")) {
-        this.model.pause();
-        Capstone.currentSong = null;
-      }
-      //update time counter
-      this.subviews(".time-counter").first().time = Capstone.timify(this.secondsCounter);
-      this.subviews(".time-counter").first().render();
-
-    }.bind(this), 1000)
-  },
-
-  setPointerInterval: function () {
-    var fps = 12
-    var pointerPos = 0
-    this.pointerInveral = setInterval(function() {
+      counter++
       this.$(".playback-pointers").css("transform", "translate(" + pointerPos + "px,0)")
-      pointerPos += this.$(".playback-bar").width() / (Capstone.currentSong.get("length") * fps)
-    }, 1000 / fps)
+      //reassigning each time in case browser is resized. In terms of secondsCounter to facilitate pausing
+      pointerPos = (this.$(".playback-bar").width() * (this.secondsCounter * fps + (counter % fps))) / (Capstone.currentSong.get("length") * fps)
+
+      //if on the second mark
+      if (counter % fps === fps - 1) {
+        this.secondsCounter++
+
+        //song is over
+        if (this.secondsCounter === this.model.get("length")) {
+          this.model.pause();
+          Capstone.currentSong = null;
+        }
+        //update time counter
+        this.subviews(".time-counter").first().time = Capstone.timify(this.secondsCounter);
+        this.subviews(".time-counter").first().render();
+      }
+    }.bind(this), 1000 / fps)
   },
+  //
+  // setPointerInterval: function () {
+  //
+  //   this.pointerInveral = setInterval(function() {
+  //     this.$(".playback-pointers").css("transform", "translate(" + pointerPos + "px,0)")
+  //     //reassigning each time in case browser is resized. In terms of secondsCounter to facilitate pausing
+  //     pointerPos = (this.$(".playback-bar").width() * (this.secondsCounter * fps + (counter % fps))) / (Capstone.currentSong.get("length") * fps)
+  //     counter++
+  //   }.bind(this), 1000 / fps)
+  // },
 
   setUpPointers: function () {
     this.$(".playback-pointers").html("<span class='glyphicon glyphicon-chevron-down'></span><span class='glyphicon glyphicon-chevron-up'></span>")
