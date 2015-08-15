@@ -45,7 +45,8 @@ nav .playback-song-info .playback-song-length {
   position: relative;
   font-size: 18px;
   float: right;
-  right: -11%;
+  right: -4.7%;
+  top: 20px;
 }
 
 nav .playback-song-info .playback-divider {
@@ -131,16 +132,13 @@ nav li.vol.glyphicon {
 #time-counter {
   position: relative;
   float: right;
-  top: -2px;
-  right: -11%;
+  top: -24px;
+  right: -4%;
   font-size: 14px;
 }
 
 .playback-pointers {
   position: relative;
-  // transition-timing-function: linear;
-  // transition-delay: 0;
-  // transition: transform 1s;
 }
 
 .playback-pointers .glyphicon-chevron-up {

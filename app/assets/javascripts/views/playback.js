@@ -60,7 +60,13 @@ Capstone.Views.Playback = Backbone.CompositeView.extend({
   },
 
   jumpSpots: function(event) {
-    debugger
+    var proportionOfSong = event.offsetX / $(".playback-bar").width();
+    var newSecondValue = Math.floor(proportionOfSong * Capstone.currentSong.get("length"));
+    var newFpsCounter = Math.floor(((proportionOfSong * Capstone.currentSong.get("length")) - newSecondValue) / this.fps)
+
+    this.$("audio")[0].currentTime = newSecondValue;
+    this.secondsCounter = newSecondValue;
+    this.fpsCounter = newFpsCounter;
   },
 
   playOrPause: function (event) {
@@ -129,6 +135,7 @@ Capstone.Views.Playback = Backbone.CompositeView.extend({
       this.subviews(".time-counter").first().render();
 
       this.secondsCounter = 0
+      this.fpsCounter = 0
 
       this.$(".audio-tag").attr("src", song.escape("file_path"))
       this.$(".audio-tag")[0].play();
@@ -143,9 +150,9 @@ Capstone.Views.Playback = Backbone.CompositeView.extend({
   },
 
   setDigInterval: function () {
-    var fps = 12
-    var pointerPos
+    var fps = this.fps = 12
     this.fpsCounter = this.fpsCounter || 0
+    var pointerPos
 
     //install dig button and song jumping
     this.$("#dig-button").click(this.digNow.bind(this))
@@ -153,6 +160,7 @@ Capstone.Views.Playback = Backbone.CompositeView.extend({
     this.digInterval = setInterval(function(){
       this.fpsCounter++
       this.fpsCounter = this.fpsCounter % fps
+      console.log(this.fpsCounter)
       //reassigning each time in case browser is resized. In terms of secondsCounter to facilitate pausing
       pointerPos = (this.$(".playback-bar").width() * (this.secondsCounter * fps + this.fpsCounter)) / (Capstone.currentSong.get("length") * fps)
       this.$(".playback-pointers").css("transform", "translate(" + pointerPos + "px,0)")
@@ -160,7 +168,7 @@ Capstone.Views.Playback = Backbone.CompositeView.extend({
       //if on the second mark
       if (this.fpsCounter === fps - 1) {
         this.secondsCounter++
-
+        console.log("seconds: " + this.secondsCounter)
         //song is over
         if (this.secondsCounter === this.model.get("length")) {
           this.model.pause();
