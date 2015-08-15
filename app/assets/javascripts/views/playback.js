@@ -135,24 +135,25 @@ Capstone.Views.Playback = Backbone.CompositeView.extend({
     }
 
     Capstone.currentSong.playing = true
-    // this.setPointerInterval();
     this.setDigInterval();
   },
 
   setDigInterval: function () {
     var fps = 12
-    var pointerPos = 0
-    var counter = 0
-    //remember to remove listener on stop
+    var pointerPos
+    this.fpsCounter = this.fpsCounter || 0
+
+    //install dig button
     $("#dig-button").click(this.digNow.bind(this))
     this.digInterval = setInterval(function(){
-      counter++
-      this.$(".playback-pointers").css("transform", "translate(" + pointerPos + "px,0)")
+      this.fpsCounter++
+      this.fpsCounter = this.fpsCounter % fps
       //reassigning each time in case browser is resized. In terms of secondsCounter to facilitate pausing
-      pointerPos = (this.$(".playback-bar").width() * (this.secondsCounter * fps + (counter % fps))) / (Capstone.currentSong.get("length") * fps)
+      pointerPos = (this.$(".playback-bar").width() * (this.secondsCounter * fps + this.fpsCounter)) / (Capstone.currentSong.get("length") * fps)
+      this.$(".playback-pointers").css("transform", "translate(" + pointerPos + "px,0)")
 
       //if on the second mark
-      if (counter % fps === fps - 1) {
+      if (this.fpsCounter === fps - 1) {
         this.secondsCounter++
 
         //song is over
