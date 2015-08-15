@@ -32,7 +32,7 @@ Capstone.Views.Playback = Backbone.CompositeView.extend({
       }
     });
 
-    this.$(".audio-tag")[0].volume = $volBar.data("vol-level") / 6
+    this.$(".audio-tag")[0].volume = $volBar.data("vol-level") / 6;
   },
 
   deactivate: function () {
@@ -53,8 +53,8 @@ Capstone.Views.Playback = Backbone.CompositeView.extend({
 
   installListeners: function () {
     //must call again when model is switched
-    this.listenTo(this.model, "play", this.activate)
-    this.listenTo(this.model, "pause", this.deactivate)
+    this.listenTo(this.model, "play", this.activate);
+    this.listenTo(this.model, "pause", this.deactivate);
   },
 
   playOrPause: function (event) {

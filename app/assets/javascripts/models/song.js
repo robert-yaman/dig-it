@@ -2,11 +2,8 @@ Capstone.Models.Song = Backbone.Model.extend({
   urlRoot: 'api/songs',
 
   length: function () {
-    if (!this.get("length")) return
-    var minutes = Math.floor(this.get("length") / 60);
-    var seconds = this.get("length") - (minutes * 60);
-    if (seconds < 10) seconds = "0" + seconds;
-    return minutes + ":" + seconds;
+    if (!this.get("length")) return;
+    return Capstone.timify(this.get("length"));
   },
 
   pause: function () {
@@ -30,6 +27,6 @@ Capstone.Models.Song = Backbone.Model.extend({
       if (song.id === this.id && song !== this) {
         song.trigger("play");
       }
-    }.bind(this))
+    }.bind(this));
   }
 });
