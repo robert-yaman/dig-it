@@ -59,6 +59,10 @@ Capstone.Views.Playback = Backbone.CompositeView.extend({
     this.listenTo(this.model, "pause", this.deactivate);
   },
 
+  jumpSpots: function(event) {
+    debugger
+  },
+
   playOrPause: function (event) {
     if (!this.$("nav").hasClass("active")) return
     if (this.$(".playback-play-button").hasClass("playing")) {
@@ -143,8 +147,9 @@ Capstone.Views.Playback = Backbone.CompositeView.extend({
     var pointerPos
     this.fpsCounter = this.fpsCounter || 0
 
-    //install dig button
-    $("#dig-button").click(this.digNow.bind(this))
+    //install dig button and song jumping
+    this.$("#dig-button").click(this.digNow.bind(this))
+    this.$(".playback-bar").click(this.jumpSpots.bind(this));
     this.digInterval = setInterval(function(){
       this.fpsCounter++
       this.fpsCounter = this.fpsCounter % fps
@@ -167,16 +172,6 @@ Capstone.Views.Playback = Backbone.CompositeView.extend({
       }
     }.bind(this), 1000 / fps)
   },
-  //
-  // setPointerInterval: function () {
-  //
-  //   this.pointerInveral = setInterval(function() {
-  //     this.$(".playback-pointers").css("transform", "translate(" + pointerPos + "px,0)")
-  //     //reassigning each time in case browser is resized. In terms of secondsCounter to facilitate pausing
-  //     pointerPos = (this.$(".playback-bar").width() * (this.secondsCounter * fps + (counter % fps))) / (Capstone.currentSong.get("length") * fps)
-  //     counter++
-  //   }.bind(this), 1000 / fps)
-  // },
 
   setUpPointers: function () {
     this.$(".playback-pointers").html("<span class='glyphicon glyphicon-chevron-down'></span><span class='glyphicon glyphicon-chevron-up'></span>")
@@ -201,7 +196,8 @@ Capstone.Views.Playback = Backbone.CompositeView.extend({
 
   wrapUpSong: function () {
     clearInterval(this.digInterval)
-    $("#dig-button").off("click");
+    this.$("#dig-button").off("click");
+    this.$(".playback-bar").off("click")
     //Can't do this here b/c won't be able to continue playing
     // Capstone.currentSong = null;
     this.model.save({}, {silent: true});

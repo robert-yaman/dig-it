@@ -53,7 +53,7 @@ I will probably use a built in bootstrap style and customize from there.
     - an alternative to this would be to have a jQuery heatmap plugin (third party options exist) that generates the heatmap from the data directly in the browser
     - http://www.patrick-wied.at/static/heatmapjs/
   * [X] The browser will convert this array into a solid "heatmap". Users will then be able to see the "hottest" parts of the son
-  * [ ] As the song plays, a pointer will move along the heatmap (probably JQuery plugin)
+  * [X] As the song plays, a pointer will move along the heatmap (probably JQuery plugin)
   * [ ] Users will be able to skip to different parts of the song
 - [ ] Include Hot and Most Popular songs on the feed view
 - [ ] Allow users to construct playlists and share playlists with other users
