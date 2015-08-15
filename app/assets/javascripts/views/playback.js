@@ -8,6 +8,8 @@ Capstone.Views.Playback = Backbone.CompositeView.extend({
     //do these here to achieve consistent positioning b/w active and inactive
     this.replaceQueue();
     this.replaceSongInfo();
+
+    this.addSubview(".time-counter", new Capstone.Views.TimeCounter());
   },
 
   events: {
@@ -105,6 +107,9 @@ Capstone.Views.Playback = Backbone.CompositeView.extend({
       this.$("#dig-button").html("DIG");
       this.$(".playback-play-button").addClass("playing").addClass("glyphicon-pause");
       this.setUpVolBars();
+
+      this.subviews(".time-counter").first().time = "0:00"
+      this.subviews(".time-counter").first().render();
     }
 
     if (Capstone.currentSong && Capstone.currentSong.id === song.id) {
@@ -140,6 +145,8 @@ Capstone.Views.Playback = Backbone.CompositeView.extend({
         this.model.pause();
         Capstone.currentSong = null;
       }
+      this.subviews(".time-counter").first().time = Capstone.timify(this.secondsCounter);
+      this.subviews(".time-counter").first().render();
       console.log(this.secondsCounter)
     }.bind(this), 1000)
   },
