@@ -147,8 +147,12 @@ Capstone.Views.Playback = Backbone.CompositeView.extend({
         this.model.pause();
         Capstone.currentSong = null;
       }
+      //update time counter
       this.subviews(".time-counter").first().time = Capstone.timify(this.secondsCounter);
       this.subviews(".time-counter").first().render();
+
+      //move playback-pointers
+      this.$(".playback-pointers").css("transform", "translate(" + (this.$(".playback-bar").width() * this.secondsCounter) / Capstone.currentSong.get("length") + "px,0)")
     }.bind(this), 1000)
   },
 

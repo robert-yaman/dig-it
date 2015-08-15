@@ -138,15 +138,18 @@ nav li.vol.glyphicon {
 
 .playback-pointers {
   position: relative;
+  transition-timing-function: linear;
+  transition-delay: 0;
+  transition: transform 1s;
 }
 
-.playback-pointers .glyphicon-chevron-down {
+.playback-pointers .glyphicon-chevron-up {
   position: absolute;
   left: -5px;
   top: -5px;
 }
 
-.playback-pointers .glyphicon-chevron-up {
+.playback-pointers .glyphicon-chevron-down {
   position: absolute;
   top: -69px;
   left: -5px
