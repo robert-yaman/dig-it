@@ -1,5 +1,5 @@
-$.fn.rotatable = function () p{
-  
+$.fn.rotatable = function () {
+
 
 
 

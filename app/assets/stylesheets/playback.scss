@@ -37,6 +37,10 @@ nav .playback-song-info .artist-info {
   font-size: 22px;
 }
 
+nav .playback-song-info .artist-info.username {
+  padding-left: 4%
+}
+
 nav .playback-song-info .playback-song-length {
   position: relative;
   font-size: 18px;
@@ -50,10 +54,13 @@ nav .playback-song-info .playback-divider {
 }
 
 nav .playback-bar {
+  position: relative;
   background-color: #32383E;
+  top: -7px;
   width: 112%;
   height: 46px;
   border: 1px solid black;
+  overflow: hidden;
 }
 
 nav .placeholder {
@@ -110,12 +117,12 @@ nav li.vol.glyphicon {
   width: 100%;
 }
 
-.playback-bar {
-  overflow: hidden;
-}
-
 .next-song-info {
   height: 20px;
   width: 100px;
   text-overflow: clip;
+}
+
+.playback-song-name {
+  margin-top: 11px;
 }
