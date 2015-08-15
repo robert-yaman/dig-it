@@ -135,6 +135,7 @@ Capstone.Views.Playback = Backbone.CompositeView.extend({
     }
 
     Capstone.currentSong.playing = true
+    this.setPointerInterval();
     this.setDigInterval();
   },
 
@@ -151,9 +152,16 @@ Capstone.Views.Playback = Backbone.CompositeView.extend({
       this.subviews(".time-counter").first().time = Capstone.timify(this.secondsCounter);
       this.subviews(".time-counter").first().render();
 
-      //move playback-pointers
-      this.$(".playback-pointers").css("transform", "translate(" + (this.$(".playback-bar").width() * this.secondsCounter) / Capstone.currentSong.get("length") + "px,0)")
     }.bind(this), 1000)
+  },
+
+  setPointerInterval: function () {
+    var fps = 12
+    var pointerPos = 0
+    this.pointerInveral = setInterval(function() {
+      this.$(".playback-pointers").css("transform", "translate(" + pointerPos + "px,0)")
+      pointerPos += this.$(".playback-bar").width() / (Capstone.currentSong.get("length") * fps)
+    }, 1000 / fps)
   },
 
   setUpPointers: function () {
