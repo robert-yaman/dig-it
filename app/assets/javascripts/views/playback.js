@@ -108,8 +108,6 @@ Capstone.Views.Playback = Backbone.CompositeView.extend({
       this.$(".playback-play-button").addClass("playing").addClass("glyphicon-pause");
       this.setUpVolBars();
 
-      this.subviews(".time-counter").first().time = "0:00"
-      this.subviews(".time-counter").first().render();
     }
 
     if (Capstone.currentSong && Capstone.currentSong.id === song.id) {
@@ -118,6 +116,9 @@ Capstone.Views.Playback = Backbone.CompositeView.extend({
     } else {
       //wrap up currently playing Song
       if (Capstone.currentSong) this.wrapUpSong()
+      
+      this.subviews(".time-counter").first().time = "0:00"
+      this.subviews(".time-counter").first().render();
 
       this.$(".audio-tag").attr("src", song.escape("file_path"))
       this.$(".audio-tag")[0].play();
