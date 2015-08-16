@@ -62,6 +62,11 @@ nav .playback-bar {
   height: 46px;
   border: 1px solid black;
   overflow: hidden;
+
+}
+
+nav.active .playback-bar {
+  border-radius: 8px;
 }
 
 nav .placeholder {

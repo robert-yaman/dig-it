@@ -171,7 +171,6 @@ Capstone.Views.Playback = Backbone.CompositeView.extend({
     this.digInterval = setInterval(function(){
       this.fpsCounter++
       this.fpsCounter = this.fpsCounter % fps
-      console.log(this.fpsCounter)
       //reassigning each time in case browser is resized. In terms of secondsCounter to facilitate pausing
       pointerPos = (this.$(".playback-bar").width() * (this.secondsCounter * fps + this.fpsCounter)) / (Capstone.currentSong.get("length") * fps)
       this.$(".playback-pointers").css("transform", "translate(" + pointerPos + "px,0)")
@@ -179,7 +178,7 @@ Capstone.Views.Playback = Backbone.CompositeView.extend({
       //if on the second mark
       if (this.fpsCounter === fps - 1) {
         this.secondsCounter++
-        console.log("seconds: " + this.secondsCounter)
+
         //song is over
         if (this.secondsCounter === this.model.get("length")) {
           this.model.pause();
@@ -216,6 +215,7 @@ Capstone.Views.Playback = Backbone.CompositeView.extend({
   wrapUpSong: function () {
     clearInterval(this.digInterval)
     this.$("#dig-button").off("click");
+    //note: never need to turn of the playback bar click handler
     // this.$(".playback-bar").off("click")
     //Can't do this here b/c won't be able to continue playing
     // Capstone.currentSong = null;

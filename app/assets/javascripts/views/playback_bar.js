@@ -20,7 +20,19 @@ Capstone.Views.PlaybackBar = Backbone.View.extend({
     this.model.fetch({data: { canvas_width : this.$el.width() } , success: function(model, response) {
       console.log("heatmap reset")
       $(".heatmap-canvas").remove();
-      var heatmap = h337.create({container: $(".playback-bar")[0], radius: response.radius});
+      var heatmap = h337.create({
+        container: $(".playback-bar")[0],
+        radius: response.radius,
+        blur: .9,
+        gradient: {
+          '.25': '#0047B2',
+          '.5' : '#4CBB17',
+          '.65' : '#66FF33',
+          '.7': '#FF8C00',
+          '.83' : 'yellow',
+          '.95': 'red'
+        }
+      });
 
       //storing info for live update later
       this.heatmap = heatmap
