@@ -26,6 +26,15 @@ li.leaderboard-heading {
   float: left;
 }
 
-.leader-songs-list {
-  float:left
+.list-group.leader-songs-list {
+  float:left;
+  margin-top: 15px;
+  margin-bottom: 5px;
+  padding-left: 14px;
+}
+
+.leader-username {
+  font-size: 16px;
+  position: relative;
+  top: -4px;
 }
