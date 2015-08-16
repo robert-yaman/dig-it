@@ -67,6 +67,17 @@ Capstone.Views.Playback = Backbone.CompositeView.extend({
     this.$("audio")[0].currentTime = newSecondValue;
     this.secondsCounter = newSecondValue;
     this.fpsCounter = newFpsCounter;
+
+    //re-render visual representations in case paused
+    if (!Capstone.currentSong.playing) {
+      //pointers
+      var pointerPos = (this.$(".playback-bar").width() * (this.secondsCounter * this.fps + this.fpsCounter)) / (Capstone.currentSong.get("length") * this.fps)
+      this.$(".playback-pointers").css("transform", "translate(" + pointerPos + "px,0)")
+
+      //time-counter
+      this.subviews(".time-counter").first().time = Capstone.timify(newSecondValue)
+      this.subviews(".time-counter").first().render();
+    }
   },
 
   playOrPause: function (event) {
@@ -205,7 +216,7 @@ Capstone.Views.Playback = Backbone.CompositeView.extend({
   wrapUpSong: function () {
     clearInterval(this.digInterval)
     this.$("#dig-button").off("click");
-    this.$(".playback-bar").off("click")
+    // this.$(".playback-bar").off("click")
     //Can't do this here b/c won't be able to continue playing
     // Capstone.currentSong = null;
     this.model.save({}, {silent: true});
