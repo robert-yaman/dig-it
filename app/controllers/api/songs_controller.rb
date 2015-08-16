@@ -27,6 +27,18 @@ class Api::SongsController < ApplicationController
   def update
     @song = Song.find(params[:id])
 
+    if params[:digs_given]
+      num_digs = params[:digs_given]
+      current_user.digs_given += num_digs
+      current_user.save
+
+      receiver = User.find(params[:song][:user_id])
+      receiver.digs_received += num_digs
+      receiver.save
+
+      @song.total_digs += num_digs
+    end
+
     @song.assign_attributes(song_params)
     @song.digs = params[:song][:digs] || []
     if @song.save

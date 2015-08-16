@@ -2,6 +2,7 @@ Capstone.Views.Playback = Backbone.CompositeView.extend({
   template: JST["playback"],
 
   initialize: function() {
+    this.digsGiven = 0;
     //maybe move the button to the song-info -- or make its own view!
     this.installListeners();
 
@@ -44,7 +45,9 @@ Capstone.Views.Playback = Backbone.CompositeView.extend({
   },
 
   digNow: function () {
-    console.log("dug at " + this.secondsCounter);
+    // this.lightUp();
+
+    this.digsGiven++
     //add to model for db
     this.model.get("digs")[this.secondsCounter]++;
 
@@ -53,13 +56,13 @@ Capstone.Views.Playback = Backbone.CompositeView.extend({
     heatmapView.heatmap.addData({x : this.secondsCounter * heatmapView.radius, y : 0, value: heatmapView.max / 9});
   },
 
-  digNowIfD: function (event) {
-    event.preventDefault();
-    debugger
-    if (event.keycode === 68) {
-      this.digNow();
-    }
-  },
+  // digNowIfD: function (event) {
+  //   event.preventDefault();
+  //   debugger
+  //   if (event.keycode === 68) {
+  //     this.digNow();
+  //   }
+  // },
 
   installListeners: function () {
     //must call again when model is switched
@@ -76,15 +79,15 @@ Capstone.Views.Playback = Backbone.CompositeView.extend({
     this.secondsCounter = newSecondValue;
     this.fpsCounter = newFpsCounter;
 
-    //re-render visual representations in case paused
+    //re-render time-counter
+    this.subviews(".time-counter").first().time = Capstone.timify(newSecondValue)
+    this.subviews(".time-counter").first().render();
+
+    //re-render visual pointers in case paused
     if (!Capstone.currentSong.playing) {
       //pointers
       var pointerPos = (this.$(".playback-bar").width() * (this.secondsCounter * this.fps + this.fpsCounter)) / (Capstone.currentSong.get("length") * this.fps)
       this.$(".playback-pointers").css("transform", "translate(" + pointerPos + "px,0)")
-
-      //time-counter
-      this.subviews(".time-counter").first().time = Capstone.timify(newSecondValue)
-      this.subviews(".time-counter").first().render();
     }
   },
 
@@ -227,6 +230,9 @@ Capstone.Views.Playback = Backbone.CompositeView.extend({
     // this.$(".playback-bar").off("click")
     //Can't do this here b/c won't be able to continue playing
     // Capstone.currentSong = null;
-    this.model.save({}, {silent: true});
+    this.model.save({digs_given: this.digsGiven}, {silent: true});
+
+    //these digs now accounted for
+    this.digsGiven = 0;
   }
 });

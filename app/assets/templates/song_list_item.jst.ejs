@@ -7,7 +7,7 @@
 
 <div class="song-artist">
   <p class="song-user-name">
-    <%= song.get("username") %>
+    <a href="#users/<%= song.get("user_id") %>"><%= song.get("username") %></a>
     <% if (song.escape("artist_name")) { %>
       <span class="song-artist-divider">|</span>
       <%= "by " + song.escape("artist_name") %>
