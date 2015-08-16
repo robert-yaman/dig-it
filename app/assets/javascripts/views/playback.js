@@ -7,7 +7,9 @@ Capstone.Views.Playback = Backbone.CompositeView.extend({
     this.installListeners();
 
     //do these here to achieve consistent positioning b/w active and inactive
+    this.queue = []
     this.replaceQueue();
+
     this.replaceSongInfo();
 
     this.addSubview(".time-counter", new Capstone.Views.TimeCounter());
@@ -56,14 +58,6 @@ Capstone.Views.Playback = Backbone.CompositeView.extend({
     heatmapView.heatmap.addData({x : this.secondsCounter * heatmapView.radius, y : 0, value: heatmapView.max / 9});
   },
 
-  // digNowIfD: function (event) {
-  //   event.preventDefault();
-  //   debugger
-  //   if (event.keycode === 68) {
-  //     this.digNow();
-  //   }
-  // },
-
   installListeners: function () {
     //must call again when model is switched
     this.listenTo(this.model, "play", this.activate);
@@ -104,7 +98,7 @@ Capstone.Views.Playback = Backbone.CompositeView.extend({
     if (this.subviews(".queue").first()) {
       this.removeSubview(".queue", this.subviews(".queue").first());
     }
-    var view = new Capstone.Views.Queue();
+    var view = new Capstone.Views.Queue({queue: this.queue});
     this.addSubview(".queue", view);
   },
 
@@ -180,6 +174,7 @@ Capstone.Views.Playback = Backbone.CompositeView.extend({
     this.$("#dig-button").click(this.digNow.bind(this))
     this.$(".playback-bar").click(this.jumpSpots.bind(this));
     this.digInterval = setInterval(function(){
+      console.log(this.fpsCounter)
       this.fpsCounter++
       this.fpsCounter = this.fpsCounter % fps
       //reassigning each time in case browser is resized. In terms of secondsCounter to facilitate pausing
@@ -188,16 +183,17 @@ Capstone.Views.Playback = Backbone.CompositeView.extend({
 
       //if on the second mark
       if (this.fpsCounter === fps - 1) {
+        console.log("seconds: " + this.secondsCounter)
         this.secondsCounter++
 
         //song is over
         if (this.secondsCounter === this.model.get("length")) {
           this.model.pause();
-
           //move to the next song in the queue if there is one
-          if (Capstone.queue[0]) {
-            Capstone.queue[0].play()
-            Capstone.queue.shift();
+          if (this.queue[0]) {
+            this.queue[0].play()
+            this.queue.shift();
+            this.subviews(".queue").first().render();
           } else {
             Capstone.currentSong = null;
           }

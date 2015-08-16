@@ -22,6 +22,9 @@ window.Capstone = {
       songSearchResults: songSearchResults
     });
 
+    //this model represents the song most recently added to the queue. Not a collection b/c I want to allow duplicates of the same song on the queue
+    Capstone.queueSong = new Capstone.Models.Song();
+
     var playback = new Capstone.Views.Playback({model: new Capstone.Models.Song()});
     $('#playback').html(playback.$el);
     playback.render();
@@ -32,8 +35,6 @@ window.Capstone = {
 
     // So that models representing the same song are the same model. Array so that two can both be in w/ same id
     Capstone.onPageSongs = [];
-
-    Capstone.queue = []
 
     Backbone.history.start();
   }

@@ -31,10 +31,16 @@ Capstone.Models.Song = Backbone.Model.extend({
   },
 
   pushOntoQueue: function () {
-    Capstone.queue.push(this);
+    Capstone.queueSong.set(this.attributes);
+    //triggering custom event here in case no attributes of the model actual change
+    Capstone.queueSong.trigger("queue-change");
   },
 
   unshiftOntoQueue: function () {
-    Capstone.queue.unshift(this)
+    this.set("playNext", true);
+    Capstone.queueSong.set(this.attributes);
+    this.set("playNext", false);
+    //triggering custom event here in case no attributes of the model actual change
+    Capstone.queueSong.trigger("queue-change");
   }
 });
