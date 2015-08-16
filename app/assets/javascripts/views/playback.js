@@ -53,6 +53,14 @@ Capstone.Views.Playback = Backbone.CompositeView.extend({
     heatmapView.heatmap.addData({x : this.secondsCounter * heatmapView.radius, y : 0, value: heatmapView.max / 9});
   },
 
+  digNowIfD: function (event) {
+    event.preventDefault();
+    debugger
+    if (event.keycode === 68) {
+      this.digNow();
+    }
+  },
+
   installListeners: function () {
     //must call again when model is switched
     this.listenTo(this.model, "play", this.activate);
