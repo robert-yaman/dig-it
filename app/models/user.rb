@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
   end
 
   def self.leaders
-    order(digs_received: :desc).limit(3)
+    order(digs_received: :desc).includes(:songs).limit(3)
   end
 
   def self.search_by_query_string(string)

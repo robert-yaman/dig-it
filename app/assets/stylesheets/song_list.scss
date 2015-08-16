@@ -46,3 +46,39 @@
 .song-user-name {
   margin-bottom: 7px;
 }
+
+button.queue-dropdown {
+  position: absolute;
+  top: 0;
+  right: 20px;
+  background-image: none;
+  background-color: #32383E;
+  border-top: none;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  padding: 5px 10px;
+}
+
+button.queue-dropdown {
+  font-size: 10px;
+}
+
+button.queue-dropdown:hover {
+  background-color: #272B30;
+}
+
+ul.queue-options {
+  position: absolute;
+  top: 2px;
+  right: 10%;
+  left: 70%;
+  font-size: 13px;
+}
+
+ul.queue-options li a {
+  padding: 3px 12px;
+}
+
+ul.queue-options li .glyphicon {
+  padding-right: 5px;
+}

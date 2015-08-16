@@ -18,3 +18,20 @@
 <p class="song-length">
   <%= song.length() %>
 </p>
+
+<button type="button" class="queue-dropdown btn btn-default dropdown-toggle" data-toggle="dropdown" name="button">
+  <span class="glyphicon glyphicon-option-horizontal"></span>
+</button>
+<ul class="queue-options dropdown-menu">
+  <li>
+    <a href="#" class="add-to-queue">
+      <span class="glyphicon glyphicon-list"></span> Add to queue
+    </a>
+  </li>
+  <!-- <li role="seperator" class="divider"></li> -->
+  <li>
+    <a href="#" class="next">
+      <span class="glyphicon glyphicon-share-alt"></span> Play Next
+    </a>
+  </li>
+</ul>
