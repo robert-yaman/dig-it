@@ -15,9 +15,9 @@ Capstone.Views.Queue = Backbone.View.extend({
 
   updateQueue: function () {
     if (Capstone.queueSong.get("playNext")){
-      this.queue.unshift(Capstone.queueSong)
+      this.queue.unshift(new Capstone.Models.Song(Capstone.queueSong.attributes))
     } else {
-      this.queue.push(Capstone.queueSong)
+      this.queue.push(new Capstone.Models.Song(Capstone.queueSong.attributes))
     }
     this.render()
   }

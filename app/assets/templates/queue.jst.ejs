@@ -1,3 +1,9 @@
 <div class="next-song-info">
   <span>Up Next:</span>
 </div>
+
+<ul>
+  <% queue.forEach(function(song) { %>
+    <li><%= song.get("name") %></li>
+  <% }) %>
+</ul>
