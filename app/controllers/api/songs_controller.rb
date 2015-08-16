@@ -49,7 +49,7 @@ class Api::SongsController < ApplicationController
   end
 
   def show
-    @song = Song.find(params[:id])
+    @song = Song.includes(:user).find(params[:id])
 
     if params[:canvas_width]
       render json: @song.heatmap_data(params[:canvas_width])

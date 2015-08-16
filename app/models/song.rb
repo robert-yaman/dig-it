@@ -4,9 +4,11 @@ class Song < ActiveRecord::Base
   end
 
   def self.top #EW
-    Song.includes(:user).all.sort_by do |song|
-      song.digs.sum
-    end.reverse![0..4]
+    order(total_digs: :desc).includes(:user).limit(5)
+
+    # Song.includes(:user).all.sort_by do |song|
+    #   song.digs.sum
+    # end.reverse![0..4]
   end
 
   def self.search_by_query_string(string)
