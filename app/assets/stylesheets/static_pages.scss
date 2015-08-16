@@ -28,12 +28,48 @@
   padding-top: 80px;
 }
 
-#content:after {
-  // background-color: #272B30;
-
-}
-
 #playback {
   width: 100%;
   height: 210px;
+}
+
+input.sign-up-button {
+  width: 48%;
+  background-image: none;
+  background-color: #4CBB17;
+}
+
+input.sign-up-button:hover {
+  background-image: none;
+  background-color: darken(#4CBB17, 15%);
+}
+
+input.sign-up-button:active {
+  background-image: none;
+  background-color: darken(#4CBB17, 30%);
+}
+
+input.sign-up-button:focus:focus {
+  background-image: none;
+  background-color: darken(#4CBB17, 30%);
+}
+
+button.guest-pass {
+  position: relative;
+  top: 10px;
+  width: 48%;
+  float: right;
+  background-image: none;
+  background-color: #FF8C00;
+}
+
+button.guest-pass:hover {
+  background-image: none;
+  background-color: darken(#FF8C00, 15%);
+}
+
+button.guest-pass:active:focus {
+  background-image: none;
+  background-color: darken(#FF8C00, 30%);
+
 }
