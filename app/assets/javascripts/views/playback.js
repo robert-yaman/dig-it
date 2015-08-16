@@ -88,8 +88,12 @@ Capstone.Views.Playback = Backbone.CompositeView.extend({
   },
 
   nextSong: function (event) {
-    event.preventDefault();
-    if (this.queue[0]) this.queue[0].play();
+    event && event.preventDefault();
+    if (this.queue[0]) {
+      this.queue[0].play()
+      this.queue.shift();
+      this.subviews(".queue").first().render();
+    }
   },
 
   pauseSong: function(song) {
@@ -216,9 +220,7 @@ Capstone.Views.Playback = Backbone.CompositeView.extend({
           this.model.pause();
           //move to the next song in the queue if there is one
           if (this.queue[0]) {
-            this.queue[0].play()
-            this.queue.shift();
-            this.subviews(".queue").first().render();
+            this.nextSong();
           } else {
             Capstone.currentSong = null;
           }
