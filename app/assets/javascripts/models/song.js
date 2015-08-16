@@ -28,5 +28,13 @@ Capstone.Models.Song = Backbone.Model.extend({
         song.trigger("play");
       }
     }.bind(this));
+  },
+
+  pushOntoQueue: function () {
+    Capstone.queue.push(this);
+  },
+
+  unshiftOntoQueue: function () {
+    Capstone.queue.unshift(this)
   }
 });

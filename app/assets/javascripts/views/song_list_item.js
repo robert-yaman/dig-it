@@ -5,6 +5,8 @@ Capstone.Views.SongListItem = Backbone.View.extend({
 
   events: {
     "click .playback-button" : "togglePlay",
+    "click .add-to-queue" : "addToQueue",
+    "click .play-next" : "playNext"
   },
 
   initialize: function () {
@@ -24,6 +26,10 @@ Capstone.Views.SongListItem = Backbone.View.extend({
     this.$(".playback-button .glyphicon").addClass("glyphicon-pause")
   },
 
+  addToQueue: function () {
+    this.model.pushOntoQueue();
+  },
+
   deactivate: function () {
     this.$(".playback-button").removeClass("playing")
     this.$(".playback-button .glyphicon").removeClass("glyphicon-pause")
@@ -37,6 +43,10 @@ Capstone.Views.SongListItem = Backbone.View.extend({
     } else {
       this.model.play();
     }
+  },
+
+  playNext: function () {
+    this.model.unshiftOntoQueue();
   },
 
   render: function () {

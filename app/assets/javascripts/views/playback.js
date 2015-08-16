@@ -193,7 +193,14 @@ Capstone.Views.Playback = Backbone.CompositeView.extend({
         //song is over
         if (this.secondsCounter === this.model.get("length")) {
           this.model.pause();
-          Capstone.currentSong = null;
+
+          //move to the next song in the queue if there is one
+          if (Capstone.queue[0]) {
+            Capstone.queue[0].play()
+            Capstone.queue.shift();
+          } else {
+            Capstone.currentSong = null;
+          }
         }
         //update time counter
         this.subviews(".time-counter").first().time = Capstone.timify(this.secondsCounter);

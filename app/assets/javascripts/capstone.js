@@ -33,6 +33,8 @@ window.Capstone = {
     // So that models representing the same song are the same model. Array so that two can both be in w/ same id
     Capstone.onPageSongs = [];
 
+    Capstone.queue = []
+
     Backbone.history.start();
   }
 };
