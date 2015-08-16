@@ -23,7 +23,7 @@
             "display":"block",
             "position":"fixed",
             "opacity":0,
-            "z-index":999,
+            "z-index":1033,
             "left":50+"%",
             "margin-left":-(modal_width/2)+"px",
             "top":o.top+"px"

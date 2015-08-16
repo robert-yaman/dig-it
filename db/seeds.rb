@@ -7,9 +7,9 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 u1 = User.create!(username: "robert", email: "digitrobert@gmail.com", password: "robertdigit")
-u2 = User.create!(username: "michaela", email: "digitmichaela@gmail.com", password: "michaeladigit")
+u2 = User.create!(username: "michaela", email: "digitmichaela@gmail.com", password: "michaeladigit", about_me: "Hey everyone! I'm michaela and I'm an inspiring indie artist who plays the ukelele and the washboard. Check out my song Summe of Haze, its my favorite! I definitely did not misspell \"Summer\".")
 u3 = User.create!(username: "linda", email: "digitlinda@gmail.com", password: "lindadigit123")
-u4 = User.create!(username: "bill", email: "digitbill@gmail.com", password: "billdigit")
+u4 = User.create!(username: "bill", email: "digitbill@gmail.com", password: "billdigit", about_me: "Hi there, I am Robert's dad Bill. I'm haven't uploaded any music myself, but I'm happy just digging what I dig.")
 u5 = User.create!(username: "Death Grips", email: "dg@lalala.com", password: "deathgripsdigit")
 
 u5.songs.create!(name: "The Fever (Aye Aye)", length: 187, file_path: "https://www.filepicker.io/api/file/N8If2Ko5TD2gx10iDmea")
