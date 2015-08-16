@@ -1,5 +1,12 @@
+
+<div class="skip-controls">
+  <a href="#" class="glyphicon glyphicon-fast-backward"></a>
+  <a href="#" class="glyphicon glyphicon-fast-forward"></a>
+</div>
+
 <div class="next-song-info">
   <% if (firstSong) { %>
+
     <span class="up-next">Up Next:</span>
     <marquee class="up-next-song-info" scrolldelay="200">
       <%= firstSong.escape("name") %>, <%= firstSong.escape("username") %>,

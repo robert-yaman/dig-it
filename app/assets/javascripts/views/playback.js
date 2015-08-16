@@ -17,7 +17,9 @@ Capstone.Views.Playback = Backbone.CompositeView.extend({
 
   events: {
     "click .playback-play-button" : "playOrPause",
-    "click .vol" : "changeVol"
+    "click .vol" : "changeVol",
+    "click .glyphicon-fast-backward" : "restartSong",
+    "click .glyphicon-fast-forward" : "nextSong"
   },
 
   activate: function () {
@@ -85,37 +87,9 @@ Capstone.Views.Playback = Backbone.CompositeView.extend({
     }
   },
 
-  playOrPause: function (event) {
-    if (!this.$("nav").hasClass("active")) return
-    if (this.$(".playback-play-button").hasClass("playing")) {
-      this.model.pause();
-    } else {
-      this.model.play();
-    }
-  },
-
-  replaceQueue: function () {
-    if (this.subviews(".queue").first()) {
-      this.removeSubview(".queue", this.subviews(".queue").first());
-    }
-    var view = new Capstone.Views.Queue({queue: this.queue});
-    this.addSubview(".queue", view);
-  },
-
-  replacePlaybackBar: function () {
-    if (this.subviews(".playback-bar").first()) {
-      this.removeSubview(".playback-bar", this.subviews(".playback-bar").first());
-    }
-    var view = new Capstone.Views.PlaybackBar({model: this.model});
-    this.addSubview(".playback-bar", view);
-  },
-
-  replaceSongInfo: function () {
-    if (this.subviews(".playback-song-info").first()) {
-      this.removeSubview(".playback-song-info", this.subviews(".playback-song-info").first());
-    }
-    var view = new Capstone.Views.PlaybackSongInfo({model: this.model});
-    this.addSubview(".playback-song-info", view);
+  nextSong: function (event) {
+    event.preventDefault();
+    if (this.queue[0]) this.queue[0].play();
   },
 
   pauseSong: function(song) {
@@ -124,6 +98,15 @@ Capstone.Views.Playback = Backbone.CompositeView.extend({
     Capstone.currentSong.playing = false;
     //re-render the heatmap (actually, do I need to do this?)
     this.subviews(".playback-bar").first().render();
+  },
+
+  playOrPause: function (event) {
+    if (!this.$("nav").hasClass("active")) return
+    if (this.$(".playback-play-button").hasClass("playing")) {
+      this.model.pause();
+    } else {
+      this.model.play();
+    }
   },
 
   playSong: function(song) {
@@ -163,6 +146,48 @@ Capstone.Views.Playback = Backbone.CompositeView.extend({
 
     Capstone.currentSong.playing = true
     this.setDigInterval();
+  },
+
+  replaceQueue: function () {
+    if (this.subviews(".queue").first()) {
+      this.removeSubview(".queue", this.subviews(".queue").first());
+    }
+    var view = new Capstone.Views.Queue({queue: this.queue});
+    this.addSubview(".queue", view);
+  },
+
+  replacePlaybackBar: function () {
+    if (this.subviews(".playback-bar").first()) {
+      this.removeSubview(".playback-bar", this.subviews(".playback-bar").first());
+    }
+    var view = new Capstone.Views.PlaybackBar({model: this.model});
+    this.addSubview(".playback-bar", view);
+  },
+
+  replaceSongInfo: function () {
+    if (this.subviews(".playback-song-info").first()) {
+      this.removeSubview(".playback-song-info", this.subviews(".playback-song-info").first());
+    }
+    var view = new Capstone.Views.PlaybackSongInfo({model: this.model});
+    this.addSubview(".playback-song-info", view);
+  },
+
+  restartSong: function (event) {
+    event.preventDefault();
+    //worht combining with jumpSpots
+    this.$("audio")[0].currentTime = 0;
+    this.secondsCounter = 0;
+    this.fpsCounter = 0;
+
+    //re-render time-counter
+    this.subviews(".time-counter").first().time = Capstone.timify(0)
+    this.subviews(".time-counter").first().render();
+
+    //re-render visual pointers in case paused
+    if (!Capstone.currentSong.playing) {
+      //pointers
+      this.$(".playback-pointers").css("transform", "translate(0, 0)")
+    }
   },
 
   setDigInterval: function () {

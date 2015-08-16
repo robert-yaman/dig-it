@@ -202,3 +202,13 @@ li.queue-list-item {
 li.queue-list-item:last-child {
   border-bottom: none;
 }
+
+.queue .skip-controls {
+  position: absolute;
+  top: 9px;
+  left: -124px;
+}
+
+.queue .skip-controls .glyphicon-fast-backward {
+  right: 9px;
+}
