@@ -36,7 +36,7 @@ In this phase, I will create methods in the Rails song and user models to comput
 ### ~~Phase 4: Storing/Playing/Uploading music files (~1 day)~~
 In this phase, I will figure out the best way to store music files. Once this is understood, I will figure out the best way to fetch these files from the database so they can be played, and the best way for users to upload these files. By the end of this phase, all the basic functionality for the MVP should be in place, but there will still be no styling.
 
-### Phase 5: Heatmap Playback (~3 days)
+### Phase 5: ~Heatmap Playback (~3 days)~
 I will first figure how to create a Heatmap from and array of numbers which represents "digs" over time (see jQuery plugin below). This heatmap should be one-dimensional in the sense that any pixel should be the same color as the pixels above and below it, but not necessarily to the left or right. I will then work this heatmap into the playback bar. The implementation of this will most likely use canvas, but will ultimately depend on the how the heatmap itself is implemented. I will implement a cursor that will point to the current point in the song, most likely with jQuery. Next, I will implement a "dig" button that will allow users to modify the array of digs stored in the database. (I will only sync the array with the db after the song is stopped, so as to avoid a high number of queries). Finally, I will let users click on a section of the playback to jump to that section of the song.
 
 ### Phase 6: CSS/Catchup/Extra Features
@@ -56,6 +56,7 @@ I will probably use a built in bootstrap style and customize from there.
   * [X] As the song plays, a pointer will move along the heatmap (probably JQuery plugin)
   * [X] Users will be able to skip to different parts of the song
 - [X] Include Hot and Most Popular songs on the feed view
+- [X] There is a queue of songs
 - [ ] Allow users to follow other users
 - [ ] Allow users to construct playlists and share playlists with other users
 - [ ] Users can add tags to songs and search by tag

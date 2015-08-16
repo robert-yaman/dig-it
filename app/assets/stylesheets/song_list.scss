@@ -70,9 +70,10 @@ button.queue-dropdown:hover {
 ul.queue-options {
   position: absolute;
   top: 2px;
-  right: 10%;
-  left: 70%;
   font-size: 13px;
+  width: 160px;
+  left: 100%;
+  margin-left: -217px;
 }
 
 ul.queue-options li a {
