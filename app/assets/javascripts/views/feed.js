@@ -8,30 +8,25 @@ Capstone.Views.Feed = Backbone.CompositeView.extend({
     "click .new-user" :"newUsers"
   },
 
-  newUsers: function() { //lots of repetition here
+
+  newUsers: function(event) { //lots of repetition here
     event.preventDefault();
-    this.$(".nav-tabs").children().removeClass("active");
-    $(event.currentTarget).addClass("active");
 
     var newUsers = new Capstone.Collections.Users();
     newUsers.fetch({data: {new_user: true}});
     var view = new Capstone.Views.UserList({ collection: newUsers });
 
-    this.subviews(".current-list").each(function (view) {view.remove(); });
-    this.addSubview(".current-list", view);
+    this._switchFeed(event, view);
   },
 
   recentSongs: function(event) {
     event.preventDefault();
-    this.$(".nav-tabs").children().removeClass("active");
-    $(event.currentTarget).addClass("active");
 
     var recents = new Capstone.Collections.Songs();
     recents.fetch({data: {recent: true}});
     var view = new Capstone.Views.SongList({ collection: recents });
 
-    this.subviews(".current-list").each(function (view) {view.remove(); });
-    this.addSubview(".current-list", view);
+    this._switchFeed(event, view);
   },
 
   render: function () {
@@ -47,12 +42,17 @@ Capstone.Views.Feed = Backbone.CompositeView.extend({
 
   topSongs: function(event) {
     event.preventDefault();
-    this.$(".nav-tabs").children().removeClass("active");
-    $(event.currentTarget).addClass("active");
 
     var tops = new Capstone.Collections.Songs();
     tops.fetch({data: {top: true}});
     var view = new Capstone.Views.SongList({ collection: tops });
+
+    this._switchFeed(event, view);
+  },
+
+  _switchFeed: function (event, view) {
+    this.$(".nav-tabs").children().removeClass("active");
+    $(event.currentTarget).addClass("active");
 
     this.subviews(".current-list").each(function (view) {view.remove(); });
     this.addSubview(".current-list", view);

@@ -45,7 +45,7 @@ I will probably use a built in bootstrap style and customize from there.
 [Details][phase-one]
 
 ### Bonus Features/Stretch Goals (TBD)
-- [ ] "Heatmap" playback (this is not necessary for the MVP, but I would like to implement it if at all possible)
+- [X] "Heatmap" playback (this is not necessary for the MVP, but I would like to implement it if at all possible)
   * [X] During playback, users can "dig" the portion (~1 second) of the song they are currently listening to (akin to "liking")
     - [ ] When a user digs, there will be some instant feedback, e.g. the playback will light up
   * [X] The database will keep track of the number of digs each portion has
@@ -55,7 +55,8 @@ I will probably use a built in bootstrap style and customize from there.
   * [X] The browser will convert this array into a solid "heatmap". Users will then be able to see the "hottest" parts of the son
   * [X] As the song plays, a pointer will move along the heatmap (probably JQuery plugin)
   * [X] Users will be able to skip to different parts of the song
-- [ ] Include Hot and Most Popular songs on the feed view
+- [X] Include Hot and Most Popular songs on the feed view
+- [ ] Allow users to follow other users
 - [ ] Allow users to construct playlists and share playlists with other users
 - [ ] Users can add tags to songs and search by tag
 - [ ] Feed view has "more" button that loads the next X for that criterion (or load more when user has scrolled to the bottom)

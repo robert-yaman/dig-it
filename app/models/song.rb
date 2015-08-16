@@ -1,16 +1,16 @@
 class Song < ActiveRecord::Base
   def self.recent
-    order(created_at: :desc)[0..4]
+    order(created_at: :desc).includes(:user).limit(5)
   end
 
   def self.top #EW
-    Song.all.sort_by do |song|
+    Song.includes(:user).all.sort_by do |song|
       song.digs.sum
     end.reverse![0..4]
   end
 
   def self.search_by_query_string(string)
-    where("LOWER(name) LIKE '%#{string.downcase}%' OR LOWER(artist_name) LIKE '%#{string.downcase}%'")
+    where("LOWER(name) LIKE '%#{string.downcase}%' OR LOWER(artist_name) LIKE '%#{string.downcase}%'").includes(:user)
   end
 
   validates :name, :user, :file_path, presence: true

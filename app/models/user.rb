@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
   end
 
   def self.search_by_query_string(string)
-    where("LOWER(username) LIKE '%#{string.downcase}%'")
+    where("LOWER(username) LIKE '%#{string.downcase}%'").includes(:songs)
   end
 
   validates :username, :email, :password_digest, :session_token, presence: true
