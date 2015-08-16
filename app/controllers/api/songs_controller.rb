@@ -28,6 +28,7 @@ class Api::SongsController < ApplicationController
     @song = Song.find(params[:id])
 
     if params[:digs_given]
+      #this is inneficient
       num_digs = params[:digs_given]
       current_user.digs_given += num_digs
       current_user.save

@@ -8,6 +8,10 @@ class User < ActiveRecord::Base
     (user.is_password?(password) ? user : nil) if user
   end
 
+  def self.leaders
+    order(digs_received: :desc).limit(5)
+  end
+  
   def self.search_by_query_string(string)
     where("LOWER(username) LIKE '%#{string.downcase}%'").includes(:songs)
   end

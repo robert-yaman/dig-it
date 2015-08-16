@@ -8,7 +8,6 @@ Capstone.Views.Feed = Backbone.CompositeView.extend({
     "click .new-user" :"newUsers"
   },
 
-
   newUsers: function(event) { //lots of repetition here
     event.preventDefault();
 

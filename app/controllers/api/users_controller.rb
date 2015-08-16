@@ -9,6 +9,8 @@ class Api::UsersController < ApplicationController
       @users = User.search_by_query_string(params[:query])
     elsif params[:new_user]
       @users = User.recent
+    elsif params[:leaders]
+      @users = User.leaders
     else
       @users = User.all
     end

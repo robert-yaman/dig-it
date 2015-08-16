@@ -4,16 +4,25 @@ Capstone.Views.FeedPage = Backbone.CompositeView.extend({
   initialize: function () {
     this.addFeed();
     this.addAbout();
-  },
-
-  addFeed: function () {
-    var feedView = new Capstone.Views.Feed();
-    this.addSubview(".feed", feedView);
+    this.addLeaderboard();
   },
 
   addAbout: function () {
     var aboutView = new Capstone.Views.About();
     this.addSubview(".about", aboutView);
+  },
+
+  addLeaderboard: function () {
+    var leaders = new Capstone.Collections.Users();
+    leaders.fetch({data : { leaders : true } })
+
+    var leaderboard = new Capstone.Views.Leaderboard({collection: leaders});
+    this.addSubview(".leaderboard", leaderboard);
+  },
+
+  addFeed: function () {
+    var feedView = new Capstone.Views.Feed();
+    this.addSubview(".feed", feedView);
   },
 
   render: function () {
