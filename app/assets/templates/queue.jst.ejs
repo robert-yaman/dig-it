@@ -1,9 +1,21 @@
 <div class="next-song-info">
-  <span>Up Next:</span>
+  <% if (firstSong) { %>
+    <span class="up-next">Up Next:</span>
+    <marquee class="up-next-song-info" scrolldelay="200">
+      <%= firstSong.escape("name") %>, <%= firstSong.escape("username") %>,
+      <% if (firstSong.escape("artist_name")) { %>
+       <%= firstSong.escape("artist_name")  %>,
+      <% } %>
+      (<%= Capstone.timify(firstSong.get("length")) %>)
+    </marquee>
+  <% } %>
 </div>
 
-<ul>
-  <% queue.forEach(function(song) { %>
-    <li><%= song.get("name") %></li>
-  <% }) %>
-</ul>
+<div class="dropup">
+  <button type="button" class="btn btn-default glyphicon glyphicon-menu-up" data-toggle='dropdown'></button>
+  <ul class="dropdown-menu">
+    <% queue.reverse().forEach(function(song) { %>
+      <li class="queue-list-item"><a href="#"><%= song.get("name") %></a></li>
+    <% }) %>
+  </ul>
+</div>
