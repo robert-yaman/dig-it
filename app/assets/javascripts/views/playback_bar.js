@@ -25,10 +25,10 @@ Capstone.Views.PlaybackBar = Backbone.View.extend({
         radius: response.radius,
         blur: .9,
         gradient: {
-          '.25': '#0047B2',
-          '.5' : '#4CBB17',
-          '.65' : '#66FF33',
-          '.7': '#FF8C00',
+          '.25': '#0094D2', //light-blue
+          '.5' : '#4CBB17', //dark - green
+          '.65' : '#66FF33', // light-green
+          '.7': '#FF8C00', //theme-orange
           '.83' : 'yellow',
           '.95': 'red'
         }
