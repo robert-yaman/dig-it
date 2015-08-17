@@ -49,7 +49,12 @@ input.sign-up-button:active {
   background-color: darken(#4CBB17, 30%);
 }
 
-input.sign-up-button:focus:focus {
+input.sign-up-button:focus {
+  background-image: none;
+  background-color: darken(#4CBB17, 30%);
+}
+
+input.sign-up-button:active {
   background-image: none;
   background-color: darken(#4CBB17, 30%);
 }
@@ -68,8 +73,12 @@ button.guest-pass:hover {
   background-color: darken(#FF8C00, 15%);
 }
 
-button.guest-pass:active:focus {
+button.guest-pass:active {
   background-image: none;
   background-color: darken(#FF8C00, 30%);
+}
 
+button.guest-pass:focus {
+  background-image: none;
+  background-color: darken(#FF8C00, 30%);
 }

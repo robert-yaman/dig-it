@@ -6,7 +6,6 @@ class UsersController < ApplicationController
       login!(@user)
       redirect_to root_url
     else
-      fail
       redirect_to new_session_url
     end
   end

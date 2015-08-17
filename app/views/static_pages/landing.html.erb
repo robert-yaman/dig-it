@@ -19,6 +19,22 @@
   });
 </script>
 
+<script type="text/javascript" name="guest-login">
+  $(function(){
+    $("button.guest-pass").click(function(event) {
+      event.preventDefault();
+      $.ajax({
+        url: "/session",
+        type: "POST",
+        data: {user : {username: "ludwig_vanB_123", password: "IAmBeethoven" } },
+        success: function () {
+          window.location.href = "/#";
+        }
+      });
+    });
+  });
+</script>
+
 
 <video autoplay loop muted id="bgvid">
   <source src="https://www.filepicker.io/api/file/BSOnF03RwGt2ULYJwIWd" type="video/mp4">
