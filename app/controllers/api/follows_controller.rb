@@ -1,6 +1,6 @@
 class Api::FollowsController < ApplicationController
   def create
-    @follow = Follow.create(follow_params)
+    @follow = Following.create(follow_params)
     @follow.follower = current_user
 
     if @follow.save
@@ -11,9 +11,9 @@ class Api::FollowsController < ApplicationController
   end
 
   def destroy
-    @follow = Follow.find(params[:id])
+    @follow = Following.find(params[:id])
     @follow.destroy
-    redner json: @follow, status: 200
+    render json: @follow, status: 200
   end
 
   private

@@ -1,6 +1,18 @@
 Capstone.Models.User = Backbone.Model.extend({
   urlRoot: "api/users",
 
+  follow: function () {
+    if (!this._follow) {
+      this._follow = new Capstone.Models.Follow();
+    }
+
+    return this._follow
+  },
+
+  isBeingFollowed: function () {
+    return !this.follow().isNew()
+  },
+
   mostPopularSong: function () {
       if (!this._mostPopularSong) {
         this._mostPopularSong = new Capstone.Models.Song();
@@ -10,8 +22,6 @@ Capstone.Models.User = Backbone.Model.extend({
   },
 
   parse: function(payload) {
-    debugger
-
     if (payload.songs) {
       this.songs().set(payload.songs);
 
@@ -19,9 +29,15 @@ Capstone.Models.User = Backbone.Model.extend({
     }
 
     if (payload.most_popular_song) {
-      this.mostPopularSong().set(payload.most_popular_song)
+      this.mostPopularSong().set(payload.most_popular_song);
 
-      delete payload.most_popular_song
+      delete payload.most_popular_song;
+    }
+
+    if (payload.follow_by_current_user) {
+      this.follow().set(payload.follow_by_current_user);
+
+      delete payload.followed_by_current_user;
     }
 
     return payload;

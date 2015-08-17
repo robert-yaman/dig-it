@@ -1,6 +1,9 @@
 json.extract! user, :id, :username, :md5
 
-json.followed_by_current_user !user.followers.where(id: current_user.id).empty?
+follow_by_current_user = user.followings_as_object.where(follower_id: current_user.id)
+if !follow_by_current_user.empty?
+  json.follow_by_current_user follow_by_current_user.first
+end
 
 if with_songs
   json.songs do

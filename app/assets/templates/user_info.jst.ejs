@@ -8,6 +8,14 @@
     <%= user.escape("username") %>
   </h3>
 
+  <button class="btn btn-default follow-button">
+    <% if (user.isBeingFollowed()) { %>
+      unFollow
+    <% } else { %>
+      Follow
+    <% } %>
+  </button>
+
 </div>
 
 <div class="row">
