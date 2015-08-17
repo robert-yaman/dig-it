@@ -1,6 +1,6 @@
 Capstone.Views.CurrentUserInfo = Backbone.View.extend({
   template: JST["current_user_info"],
-  className: "user-info current-user-info",
+  // className: "user-info current-user-info",
 
   initialize: function () {
     this.listenTo(this.model, "sync", this.render);
