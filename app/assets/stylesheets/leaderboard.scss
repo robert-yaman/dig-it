@@ -61,12 +61,12 @@ button.queue-dropdown {
   padding: 0 6px;
   display: none;
 }
-
-.leader-list-item .user-list-item-song-item:hover .queue-dropdown {
+// .leader-list-item
+.user-list-item-song-item:hover .queue-dropdown {
   display: inline-block;
 }
 
-.leader-list-item .user-list-item-song-item .queue-dropdown:hover {
+.user-list-item-song-item .queue-dropdown:hover {
   background-image: none;
 }
 
@@ -80,8 +80,4 @@ button.queue-dropdown {
 
 .leader-list-item:hover .follow-button {
   display: block;
-}
-
-.leader-list-item .user-list-item-song-item .queu-options {
-
 }

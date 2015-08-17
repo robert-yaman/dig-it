@@ -64,3 +64,14 @@
 .user-list-item:hover button.follow-button {
   display: block;
 }
+
+.user-songs-list .user-list-item-song-item {
+  // display: inline;
+  overflow: visible;
+  display: block;
+}
+
+//bad
+.user-songs-list {
+  width: 400px;
+}
