@@ -26,7 +26,11 @@ class User < ActiveRecord::Base
 
   after_initialize :ensure_session_token
 
-  has_many :songs
+  has_many :songs, dependent: :destroy
+  has_many :followings_as_object, class_name: :Following, foreign_key: :followed_user_id
+  has_many :followings_as_subject, class_name: :Following, foreign_key: :follower_id
+  has_many :followers, through: :followings_as_object, source: :follower
+  has_many :followed_users, through: :followings_as_subject, source: :followed_user
 
   def is_password?(attempt)
     BCrypt::Password.new(password_digest).is_password?(attempt)
