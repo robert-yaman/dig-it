@@ -5,13 +5,15 @@
 <div class="user-list-item-info">
   <p class="user-name">
     <a href="#users/<%= user.id %>"><%= user.escape("username") %></a>
-    <button class="btn btn-default follow-button">
-      <% if (user.isBeingFollowed()) { %>
-        unFollow
-      <% } else { %>
-        Follow
-      <% } %>
-    </button>
+    <% if (user.id !== Capstone.currentUser.id ) { %>
+      <button class="btn btn-default follow-button">
+        <% if (user.isBeingFollowed()) { %>
+          unFollow
+        <% } else { %>
+          Follow
+        <% } %>
+      </button>
+    <% } %>
   </p>
 
   <ul class="user-songs-list list-group">
