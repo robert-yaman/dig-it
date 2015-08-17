@@ -12,7 +12,7 @@ Capstone.Models.Song = Backbone.Model.extend({
 
     //trigger pause on all sibling songs
     Capstone.onPageSongs.forEach(function(song) {
-      if (song.id === this.id && song !== this) {
+      if (song.id === this.id) {
         song.trigger("pause");
       }
     }.bind(this))

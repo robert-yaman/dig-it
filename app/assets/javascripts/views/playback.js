@@ -128,9 +128,12 @@ Capstone.Views.Playback = Backbone.CompositeView.extend({
       this.$(".audio-tag")[0].play();
     } else {
       //wrap up currently playing Song
-      if (Capstone.currentSong) this.wrapUpSong()
+      if (Capstone.currentSong) {
+        // this.wrapUpSong()
+        this.model.pause();
+      }
 
-      Capstone.currentSong && Capstone.currentSong.trigger("pause"); //is this needed?
+      // Capstone.currentSong && Capstone.currentSong.trigger("pause"); //is this needed?
       Capstone.currentSong = song;
       this.model = song;
 
