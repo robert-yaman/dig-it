@@ -31,9 +31,49 @@
           window.location.href = "/#";
         }
       });
+
     });
   });
 </script>
+
+<script type="text/javascript" name="sign-in">
+  $(function(){
+    $("button.sign-in-button").click(function(event) {
+      event.preventDefault();
+      $.ajax({
+        url: "/session",
+        type: "POST",
+        data: $("#sign-in-form").serializeJSON(),
+        success: function () {
+          window.location.href = "/#";
+        },
+        error: function () {
+          alert("nope")
+        }
+      });
+    });
+  });
+</script>
+
+<script type="text/javascript" name="sign-up">
+  $(function(){
+    $("button.sign-up-button").click(function(event) {
+      event.preventDefault();
+      $.ajax({
+        url: "/api/users",
+        type: "POST",
+        data: $("#sign-up-form").serializeJSON(),
+        success: function () {
+          window.location.href = "/#";
+        },
+        error: function () {
+          alert("doublenope")
+        }
+      });
+    });
+  });
+</script>
+
 
 
 <video autoplay loop muted id="bgvid">
@@ -54,23 +94,23 @@
 </nav>
 
 <div class="col-xs-3 col-xs-offset-9 sign-in-form">
-  <form action="<%= session_url %>" method="post">
+  <form id="sign-in-form">
     <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token%>">
     <input type="text" class="form-control" name="user[username]" placeholder="Username">
     <input type="password" class="form-control" name="user[password]" placeholder="Password">
-    <button class="btn btn-default" name="name">Go!</button>
+    <button class="sign-in-button btn btn-default" name="name">Go!</button>
   </form>
 </div>
 
 <div class="row sign-up-form col-xs-5 col-xs-offset-4">
   <h2 id="sign-up-title">Sign Up</h2>
 
-  <form action="<%= users_url %>" method="post">
+  <form id="sign-in-form">
     <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token%>">
     <input type="text" class="form-control" name="user[username]" placeholder="Username">
     <input type="text" class="form-control" name="user[email]" placeholder="E-mail">
     <input type="password" class="form-control" name="user[password]" placeholder="Password">
-    <input type="submit" class="btn btn-default sign-up-button" name="name" value="Sign Up!">
+    <button class="btn btn-default sign-up-button">Sign Up!</button>
     <button class="btn btn-default guest-pass" name="name">Guest Pass</button>
   </form>
 </div>

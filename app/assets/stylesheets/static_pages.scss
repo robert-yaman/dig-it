@@ -33,28 +33,23 @@
   height: 210px;
 }
 
-input.sign-up-button {
+button.sign-up-button {
   width: 48%;
   background-image: none;
   background-color: #4CBB17;
 }
 
-input.sign-up-button:hover {
+button.sign-up-button:hover {
   background-image: none;
   background-color: darken(#4CBB17, 15%);
 }
 
-input.sign-up-button:active {
+button.sign-up-button:active {
   background-image: none;
   background-color: darken(#4CBB17, 30%);
 }
 
-input.sign-up-button:focus {
-  background-image: none;
-  background-color: darken(#4CBB17, 30%);
-}
-
-input.sign-up-button:active {
+button.sign-up-button:focus {
   background-image: none;
   background-color: darken(#4CBB17, 30%);
 }

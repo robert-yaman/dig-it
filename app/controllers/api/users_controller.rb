@@ -19,4 +19,21 @@ class Api::UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
   end
+
+  def create
+    @user = User.new(user_params)
+
+    if @user.save
+      login!(@user)
+      render json: @user, status: 200
+    else
+      render json: @user, status: 422
+    end
+  end
+
+  private
+
+  def user_params
+    params.require(:user).permit(:username, :email, :password)
+  end
 end

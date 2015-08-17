@@ -4,10 +4,10 @@ class SessionsController < ApplicationController
                                      params[:user][:password])
     if @user
       login!(@user)
-      redirect_to root_url
+      render json: @user, status: 200
     else
       @user = User.new(username: params[:user][:username])
-      render json: @user, status: 422 #check this
+      render json: @user, status: 422
     end
   end
 
