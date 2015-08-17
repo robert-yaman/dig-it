@@ -5,6 +5,7 @@ Capstone.Mixins.Followable = {
   },
 
   toggleFollow: function () {
+    debugger
     if (this.model.isBeingFollowed()) {
       this.unfollow()
     } else {

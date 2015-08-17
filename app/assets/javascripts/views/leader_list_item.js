@@ -1,42 +1,49 @@
-Capstone.Views.LeaderListItem = Backbone.CompositeView.extend({
-  template: JST["leader_list_item"],
-  tagName: "li",
-  className: "leader-list-item list-group-item",
+Capstone.Views.LeaderListItem = Backbone.CompositeView.extend(
+  _.extend({}, Capstone.Mixins.Followable, {
+    template: JST["leader_list_item"],
+    tagName: "li",
+    className: "leader-list-item list-group-item",
 
-  initialize: function () {
-    this.listenTo(this.model, "sync", function(){
+    events: {
+      "click button.follow-button" : "toggleFollow"
+    },
+
+    initialize: function () {
+      this.listenTo(this.model, "sync", function(){
+        this.addThreeSongs();
+        this.render();
+      }.bind(this));
+      this.listenTo(this.model.follow(), "change", this.render);
+
       this.addThreeSongs();
-      this.render();
-    }.bind(this));
+    },
 
-    this.addThreeSongs();
-  },
+    addThreeSongs: function () {
+      //TODO: maybe three most popular songs?
+      var songs = this.model.songs();
+      var cur; var model;
 
-  addThreeSongs: function () {
-    //TODO: maybe three most popular songs?
-    var songs = this.model.songs();
-    var cur; var model;
+      for (var i = 0; i < 3; i++) {
+        cur = songs.at(i)
+        if (cur) {
+          if (cur.id === (Capstone.currentSong && Capstone.currentSong.id)) {
+            model = Capstone.currentSong;
+          } else {
+            model = cur;
+          }
 
-    for (var i = 0; i < 3; i++) {
-      cur = songs.at(i)
-      if (cur) {
-        if (cur.id === (Capstone.currentSong && Capstone.currentSong.id)) {
-          model = Capstone.currentSong;
-        } else {
-          model = cur;
+          Capstone.onPageSongs.push(model);
+          var view = new Capstone.Views.UserListItemSongItem({model: model});
+          this.addSubview(".leader-songs-list", view);
         }
-
-        Capstone.onPageSongs.push(model);
-        var view = new Capstone.Views.UserListItemSongItem({model: model});
-        this.addSubview(".leader-songs-list", view);
       }
-    }
-  },
+    },
 
-  render: function () {
-    var content = this.template({ user: this.model });
-    this.$el.html(content);
-    this.attachSubviews();
-    return this;
-  }
-});
+    render: function () {
+      var content = this.template({ user: this.model });
+      this.$el.html(content);
+      this.attachSubviews();
+      return this;
+    }
+  })
+);
