@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   include ActionView::Helpers::DateHelper
 
   def self.recent
-    order(created_at: :desc).includes(:songs).limit(5)
+    order(created_at: :desc).includes(:songs, :followers).limit(5)
   end
 
   def self.find_by_credentials(username, password)
@@ -12,11 +12,11 @@ class User < ActiveRecord::Base
   end
 
   def self.leaders
-    order(digs_received: :desc).includes(:songs).limit(3)
+    order(digs_received: :desc).includes(:songs, :followers).limit(3)
   end
 
   def self.search_by_query_string(string)
-    where("LOWER(username) LIKE '%#{string.downcase}%'").includes(:songs)
+    where("LOWER(username) LIKE '%#{string.downcase}%'").includes(:songs, :followers)
   end
 
   validates :username, :email, :password_digest, :session_token, presence: true

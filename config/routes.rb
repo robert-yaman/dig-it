@@ -7,5 +7,6 @@ Rails.application.routes.draw do
     get "/users/current", to: "users#current"
     resources :users, only: [:create, :destroy, :index, :show, :update]
     resources :songs, only: [:create, :destroy, :index, :show, :update]
+    resources :follows, only: [:create, :destroy]
   end
 end

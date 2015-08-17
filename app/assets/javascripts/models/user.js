@@ -10,6 +10,8 @@ Capstone.Models.User = Backbone.Model.extend({
   },
 
   parse: function(payload) {
+    debugger
+
     if (payload.songs) {
       this.songs().set(payload.songs);
 
