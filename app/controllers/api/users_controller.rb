@@ -17,7 +17,13 @@ class Api::UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
+    @user = User.includes(:songs).find(params[:id])
+
+    if params[:extra_profile_info]
+      render :profile
+    else
+      render :show
+    end
   end
 
   def create

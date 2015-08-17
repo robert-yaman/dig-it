@@ -1,5 +1,29 @@
 <div class="user-avatar">
-<img src="http://www.gravatar.com/avatar/<%= user.get("md5") %>" alt="" />
+  <img src="http://www.gravatar.com/avatar/<%= user.get("md5") %>?s=100" alt="" />
 </div>
 
-<h4>Check out <%= user.escape("username") %></h2>
+<h3 class="user-username">
+  <%= user.escape("username") %>
+</h3>
+
+<ul class="user-facts">
+  <li class="member-since">Member since: <%= user.get("joined") %></li>
+
+  <% if (!user.mostPopularSong().isNew()) { %>
+    <li class="most-popular-song">Most Popular Song: <span></span></li>
+  <% } %>
+
+  <li class="karma">
+    Karma:
+    <% if (user.get("karma") === -1) { %>
+      Get Digging!
+    <% } else { %>
+      <%= user.get("karma") %>
+    <% } %>
+  </li>
+</ul>
+
+<h4 class="about-me">About:</h4>
+<p>
+  <%= user.escape("about_me") %>
+</p>

@@ -49,7 +49,7 @@ Capstone.Routers.AppRouter = Backbone.Router.extend({
 
   userShow: function(id) {
     var user = new Capstone.Models.User({id: id});
-    user.fetch();
+    user.fetch({data : {extra_profile_info : true}});
     var show = new Capstone.Views.UserProfile({model: user});
     this._switch(show);
   },

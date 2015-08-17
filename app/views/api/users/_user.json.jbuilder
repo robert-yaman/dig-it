@@ -7,3 +7,7 @@ if with_songs
     end
   end
 end
+
+if extra_profile_info
+  json.extract! user, :about_me, :joined, :most_popular_song, :karma
+end

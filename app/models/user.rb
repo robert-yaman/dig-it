@@ -1,4 +1,7 @@
+
 class User < ActiveRecord::Base
+  include ActionView::Helpers::DateHelper
+
   def self.recent
     order(created_at: :desc).includes(:songs).limit(5)
   end
@@ -29,8 +32,24 @@ class User < ActiveRecord::Base
     BCrypt::Password.new(password_digest).is_password?(attempt)
   end
 
+  def joined
+    time_ago_in_words(created_at)
+  end
+
+  def karma
+    if digs_received == 0 || digs_given == 0
+      -1
+    else
+      digs_given / digs_received
+    end
+  end
+
   def md5
     Digest::MD5.hexdigest(email.downcase)
+  end
+
+  def most_popular_song
+    songs.order(total_digs: :desc).first
   end
 
   def password=(value)
