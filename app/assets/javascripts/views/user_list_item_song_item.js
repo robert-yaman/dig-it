@@ -12,6 +12,7 @@ Capstone.Views.UserListItemSongItem = Backbone.View.extend({
   initialize: function () {
     //change listener is for most popular song on user show page
     this.listenTo(this.model, "change", this.render)
+    
     this.model.on("sync", function(model, resp, options) {
       if (options.silent) return
       this.render;

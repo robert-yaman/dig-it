@@ -1,3 +1,68 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.user-info {
+  width: 30%;
+  margin-left: 25px;
+}
+
+.user-info .user-avatar {
+  margin-left: 20px;
+  float: left;
+}
+
+.user-info .user-facts {
+  float: left;
+}
+
+.user-info .user-username {
+  float: left;
+  margin: 0 14px;
+}
+
+.user-info .user-facts {
+  list-style: none;
+  padding-left: 14px;
+  padding-top: 7px
+}
+
+.user-info .user-info-heading {
+  font-weight: bold;
+  padding-right: 14px;
+}
+
+.user-info .user-list-item-song-item {
+  background-color: inherit;
+  overflow: visible;
+}
+
+.user-info .user-list-item-song-item .glyphicon-play {
+  background-color: inherit;
+}
+
+.user-info .user-list-item-song-item .queue-dropdown {
+  background-color: inherit;
+  border: none;
+  right: 40px;
+  display:none;
+}
+
+.user-info .user-list-item-song-item:hover .queue-dropdown {
+  display: block;
+  border-radius: 4px;
+}
+
+.user-info .user-list-item-song-item .queue-dropdown:hover {
+  background-image: none;
+  background-color: #32383E;
+}
+
+.user-info .user-list-item-song-item .queue-dropdown:active {
+  background-image: none;
+  background-color: #32383E;
+}
+
+.user-info .queue-options {
+  margin-left: -35px;
+}
