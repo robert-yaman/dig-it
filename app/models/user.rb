@@ -34,7 +34,7 @@ class User < ActiveRecord::Base
   end
 
   def password=(value)
-    @passowrd = value
+    @password = value
     self.password_digest = BCrypt::Password.create(value)
   end
 
