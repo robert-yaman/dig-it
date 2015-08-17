@@ -1,5 +1,5 @@
 Capstone.Models.CurrentUser = Backbone.Model.extend({
-  url: "api/users/current",
+  urlRoot: "api/users/current",
 
   parse: function(payload) {
     if (payload.songs) {

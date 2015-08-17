@@ -1,8 +1,8 @@
 class Api::UsersController < ApplicationController
-  def current
-    @user = current_user
-    render :show
-  end
+  # def current
+  #   @user = current_user
+  #   render :show
+  # end
 
   def index
     if params[:query]
@@ -17,7 +17,11 @@ class Api::UsersController < ApplicationController
   end
 
   def show
-    @user = User.includes(:songs, :followings_as_object).find(params[:id])
+    if params[:current]
+      @user = current_user
+    else
+      @user = User.includes(:songs, :followings_as_object).find(params[:id])
+    end
 
     if params[:extra_profile_info]
       render :profile

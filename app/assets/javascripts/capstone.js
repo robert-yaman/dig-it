@@ -6,8 +6,9 @@ window.Capstone = {
   Routers: {},
   Mixins: {},
   initialize: function(options) {
-    window.Capstone.currentUser = new Capstone.Models.CurrentUser();
-    window.Capstone.currentUser.fetch();
+    //id 0 so that it will go to the right controller action
+    window.Capstone.currentUser = new Capstone.Models.User({id: 0});
+    window.Capstone.currentUser.fetch({data : {current: true, extra_profile_info: true}});
 
     var userSearchResults = new Capstone.Collections.Users();
     var songSearchResults = new Capstone.Collections.Songs();

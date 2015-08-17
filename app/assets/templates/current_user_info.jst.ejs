@@ -1,5 +1,34 @@
-<div class="current-user-avatar">
-  <img src="http://www.gravatar.com/avatar/<%= user.get("md5") %>" alt="" />
+<div class="row">
+
+  <div class="user-avatar">
+    <img src="http://www.gravatar.com/avatar/<%= user.get("md5") %>?s=110" alt="" />
+  </div>
+
+  <h3 class="user-username">
+    <%= user.escape("username") %>
+  </h3>
 </div>
 
-<h4>How's it hanging, <%= user.escape("username") %>?</h2>
+<div class="row">
+  <ul class="user-facts">
+    <li class="member-since"><span class="user-info-heading">Member since:</span><%= user.get("joined") %></li>
+
+    <% if (!user.mostPopularSong().isNew()) { %>
+      <li class="most-popular-song"><span class="user-info-heading">Most Popular Song:</span><span class="song-item"></span></li>
+    <% } %>
+
+    <li class="karma">
+      <span class="user-info-heading">Karma:</span>
+      <% if (user.get("karma") === -1) { %>
+        Get Digging!
+      <% } else { %>
+        <%= user.get("karma") %>
+      <% } %>
+    </li>
+  </ul>
+</div>
+
+<h4 class="about-me">About:</h4>
+<p>
+  <%= user.escape("about_me") %>
+</p>
