@@ -38,3 +38,11 @@ li.leaderboard-heading {
   position: relative;
   top: -4px;
 }
+
+.leader-songs-lists button.queue-dropdown {
+  border: none;
+}
+
+.leader-songs-list .user-list-item-song-item {
+  overflow: visible;
+}
