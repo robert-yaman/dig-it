@@ -11,26 +11,40 @@ li.leaderboard-heading {
   color: #272B30;
 }
 
+.leader-songs-list .user-list-item-song-item {
+  // display: inline;
+  overflow: visible;
+  display: block;
+}
+
 .leader-list-item {
+  min-height: 96px;
+}
+
+.leader-list-item:after {
   display: block;
   clear: both;
   content: "";
-  height: 96px;
 }
 
 .leaderboard-heading h3 {
   margin-top: 10px;
 }
 
-.avatar-and-username {
+.leader-avatar {
+  z-index: 5;
+  position:absolute;
   float: left;
 }
 
+.leader-username {
+  display: block;
+}
+
 .list-group.leader-songs-list {
-  float:left;
-  margin-top: 15px;
   margin-bottom: 5px;
-  padding-left: 14px;
+  list-style: none;
+  margin-left: 60px;
 }
 
 .leader-username {
@@ -39,10 +53,35 @@ li.leaderboard-heading {
   top: -4px;
 }
 
-.leader-songs-lists button.queue-dropdown {
+button.queue-dropdown {
+  background-color: inherit;
+  background-image: none;
+  font-size: 11px;
   border: none;
+  padding: 0 6px;
+  display: none;
 }
 
-.leader-songs-list .user-list-item-song-item {
-  overflow: visible;
+.leader-list-item .user-list-item-song-item:hover .queue-dropdown {
+  display: inline-block;
+}
+
+.leader-list-item .user-list-item-song-item .queue-dropdown:hover {
+  background-image: none;
+}
+
+.leader-list-item .follow-button {
+  position: absolute;
+  z-index: 5;
+  top: 7px;
+  right: 9px;
+  display: none;
+}
+
+.leader-list-item:hover .follow-button {
+  display: block;
+}
+
+.leader-list-item .user-list-item-song-item .queu-options {
+
 }

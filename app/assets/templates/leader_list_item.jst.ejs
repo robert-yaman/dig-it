@@ -1,16 +1,14 @@
-<div class="avatar-and-username">
-  <span class="leader-username"><a href="#users/<%= user.id %>"><%= user.escape("username") %></a></span>
-  <div class="user-avatar">
-    <img src="http://www.gravatar.com/avatar/<%= user.get("md5") %>?s=50" alt="" />
-  </div>
-  <% if (user.id !== Capstone.currentUser.id ) { %>
-    <button class="btn btn-default follow-button">
-      <% if (user.isBeingFollowed()) { %>
-        unFollow
-      <% } else { %>
-        Follow
-      <% } %>
-    </button>
-  <% } %>
+<span class="leader-username"><a href="#users/<%= user.id %>"><%= user.escape("username") %></a></span>
+<div class="leader-avatar">
+  <img src="http://www.gravatar.com/avatar/<%= user.get("md5") %>?s=50" alt="" />
 </div>
+<% if (user.id !== Capstone.currentUser.id ) { %>
+  <button class="btn btn-default follow-button">
+    <% if (user.isBeingFollowed()) { %>
+      unFollow
+    <% } else { %>
+      Follow
+    <% } %>
+  </button>
+<% } %>
 <ul class="leader-songs-list list-group"></ul>
