@@ -1,8 +1,10 @@
 window.Capstone = {
   Models: {},
   Collections: {},
-  Views: {Modals: {}},
+  // Views: {Modals: {}},
+  Views: {},
   Routers: {},
+  Mixins: {},
   initialize: function(options) {
     window.Capstone.currentUser = new Capstone.Models.CurrentUser();
     window.Capstone.currentUser.fetch();
