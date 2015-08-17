@@ -53,3 +53,14 @@
 .user-list-item-info {
   width: 200px;
 }
+
+.user-list-item button.follow-button {
+  display: none;
+  position: absolute;
+  top: 9px;
+  right: 13px;
+}
+
+.user-list-item:hover button.follow-button {
+  display: block;
+}
