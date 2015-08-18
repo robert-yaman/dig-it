@@ -22,7 +22,14 @@
   <button type="button" class="btn btn-default glyphicon glyphicon-menu-up" data-toggle='dropdown'></button>
   <ul class="dropdown-menu">
     <% queue.reverse().forEach(function(song) { %>
-      <li class="queue-list-item"><a href="#"><%= song.get("name") %></a></li>
+      <li class="queue-list-item">
+        <p class="floatleft">
+          <a class="queue-item-song-name" href="#"><%= song.get("name") %></a>
+        </p>
+        <p class="floatright">
+          <span class="glyphicon glyphicon-remove"></span><span class="glyphicon glyphicon-menu-hamburger"></span>
+        </p>
+      </li>
     <% }) %>
   </ul>
 </div>

@@ -215,6 +215,33 @@ li.queue-list-item:last-child {
   border-bottom: none;
 }
 
+li.queue-list-item:after {
+  clear: both;
+  content: "";
+  display: block;
+}
+
+li.queue-list-item a.queue-item-song-name {
+  display: inline;
+}
+
+li.queue-list-item .glyphicon {
+  display: inline;
+}
+
+li.queue-list-item .floatleft {
+  float: left;
+  padding: 0 12px;
+}
+
+li.queue-list-item .floatright {
+  float: right;
+}
+
+li.queue-list-item .floatright .glyphicon-menu-hamburger {
+  padding: 0 6px;
+}
+
 .queue .skip-controls {
   position: absolute;
   top: 9px;
