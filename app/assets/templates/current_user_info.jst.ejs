@@ -28,7 +28,8 @@
   </ul>
 </div>
 
-<h4 class="about-me">About:</h4>
-<p>
-  <%= user.escape("about_me") %>
-</p>
+<h4>About Me: </h4>
+<div class="about-me"></div>
+<% if (user.escape("about_me").length === 0) { %>
+  <a href="#" class="tell-us">Tell us about yourself!</a>
+<% } %>

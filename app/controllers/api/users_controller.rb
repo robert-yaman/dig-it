@@ -1,8 +1,14 @@
 class Api::UsersController < ApplicationController
-  # def current
-  #   @user = current_user
-  #   render :show
-  # end
+  def create
+    @user = User.new(user_params)
+
+    if @user.save
+      login!(@user)
+      render json: @user, status: 200
+    else
+      render json: @user, status: 422
+    end
+  end
 
   def index
     if params[:query]
@@ -30,20 +36,19 @@ class Api::UsersController < ApplicationController
     end
   end
 
-  def create
-    @user = User.new(user_params)
+  def update
+    @user = User.find(params[:id])
 
-    if @user.save
-      login!(@user)
-      render json: @user, status: 200
+    if @user.update(user_params)
+      render :show
     else
-      render json: @user, status: 422
+      render json: @user.errors.full_messages, status: 422
     end
   end
 
   private
 
   def user_params
-    params.require(:user).permit(:username, :email, :password)
+    params.require(:user).permit(:username, :email, :password, :about_me)
   end
 end
