@@ -3,13 +3,13 @@ Capstone.Views.Playback = Backbone.CompositeView.extend({
 
   initialize: function() {
     this.digsGiven = 0;
+    this.queue = []
+
     //maybe move the button to the song-info -- or make its own view!
     this.installListeners();
 
     //do these here to achieve consistent positioning b/w active and inactive
-    this.queue = []
     this.replaceQueue();
-
     this.replaceSongInfo();
 
     this.addSubview(".time-counter", new Capstone.Views.TimeCounter());
@@ -57,7 +57,8 @@ Capstone.Views.Playback = Backbone.CompositeView.extend({
 
     //add to canvas for live update
     var heatmapView = this.subviews(".playback-bar").first();
-    heatmapView.heatmap.addData({x : this.secondsCounter * heatmapView.radius, y : 0, value: heatmapView.max / 9});
+
+    heatmapView.heatmap.addData({x : this.secondsCounter * heatmapView.radius, y : 0, value: heatmapView.max / 4, radius: heatmapView.radius * 1.6}); //changing radius for more instant feedback
   },
 
   installListeners: function () {
@@ -101,7 +102,7 @@ Capstone.Views.Playback = Backbone.CompositeView.extend({
     this.wrapUpSong();
     Capstone.currentSong.playing = false;
     //re-render the heatmap (actually, do I need to do this?)
-    this.subviews(".playback-bar").first().render();
+    // this.subviews(".playback-bar").first().render();
   },
 
   playOrPause: function (event) {
@@ -128,12 +129,8 @@ Capstone.Views.Playback = Backbone.CompositeView.extend({
       this.$(".audio-tag")[0].play();
     } else {
       //wrap up currently playing Song
-      if (Capstone.currentSong) {
-        // this.wrapUpSong()
-        this.model.pause();
-      }
+      if (Capstone.currentSong) this.model.pause();
 
-      // Capstone.currentSong && Capstone.currentSong.trigger("pause"); //is this needed?
       Capstone.currentSong = song;
       this.model = song;
 
@@ -146,6 +143,7 @@ Capstone.Views.Playback = Backbone.CompositeView.extend({
       this.$(".audio-tag").attr("src", song.escape("file_path"))
       this.$(".audio-tag")[0].play();
 
+      //need to install new listeners because the model has changed
       this.installListeners();
       this.replacePlaybackBar();
       this.replaceSongInfo();
@@ -164,6 +162,9 @@ Capstone.Views.Playback = Backbone.CompositeView.extend({
   },
 
   replacePlaybackBar: function () {
+    //remove heatmaps
+    $("canvas.heatmap-canvas").remove()
+
     if (this.subviews(".playback-bar").first()) {
       this.removeSubview(".playback-bar", this.subviews(".playback-bar").first());
     }
@@ -181,7 +182,7 @@ Capstone.Views.Playback = Backbone.CompositeView.extend({
 
   restartSong: function (event) {
     event.preventDefault();
-    //worht combining with jumpSpots
+    //worth combining with jumpSpots
     this.$("audio")[0].currentTime = 0;
     this.secondsCounter = 0;
     this.fpsCounter = 0;
@@ -206,7 +207,6 @@ Capstone.Views.Playback = Backbone.CompositeView.extend({
     this.$("#dig-button").click(this.digNow.bind(this))
     this.$(".playback-bar").click(this.jumpSpots.bind(this));
     this.digInterval = setInterval(function(){
-      console.log(this.fpsCounter)
       this.fpsCounter++
       this.fpsCounter = this.fpsCounter % fps
       //reassigning each time in case browser is resized. In terms of secondsCounter to facilitate pausing
@@ -215,7 +215,6 @@ Capstone.Views.Playback = Backbone.CompositeView.extend({
 
       //if on the second mark
       if (this.fpsCounter === fps - 1) {
-        console.log("seconds: " + this.secondsCounter)
         this.secondsCounter++
 
         //song is over
