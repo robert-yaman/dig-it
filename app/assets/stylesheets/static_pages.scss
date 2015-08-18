@@ -33,6 +33,13 @@
   height: 210px;
 }
 
+#sign-up-form {
+  position: absolute;
+  top: 30%;
+  left:39%;
+  width: 30%;
+}
+
 button.sign-up-button {
   width: 48%;
   background-image: none;
@@ -76,4 +83,29 @@ button.guest-pass:active {
 button.guest-pass:focus {
   background-image: none;
   background-color: darken(#FF8C00, 30%);
+}
+
+button.sign-in-button {
+  position: absolute;
+  bottom: -47px;
+  right: 25px;
+  width: 100px;
+}
+
+.sign-in-errors {
+  position: absolute;
+  font-size: 16px;
+  color: red;
+  right: 143px;
+  top: 90px;
+}
+
+#sign-up-form input {
+  margin-top: 9px;
+}
+
+#sign-up-form input.error {
+  border-color: red;
+  box-shadow: 0 0 10px red;
+  transition: .5s;
 }

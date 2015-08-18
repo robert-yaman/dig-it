@@ -6,7 +6,7 @@
     $("#sign-in-button").click(function(){
       if ($(".sign-in-form").hasClass("active")) {
         $(".sign-in-form").removeClass("active")
-        $(".sign-in-form").transitionend(function() {
+        $(".sign-in-form").one("transitionend", function() {
           $(".sign-in-form").removeClass("unhidden")
         });
       } else {
@@ -31,7 +31,6 @@
           window.location.href = "/#";
         }
       });
-
     });
   });
 </script>
@@ -48,7 +47,8 @@
           window.location.href = "/#";
         },
         error: function () {
-          alert("nope")
+          $("#sign-in-form input").val("")
+          $(".sign-in-errors").html("Invalid Credentials")
         }
       });
     });
@@ -59,6 +59,7 @@
   $(function(){
     $("button.sign-up-button").click(function(event) {
       event.preventDefault();
+      $("#sign-up-form input").removeClass("error")
       $.ajax({
         url: "/api/users",
         type: "POST",
@@ -66,8 +67,19 @@
         success: function () {
           window.location.href = "/#";
         },
-        error: function () {
-          alert("doublenope")
+        error: function (response) {
+          debugger
+          if (response.responseText.match("Username")) {
+            $("#sign-up-form .user-username").addClass("error")
+          }
+
+          if (response.responseText.match("Password")) {
+            $("#sign-up-form .user-password").addClass("error")
+          }
+
+          if (response.responseText.match("Email")) {
+            $("#sign-up-form .user-email").addClass("error")
+          }
         }
       });
     });
@@ -100,16 +112,18 @@
     <input type="password" class="form-control" name="user[password]" placeholder="Password">
     <button class="sign-in-button btn btn-default" name="name">Go!</button>
   </form>
+
+  <div class="sign-in-errors"></div>
 </div>
 
-<div class="row sign-up-form col-xs-5 col-xs-offset-4">
-  <h2 id="sign-up-title">Sign Up</h2>
-
+<div class="row">
   <form id="sign-up-form">
+    <h2 id="sign-up-title">Sign Up</h2>
+
     <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token%>">
-    <input type="text" class="form-control" name="user[username]" placeholder="Username">
-    <input type="text" class="form-control" name="user[email]" placeholder="E-mail">
-    <input type="password" class="form-control" name="user[password]" placeholder="Password">
+    <input type="text" class="form-control user-username" name="user[username]" placeholder="Username">
+    <input type="text" class="form-control user-email" name="user[email]" placeholder="E-mail">
+    <input type="password" class="form-control user-password" name="user[password]" placeholder="Password">
     <button class="btn btn-default sign-up-button">Sign Up!</button>
     <button class="btn btn-default guest-pass" name="name">Guest Pass</button>
   </form>
