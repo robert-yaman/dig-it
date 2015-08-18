@@ -47,24 +47,8 @@ Capstone.Views.PlaybackBar = Backbone.View.extend({
       //populate heatmap
       heatmap.setData(response);
 
-      // console.log("interaction heatmap rendered")
-      // var interactionHeatmap = h337.create({
-      //   container: $(".playback-bar")[0],
-      //   radius: response.radius * 2, //for more feedback
-      //   blur: .9,
-      //   gradient: {
-      //     '.25': '#0094D2', //light-blue
-      //     '.5' : '#4CBB17', //dark - green
-      //     '.65' : '#66FF33', // light-green
-      //     '.7': '#FF8C00', //theme-orange
-      //     '.83' : 'yellow',
-      //     '.95': 'red'
-      //   }
-      // });
-
-
-      //this will be the heatmap that is modified when user presses dig button
-
+      //getting set as side effect
+      delete this.model.attributes.data
     }.bind(this), silent: true}); //silent true is to avoid infinite loop with listener made in initialize (should I also create that conditional for list items?)
   }
 });

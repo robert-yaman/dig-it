@@ -30,12 +30,14 @@ class Api::SongsController < ApplicationController
     if params[:digs_given]
       #this is inneficient
       num_digs = params[:digs_given]
-      current_user.digs_given += num_digs
-      current_user.save
+      current_user.update(digs_given: current_user.digs_given + num_digs)
+      # current_user.digs_given += num_digs
+      # current_user.save
 
       receiver = User.find(params[:song][:user_id])
-      receiver.digs_received += num_digs
-      receiver.save
+      receiver.update(digs_given: receiver.digs_given + num_digs)
+      # receiver.digs_received += num_digs
+      # receiver.save
 
       @song.total_digs += num_digs
     end

@@ -68,7 +68,6 @@
           window.location.href = "/#";
         },
         error: function (response) {
-          debugger
           if (response.responseText.match("Username")) {
             $("#sign-up-form .user-username").addClass("error")
           }

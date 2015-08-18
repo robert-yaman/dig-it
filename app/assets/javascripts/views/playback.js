@@ -258,13 +258,18 @@ Capstone.Views.Playback = Backbone.CompositeView.extend({
   wrapUpSong: function () {
     clearInterval(this.digInterval)
     this.$("#dig-button").off("click");
+
+    //don't update if no new digs
+    if (this.digsGiven > 0) {
+      this.model.save({digs_given: this.digsGiven}, {silent: true});
+    }
+
+    //these digs now accounted for
+    this.digsGiven = 0;
+
     //note: never need to turn of the playback bar click handler
     // this.$(".playback-bar").off("click")
     //Can't do this here b/c won't be able to continue playing
     // Capstone.currentSong = null;
-    this.model.save({digs_given: this.digsGiven}, {silent: true});
-
-    //these digs now accounted for
-    this.digsGiven = 0;
   }
 });
