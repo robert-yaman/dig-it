@@ -82,7 +82,6 @@ Capstone.Views.Playback = Backbone.CompositeView.extend({
 
     //re-render visual pointers in case paused
     if (!Capstone.currentSong.playing) {
-      //pointers
       var pointerPos = (this.$(".playback-bar").width() * (this.secondsCounter * this.fps + this.fpsCounter)) / (Capstone.currentSong.get("length") * this.fps)
       this.$(".playback-pointers").css("transform", "translate(" + pointerPos + "px,0)")
     }
@@ -137,6 +136,8 @@ Capstone.Views.Playback = Backbone.CompositeView.extend({
 
       this.subviews(".time-counter").first().time = "0:00"
       this.subviews(".time-counter").first().render();
+
+      this.$(".playback-pointers").css("transform", "translate(0, 0)")
 
       this.secondsCounter = 0
       this.fpsCounter = 0
@@ -195,7 +196,6 @@ Capstone.Views.Playback = Backbone.CompositeView.extend({
 
     //re-render visual pointers in case paused
     if (!Capstone.currentSong.playing) {
-      //pointers
       this.$(".playback-pointers").css("transform", "translate(0, 0)")
     }
   },
