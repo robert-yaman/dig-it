@@ -2,7 +2,8 @@ Capstone.Views.CurrentUserInfo = Backbone.CompositeView.extend({
   template: JST["current_user_info"],
 
   events: {
-    "click .tell-us" : "displayAboutMeForm"
+    "click .tell-us" : "displayAboutMeForm",
+    "dblclick .about-me" : "displayAboutMeForm"
   },
 
   initialize: function () {
