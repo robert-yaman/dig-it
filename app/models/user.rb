@@ -1,4 +1,3 @@
-
 class User < ActiveRecord::Base
   include ActionView::Helpers::DateHelper
 
@@ -12,7 +11,7 @@ class User < ActiveRecord::Base
   end
 
   def self.leaders
-    order(digs_received: :desc).includes(:songs, :followings_as_object).limit(3)
+    order(digs_received: :desc).limit(3)
   end
 
   def self.search_by_query_string(string)
@@ -65,6 +64,10 @@ class User < ActiveRecord::Base
     self.session_token = generate_session_token
     save!
     session_token
+  end
+
+  def top_three_songs
+    songs.order(total_digs: :desc).limit(3)
   end
 
   private

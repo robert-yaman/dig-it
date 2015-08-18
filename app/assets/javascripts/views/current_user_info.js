@@ -21,7 +21,6 @@ Capstone.Views.CurrentUserInfo = Backbone.CompositeView.extend({
     this.addSubview(".about-me", form)
     this.$(".about-me-textarea").focus()
     this.$(".about-me-textarea").one("blur", function () {
-      console.log("submit")
       this.$(".about-me-form").submit()
       this.displayNormalAboutMe()
     }.bind(this))

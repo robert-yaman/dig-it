@@ -127,6 +127,7 @@ Capstone.Views.Playback = Backbone.CompositeView.extend({
     if (Capstone.currentSong && Capstone.currentSong.id === song.id) {
       //unpause current song
       this.$(".audio-tag")[0].play();
+      this.setDigInterval();
     } else {
       //wrap up currently playing Song
       if (Capstone.currentSong) this.model.pause();
@@ -147,10 +148,11 @@ Capstone.Views.Playback = Backbone.CompositeView.extend({
       this.installListeners();
       this.replacePlaybackBar();
       this.replaceSongInfo();
+      this.$(".audio-tag").one("canplaythrough", this.setDigInterval.bind(this))
     }
 
     Capstone.currentSong.playing = true
-    this.setDigInterval();
+    // this.setDigInterval();
   },
 
   replaceQueue: function () {

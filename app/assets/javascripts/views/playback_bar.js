@@ -1,14 +1,6 @@
 Capstone.Views.PlaybackBar = Backbone.View.extend({
   template: JST["playback_bar"],
 
-  initialize: function() {
-    //Don't need to listen to model -- will explicitely render when needed
-    // this.model.on("sync", function(model, response, options) {
-    //   if (response.heatmap) return
-    //   this.render()
-    // }.bind(this));
-  },
-
   render: function () {
     var content = this.template();
     this.$el.html(content);
@@ -18,7 +10,6 @@ Capstone.Views.PlaybackBar = Backbone.View.extend({
 
   renderHeatmaps: function () {
     this.model.fetch({data: { canvas_width : this.$el.width() } , success: function(model, response) {
-      console.log("heatmap rendered")
       // $(".heatmap-canvas").remove(); // don't need to remove anymore since removing entire view when switching songs
       var heatmap = h337.create({
         container: $(".playback-bar")[0],
