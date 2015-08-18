@@ -1,4 +1,20 @@
 class Song < ActiveRecord::Base
+  def self.following(current_user_id) #any particular order?
+    songs_by_users_followed = find_by_sql(<<-SQL)
+      SELECT *
+      FROM songs s
+      WHERE s.user_id IN (
+        SELECT beingfollowed.id
+        FROM users beingfollowed
+          INNER JOIN followings f ON beingfollowed.id = f.followed_user_id
+          INNER JOIN users current ON current.id = f.follower_id
+        WHERE current.id = #{current_user_id}
+      )
+    SQL
+    #this is temporary
+    songs_by_users_followed.sample(5)
+  end
+
   def self.recent
     order(created_at: :desc).includes(:user).limit(5)
   end

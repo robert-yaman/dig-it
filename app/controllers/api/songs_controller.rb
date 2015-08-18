@@ -19,6 +19,8 @@ class Api::SongsController < ApplicationController
       @songs = Song.recent
     elsif params[:top]
       @songs = Song.top
+    elsif params[:following]
+      @songs = Song.following(current_user.id)
     else
       @songs = Song.all
     end

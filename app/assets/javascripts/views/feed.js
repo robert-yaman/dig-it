@@ -5,7 +5,18 @@ Capstone.Views.Feed = Backbone.CompositeView.extend({
   events: {
     "click .recent" : "recentSongs",
     "click .top" : "topSongs",
-    "click .new-user" :"newUsers"
+    "click .new-user" :"newUsers",
+    "click .following" : "following"
+  },
+
+  following: function (event) {
+    event.preventDefault();
+
+    var followingSongsView = new Capstone.Collections.Songs();
+    followingSongsView.fetch({data: {following: true}});
+    var view = new Capstone.Views.SongList({ collection: followingSongsView });
+
+    this._switchFeed(event, view);
   },
 
   newUsers: function(event) { //lots of repetition here
