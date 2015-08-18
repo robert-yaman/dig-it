@@ -7,6 +7,9 @@ Capstone.Models.Song = Backbone.Model.extend({
   },
 
   pause: function () {
+    // if (Capstone.dontPlayMoreSongs) return;
+    console.log("pausing")
+
     Capstone.pauseSong(this);
     this.trigger("pause");
 
@@ -19,6 +22,9 @@ Capstone.Models.Song = Backbone.Model.extend({
   },
 
   play: function () {
+    if (Capstone.dontPlayMoreSongs) return;
+    console.log("playing")
+
     Capstone.playSong(this);
     this.trigger("play");
 

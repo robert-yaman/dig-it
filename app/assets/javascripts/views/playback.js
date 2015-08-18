@@ -128,6 +128,9 @@ Capstone.Views.Playback = Backbone.CompositeView.extend({
       this.$(".audio-tag")[0].play();
       this.setDigInterval();
     } else {
+      //disable quick clicks by user
+      Capstone.dontPlayMoreSongs = true;
+
       //wrap up currently playing Song
       if (Capstone.currentSong) this.model.pause();
 
@@ -149,11 +152,13 @@ Capstone.Views.Playback = Backbone.CompositeView.extend({
       this.installListeners();
       this.replacePlaybackBar();
       this.replaceSongInfo();
-      this.$(".audio-tag").one("canplaythrough", this.setDigInterval.bind(this))
+      this.$(".audio-tag").one("canplaythrough", function (){
+        Capstone.dontPlayMoreSongs = false;
+        this.setDigInterval();
+      }.bind(this));
     }
 
     Capstone.currentSong.playing = true
-    // this.setDigInterval();
   },
 
   replaceQueue: function () {
