@@ -19,7 +19,6 @@ Capstone.Views.LeaderListItem = Backbone.CompositeView.extend(
     },
 
     addThreeSongs: function () {
-      //TODO: maybe three most popular songs?
       var songs = this.model.songs();
       var cur; var model;
 
@@ -37,6 +36,10 @@ Capstone.Views.LeaderListItem = Backbone.CompositeView.extend(
           this.addSubview(".leader-songs-list", view);
         }
       }
+    },
+
+    onRender: function () {
+      this.installFollowButton();
     },
 
     render: function () {

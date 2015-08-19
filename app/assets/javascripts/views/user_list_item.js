@@ -39,6 +39,10 @@ Capstone.Views.UserListItem = Backbone.CompositeView.extend(
       }
     },
 
+    onRender: function () {
+      this.installFollowButton();
+    },
+
     render: function () {
       var content = this.template({ user: this.model });
       this.$el.html(content);

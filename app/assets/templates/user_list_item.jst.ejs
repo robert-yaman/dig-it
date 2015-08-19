@@ -6,13 +6,11 @@
   <p class="user-name">
     <a href="#users/<%= user.id %>"><%= user.escape("username") %></a>
     <% if (user.id !== Capstone.currentUser.id ) { %>
-      <button class="btn btn-default follow-button">
-        <% if (user.isBeingFollowed()) { %>
-          unFollow
-        <% } else { %>
-          Follow
-        <% } %>
-      </button>
+      <% if (user.isBeingFollowed()) { %>
+        <button class="btn btn-default follow-button following">Following</button>
+      <% } else { %>
+        <button class="btn btn-default follow-button not-following">+ Follow</button>
+      <% } %>
     <% } %>
   </p>
 

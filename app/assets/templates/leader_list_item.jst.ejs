@@ -3,12 +3,10 @@
   <img src="http://www.gravatar.com/avatar/<%= user.get("md5") %>?s=50" alt="" />
 </div>
 <% if (user.id !== Capstone.currentUser.id ) { %>
-  <button class="btn btn-default follow-button">
-    <% if (user.isBeingFollowed()) { %>
-      unFollow
-    <% } else { %>
-      Follow
-    <% } %>
-  </button>
+  <% if (user.isBeingFollowed()) { %>
+    <button class="btn btn-default follow-button following">Following</button>
+  <% } else { %>
+    <button class="btn btn-default follow-button not-following">+ Follow</button>
+  <% } %>
 <% } %>
 <ul class="leader-songs-list list-group"></ul>

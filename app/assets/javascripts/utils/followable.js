@@ -3,6 +3,14 @@ Capstone.Mixins.Followable = {
     this.model.follow().save({followed_user_id: this.model.id})
   },
 
+  installFollowButton: function () {
+    this.$("button.follow-button.following").hover(function(){
+      this.$(".follow-button").text("UnFollow");
+    }.bind(this), function () {
+      this.$(".follow-button").text("Following");
+    }.bind(this));
+  },
+
   toggleFollow: function () {
     if (this.model.isBeingFollowed()) {
       this.unfollow()

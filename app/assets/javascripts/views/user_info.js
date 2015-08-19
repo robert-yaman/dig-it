@@ -17,6 +17,7 @@ Capstone.Views.UserInfo = Backbone.CompositeView.extend(
       var content = this.template({ user: this.model });
       this.$el.html(content);
       this.attachSubviews();
+      this.installFollowButton();
       return this;
     }
   })
