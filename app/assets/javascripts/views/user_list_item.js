@@ -13,7 +13,7 @@ Capstone.Views.UserListItem = Backbone.CompositeView.extend(
         this.addThreeSongs();
         this.render();
       }.bind(this));
-      this.listenTo(this.model.follow(), "change", this.render)
+      this.listenTo(this.model.follow(), "change sync", this.render)
 
       this.addThreeSongs();
     },
@@ -44,9 +44,10 @@ Capstone.Views.UserListItem = Backbone.CompositeView.extend(
     },
 
     render: function () {
-      var content = this.template({ user: this.model });
+      var content = this.template({ user: this.model })
       this.$el.html(content);
       this.attachSubviews();
+      this.onRender();
       return this;
     }
   })

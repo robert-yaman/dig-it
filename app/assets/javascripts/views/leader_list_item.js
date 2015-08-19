@@ -46,6 +46,7 @@ Capstone.Views.LeaderListItem = Backbone.CompositeView.extend(
       var content = this.template({ user: this.model });
       this.$el.html(content);
       this.attachSubviews();
+      this.onRender();
       return this;
     }
   })

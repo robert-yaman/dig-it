@@ -37,3 +37,18 @@
 #new-song-button{
   opacity: 1;
 }
+
+.follow-button.following {
+  background-image: none;
+  background-color: #4CBB17;
+}
+
+.follow-button.not-following {
+  background-image: none;
+  background-color: #FF8C00;
+}
+
+.follow-button.not-following:hover {
+  background-image: none;
+  background-color: #4CBB17;
+}

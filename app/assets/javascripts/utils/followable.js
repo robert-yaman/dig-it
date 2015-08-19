@@ -6,8 +6,10 @@ Capstone.Mixins.Followable = {
   installFollowButton: function () {
     this.$("button.follow-button.following").hover(function(){
       this.$(".follow-button").text("UnFollow");
+      this.$(".follow-button").css("background-color", "#FF8C00")
     }.bind(this), function () {
       this.$(".follow-button").text("Following");
+      this.$(".follow-button").css("background-color", "#4CBB17")
     }.bind(this));
   },
 
