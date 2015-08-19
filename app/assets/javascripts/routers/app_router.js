@@ -11,8 +11,6 @@ Capstone.Routers.AppRouter = Backbone.Router.extend({
     this.$rootEl = options.$rootEl;
     this.userSearchResults = options.userSearchResults;
     this.songSearchResults = options.songSearchResults;
-
-    // this.setupNewSongButton();
   },
 
   feedPage : function () {

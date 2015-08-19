@@ -53,3 +53,10 @@
   background-image: none;
   background-color: #4CBB17;
 }
+
+#modal-search-view.showing {
+  position: fixed;
+  opacity: 0;
+  z-index: 1033;
+  top: 100;
+}

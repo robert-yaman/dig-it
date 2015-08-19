@@ -39,6 +39,12 @@ window.Capstone = {
     // So that models representing the same song are the same model. Array so that two can both be in w/ same id
     Capstone.onPageSongs = [];
 
+    //setup modal search view
+    var view = new Capstone.Views.ModalSearchView();
+    $("body").append(view.$el);
+    view.$el.css("display", "none");
+    Capstone.modalSearchView = view;
+
     Backbone.history.start();
   }
 };

@@ -20,6 +20,7 @@ Capstone.Views.Navbar = Backbone.View.extend({
     var content = this.template();
     this.$el.html(content);
     this.setupNewSongbutton();
+    this.setupModalSearchViews();
     return this;
   },
 
@@ -33,6 +34,10 @@ Capstone.Views.Navbar = Backbone.View.extend({
 
     Backbone.history.navigate("#search", {trigger: true})
     $("#search-bar").val("");
+  },
+
+  setupModalSearchViews: function () {
+
   },
 
   setupNewSongbutton: function () {
