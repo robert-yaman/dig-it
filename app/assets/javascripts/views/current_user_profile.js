@@ -1,5 +1,9 @@
 Capstone.Views.CurrentUserProfile = Backbone.CompositeView.extend({
   template: JST["current_user_profile"],
+  //
+  // events: {
+  //   "click .all-following" : "showAllFollowedUsers"
+  // },
 
   initialize: function () {
     this.addUserInfo();
@@ -24,7 +28,7 @@ Capstone.Views.CurrentUserProfile = Backbone.CompositeView.extend({
     if (this.model.id === 0) return
     var followed_by = new Capstone.Collections.Users();
     followed_by.fetch({data : {six_followed_by : this.model.id }})
-    var followingList = new Capstone.Views.FollowingList({collection: followed_by});
+    var followingList = new Capstone.Views.FollowingList({collection: followed_by, model: this.model});
     this.addSubview(".followed-by", followingList);
   },
 
@@ -33,5 +37,11 @@ Capstone.Views.CurrentUserProfile = Backbone.CompositeView.extend({
     this.$el.html(content);
     this.attachSubviews();
     return this;
-  }
+  },
+
+  // showAllFollowedUsers: function (event) {
+  //   event.preventDefault();
+  //   $("#lean_overlay").css({"display":"block",opacity:0});
+  //   $("#lean_overlay").fadeTo(200, {top:100,overlay:0.5,closeButton:null});
+  // }
 });

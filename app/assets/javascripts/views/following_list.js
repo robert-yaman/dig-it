@@ -29,7 +29,10 @@ Capstone.Views.FollowingList = Backbone.CompositeView.extend({
     return this;
   },
 
-  renderFollowingUsers: function () {
+  renderFollowingUsers: function (event) {
+    event.preventDefault();
+    // $("#lean_overlay").css({"display":"block",opacity:0});
+    // $("#lean_overlay").fadeTo(200, {top:100,overlay:0.5,closeButton:null});
     var followedUsers = new Capstone.Collections.Users();
     followedUsers.fetch({data : {followed_by : this.model.id}})
     Capstone.modalSearchView.collection = followedUsers;

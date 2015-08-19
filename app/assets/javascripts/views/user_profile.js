@@ -35,9 +35,8 @@ Capstone.Views.UserProfile = Backbone.CompositeView.extend({
     return this;
   },
 
+  //do I need this?
   showAllFollowedUsers: function (event) {
-    event.preventDefault();
-    $("#lean_overlay").css({"display":"block",opacity:0});
-    $("#lean_overlay").fadeTo(200, {top:100,overlay:0.5,closeButton:null});
+
   }
 });
