@@ -17,3 +17,10 @@
 
 // @import "bootstrap-sprockets";
 // @import "bootstrap";
+
+#app-navbar .navbar-fixed-top {
+  background-image: none;
+  background-color: #32383E;
+  opacity: .95;
+  box-shadow: 0 4px 3px rgba(50,50,50, .75);
+}
