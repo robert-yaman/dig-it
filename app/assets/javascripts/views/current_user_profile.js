@@ -4,6 +4,9 @@ Capstone.Views.CurrentUserProfile = Backbone.CompositeView.extend({
   initialize: function () {
     this.addUserInfo();
     this.addUserSongList();
+    this.addFollowingList();
+
+    this.listenTo(this.model, "sync", this.addFollowingList.bind(this));
   },
 
   addUserInfo: function () {
@@ -14,6 +17,15 @@ Capstone.Views.CurrentUserProfile = Backbone.CompositeView.extend({
   addUserSongList: function () {
     var userSongList = new Capstone.Views.SongList({collection: this.model.songs()});
     this.addSubview(".current-user-songs-list", userSongList);
+  },
+
+  addFollowingList: function () {
+    //If model.id is 0, the model hasn't been fetched (see BB initialize), if won't have any followed users to fetch
+    if (this.model.id === 0) return
+    var followed_by = new Capstone.Collections.Users();
+    followed_by.fetch({data : {six_followed_by : this.model.id }})
+    var followingList = new Capstone.Views.FollowingList({collection: followed_by});
+    this.addSubview(".followed-by", followingList);
   },
 
   render: function () {

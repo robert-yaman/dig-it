@@ -5,6 +5,24 @@
 .user-info {
   width: 30%;
   margin-left: 25px;
+  background-color: #7A8288;
+  border-radius: 15px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border-radius: 4px;
+}
+
+.user-info.current-user-info {
+  margin-left: 10px;
+  width: 100%;
+}
+
+.user-info.current-user-info h4 {
+  padding-left: 14px;
+}
+
+.user-info.current-user-info .about-me {
+  padding-left: 14px;
 }
 
 .user-info .user-avatar {
@@ -12,8 +30,16 @@
   float: left;
 }
 
+.user-info.current-user-info .user-avatar {
+  margin-left: 30px;
+}
+
 .user-info .user-facts {
   float: left;
+}
+
+.user-info.current-user-info .user-facts{
+  padding-left: 30px;
 }
 
 .user-info .user-username {
@@ -43,9 +69,6 @@
 
 .user-info .user-list-item-song-item .queue-dropdown {
   background-color: inherit;
-  // border: none;
-  // right: 40px;
-  // display:none;
 }
 
 .user-info button.follow-button {
@@ -53,22 +76,3 @@
   top: 10px;
   right: 10px;
 }
-
-// .user-info .user-list-item-song-item:hover .queue-dropdown {
-//   display: block;
-//   border-radius: 4px;
-// }
-//
-// .user-info .user-list-item-song-item .queue-dropdown:hover {
-//   background-image: none;
-//   background-color: #32383E;
-// }
-//
-// .user-info .user-list-item-song-item .queue-dropdown:active {
-//   background-image: none;
-//   background-color: #32383E;
-// }
-//
-// .user-info .queue-options {
-//   margin-left: -35px;
-// }

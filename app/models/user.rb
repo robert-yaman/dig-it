@@ -10,6 +10,28 @@ class User < ActiveRecord::Base
     (user.is_password?(password) ? user : nil) if user
   end
 
+  def self.followed_by(current_user_id)
+    #any particular order?
+    find_by_sql(<<-SQL)
+      SELECT fu.*
+      FROM  users fu
+        INNER JOIN followings ON fu.id = followings.followed_user_id
+        INNER JOIN  users cu ON  cu.id = followings.follower_id
+      WHERE cu.id = #{current_user_id}
+    SQL
+  end
+
+  def self.six_followed_by(current_user_id)
+    find_by_sql(<<-SQL)
+      SELECT fu.*
+      FROM  users fu
+        INNER JOIN followings ON fu.id = followings.followed_user_id
+        INNER JOIN  users cu ON  cu.id = followings.follower_id
+      WHERE cu.id = #{current_user_id}
+      LIMIT 6
+    SQL
+  end
+
   def self.leaders
     order(digs_received: :desc).limit(3)
   end
