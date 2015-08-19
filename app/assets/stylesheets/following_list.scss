@@ -1,0 +1,33 @@
+.followed-by-list:after {
+  clear: both;
+  content: "";
+  display: block;
+}
+
+.followed-by-list {
+  list-style: none;
+  background-color: #7A8288;
+  border-radius: 4px;
+  padding-top: 22px;
+  padding-left: 30px;
+  margin-left: 14px;
+  width: 83%;
+}
+
+.following-list-item {
+  float: left;
+  width: 50%;
+}
+
+.following-title {
+  padding-left: 14px;
+  padding-top: 26px;
+}
+
+.following-title small {
+    padding-left: 20px;
+}
+
+.following-list-item p {
+  margin-top: 6px;
+}
