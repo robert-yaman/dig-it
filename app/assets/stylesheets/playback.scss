@@ -16,6 +16,7 @@ nav.navbar-fixed-bottom:before {
   opacity: .95;
   z-index: -1;
 }
+
 button#dig-button {
   position: relative;
   float: right;
@@ -272,4 +273,9 @@ li.queue-list-item .floatright .glyphicon-menu-hamburger:hover {
 
 .queue .skip-controls .glyphicon-fast-backward {
   right: 9px;
+}
+
+.sortable-placeholder {
+  width: 160px;
+  height: 31px;
 }

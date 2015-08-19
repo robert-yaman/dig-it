@@ -16,7 +16,8 @@ Capstone.Views.Queue = Backbone.View.extend({
     var content = this.template({queue: this.queue, firstSong: this.queue[this.queue.length - 1]});
     this.$el.html(content);
     $( "#queue-sortable" ).sortable({
-      update: this.recalcQueue.bind(this)
+      update: this.recalcQueue.bind(this),
+      placeholder: "sortable-placeholder"
     });
     $( "#queue-sortable" ).disableSelection();
     return this;
@@ -41,8 +42,6 @@ Capstone.Views.Queue = Backbone.View.extend({
     order.forEach(function(index){
       this.queue.push(oldQueue[index])
     }.bind(this));
-
-    debugger
 
     this.queue.splice(0, this.queue.length / 2)
     this.render();
