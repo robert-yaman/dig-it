@@ -90,8 +90,8 @@ Capstone.Views.Playback = Backbone.CompositeView.extend({
   nextSong: function (event) {
     event && event.preventDefault();
     if (this.queue[0]) {
-      this.queue[0].play()
-      this.queue.shift();
+      this.queue[this.queue.length - 1].play()
+      this.queue.pop();
       this.subviews(".queue").first().render();
     }
   },

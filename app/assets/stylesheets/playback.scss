@@ -243,6 +243,7 @@ li.queue-list-item .glyphicon {
 li.queue-list-item .floatleft {
   float: left;
   padding: 0 12px;
+  width: calc(100% - 40px);
 }
 
 li.queue-list-item .floatright {

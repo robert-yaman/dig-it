@@ -13,9 +13,11 @@ Capstone.Views.Queue = Backbone.View.extend({
   },
 
   render: function () {
-    var content = this.template({queue: this.queue, firstSong: this.queue[0]});
+    var content = this.template({queue: this.queue, firstSong: this.queue[this.queue.length - 1]});
     this.$el.html(content);
-    $( "#queue-sortable" ).sortable();
+    $( "#queue-sortable" ).sortable({
+      update: this.recalcQueue.bind(this)
+    });
     $( "#queue-sortable" ).disableSelection();
     return this;
   },
@@ -23,6 +25,27 @@ Capstone.Views.Queue = Backbone.View.extend({
   playQueuedSong: function (event) {
     event.preventDefault();
     this.queue[$(event.currentTarget).data("song-position")].play()
+  },
+
+  recalcQueue: function () {
+    var view = this
+    var order = []
+    //make a copy of the queue in the original array, then delete the original elements (needs to mutate b/c shared with parent view)
+
+    //first get the order
+    this.$(".queue-item-song-name").each(function(){
+      order.push($(this).data("song-position"))
+    });
+
+    var oldQueue = this.queue.slice()
+    order.forEach(function(index){
+      this.queue.push(oldQueue[index])
+    }.bind(this));
+
+    debugger
+
+    this.queue.splice(0, this.queue.length / 2)
+    this.render();
   },
 
   removeSong: function () {
@@ -34,10 +57,11 @@ Capstone.Views.Queue = Backbone.View.extend({
 
   updateQueue: function () {
     if (Capstone.queueSong.get("playNext")){
-      this.queue.unshift(new Capstone.Models.Song(Capstone.queueSong.attributes))
-    } else {
       this.queue.push(new Capstone.Models.Song(Capstone.queueSong.attributes))
+    } else {
+      this.queue.unshift(new Capstone.Models.Song(Capstone.queueSong.attributes))
     }
+    Capstone.queueSong.set("playNext", false)
     this.render()
   }
 });

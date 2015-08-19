@@ -22,13 +22,13 @@
   <button type="button" class="btn btn-default glyphicon glyphicon-menu-up" data-toggle='dropdown'></button>
   <ul class="dropdown-menu" id="queue-sortable">
     <% var counter = 0 %>
-    <% queue.reverse().forEach(function(song) { %>
+    <% queue.forEach(function(song) { %>
       <li class="queue-list-item ui-state-default">
         <p class="floatleft">
           <a class="queue-item-song-name" data-song-position=<%= counter %> href="#"><%= song.get("name") %></a>
         </p>
         <p class="floatright">
-          <span class="glyphicon glyphicon-remove" data-song-position=<%= counter %>></span><span class="glyphicon glyphicon-menu-hamburger" data-song-position=<%= counter %>></span>
+          <span class="glyphicon glyphicon-remove" data-song-position=<%= counter %>></span><span class="glyphicon glyphicon-menu-hamburger"></span>
         </p>
       </li>
 

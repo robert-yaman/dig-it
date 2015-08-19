@@ -45,7 +45,6 @@ Capstone.Models.Song = Backbone.Model.extend({
   unshiftOntoQueue: function () {
     this.set("playNext", true);
     Capstone.queueSong.set(this.attributes);
-    this.set("playNext", false);
     //triggering custom event here in case no attributes of the model actual change
     Capstone.queueSong.trigger("queue-change");
   }
