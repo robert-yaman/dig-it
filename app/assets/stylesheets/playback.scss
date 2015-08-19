@@ -238,7 +238,17 @@ li.queue-list-item .floatright {
   float: right;
 }
 
+li.queue-list-item .floatright .glyphicon-remove:hover {
+  cursor: pointer;
+  color: #ad1d1d;
+}
+
 li.queue-list-item .floatright .glyphicon-menu-hamburger {
+  padding: 0 6px;
+}
+
+li.queue-list-item .floatright .glyphicon-menu-hamburger:hover {
+  cursor: pointer;
   padding: 0 6px;
 }
 
