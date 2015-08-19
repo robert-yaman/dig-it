@@ -2,7 +2,8 @@ Capstone.Views.Queue = Backbone.View.extend({
   template: JST["queue"],
 
   events: {
-    "click li .queue-item-song-name" : "playQueuedSong"
+    "click li .queue-item-song-name" : "playQueuedSong",
+    "click .glyphicon-remove" : "removeSong"
   },
 
   initialize: function (options) {
@@ -20,6 +21,13 @@ Capstone.Views.Queue = Backbone.View.extend({
   playQueuedSong: function (event) {
     event.preventDefault();
     this.queue[$(event.currentTarget).data("song-position")].play()
+  },
+
+  removeSong: function () {
+    event.preventDefault();
+    var pos = $(event.currentTarget).data("song-position")
+    this.queue.splice(pos, 1)
+    this.render();
   },
 
   updateQueue: function () {
