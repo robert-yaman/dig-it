@@ -7,7 +7,7 @@ Capstone.Views.UserProfile = Backbone.CompositeView.extend({
 
   initialize: function () {
     this.addUserInfo();
-    this.addUserSongList();
+    this.addUserFeed();
     this.addFollowingList();
   },
 
@@ -16,9 +16,9 @@ Capstone.Views.UserProfile = Backbone.CompositeView.extend({
     this.addSubview(".user-info", userInfoView);
   },
 
-  addUserSongList: function () {
-    var userSongList = new Capstone.Views.SongList({collection: this.model.songs()});
-    this.addSubview(".user-songs-list", userSongList);
+  addUserFeed: function () {
+    var userFeed = new Capstone.Views.UserFeed({model: this.model });
+    this.addSubview(".user-feed", userFeed);
   },
 
   addFollowingList: function () {
@@ -33,10 +33,5 @@ Capstone.Views.UserProfile = Backbone.CompositeView.extend({
     this.$el.html(content);
     this.attachSubviews();
     return this;
-  },
-
-  //do I need this?
-  showAllFollowedUsers: function (event) {
-
   }
 });

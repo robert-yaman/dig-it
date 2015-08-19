@@ -16,9 +16,9 @@ class Api::SongsController < ApplicationController
     if params[:query]
       @songs = Song.search_by_query_string(params[:query])
     elsif params[:recent]
-      @songs = Song.recent
+      @songs = Song.recent(params[:which_user])
     elsif params[:top]
-      @songs = Song.top
+      @songs = Song.top(params[:which_user])
     elsif params[:following]
       @songs = Song.following(current_user.id)
     else
@@ -33,14 +33,8 @@ class Api::SongsController < ApplicationController
       #this is inneficient
       num_digs = params[:digs_given]
       current_user.update(digs_given: current_user.digs_given + num_digs)
-      # current_user.digs_given += num_digs
-      # current_user.save
-
       receiver = User.find(params[:song][:user_id])
       receiver.update(digs_given: receiver.digs_given + num_digs)
-      # receiver.digs_received += num_digs
-      # receiver.save
-
       @song.total_digs += num_digs
     end
 

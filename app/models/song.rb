@@ -15,12 +15,14 @@ class Song < ActiveRecord::Base
     songs_by_users_followed.sample(5)
   end
 
-  def self.recent
-    order(created_at: :desc).includes(:user).limit(5)
+  def self.recent(which_user = false)
+    recents = order(created_at: :desc).includes(:user).limit(5)
+    which_user ? recents.where(user_id: which_user.to_i) : recents
   end
 
-  def self.top #EW
-    order(total_digs: :desc).includes(:user).limit(5)
+  def self.top(which_user = false)
+    tops = order(total_digs: :desc).includes(:user).limit(5)
+    which_user ? tops.where(user_id: which_user.to_i) : tops
   end
 
   def self.search_by_query_string(string)
