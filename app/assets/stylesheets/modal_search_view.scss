@@ -1,0 +1,28 @@
+#modal-search-view.showing {
+  position: fixed;
+  opacity: 0;
+  z-index: 1033;
+  top: 100;
+  max-height: 70%;
+  overflow-y: scroll;
+}
+
+#modal-search-view .search-bar input {
+  width: 70%;
+  margin: 0 auto;
+  border: 1px solid black;
+}
+
+#modal-search-view .search-bar {
+  background-color: #c8c8c8;
+  padding: 10px 0;
+  margin-bottom: 0;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  border: 1px solid black;
+  border-bottom: 0;
+}
+
+#modal-search-view .modal-search-list ul:first-child {
+  border-radius: 0;
+}

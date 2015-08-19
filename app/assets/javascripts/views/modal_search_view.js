@@ -1,6 +1,6 @@
 Capstone.Views.ModalSearchView = Backbone.CompositeView.extend({
   template: JST["modal_search_view"],
-  className: "col-xs-4 col-xs-offset-4",
+  className: "col-xs-6 col-xs-offset-3",
   id: "modal-search-view",
 
   configSongList: function () {

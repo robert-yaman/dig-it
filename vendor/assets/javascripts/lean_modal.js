@@ -4,7 +4,7 @@
 (function($){
   $.fn.extend({
     leanModal: function(options){
-      var defaults={top:100,overlay:0.5,closeButton:null};
+      var defaults={top:100,overlay:0.7,closeButton:null};
       var overlay=$("<div id='lean_overlay'></div>");
       $("body").append(overlay);
       options=$.extend(defaults,options);
