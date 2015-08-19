@@ -207,8 +207,19 @@ nav.active .queue .dropup button {
   color: #C8C8C8;
 }
 
-li.queue-list-item {
-  border-bottom: 1px solid #7A8288;
+li.queue-list-item.ui-state-default {
+  background-color: inherit;
+  border-left: none;
+  border-right: none;
+  border-top: none;
+  color: #c8c8c8;
+  background-image: none;
+  font-style: inherit;
+  border-bottom: 1px solid #c8c8c8;
+}
+
+li.queue-list-item.ui-state-default a.queue-item-song-name {
+  color: #c8c8c8;
 }
 
 li.queue-list-item:last-child {

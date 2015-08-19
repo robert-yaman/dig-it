@@ -15,6 +15,8 @@ Capstone.Views.Queue = Backbone.View.extend({
   render: function () {
     var content = this.template({queue: this.queue, firstSong: this.queue[0]});
     this.$el.html(content);
+    $( "#queue-sortable" ).sortable();
+    $( "#queue-sortable" ).disableSelection();
     return this;
   },
 

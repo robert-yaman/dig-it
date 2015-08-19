@@ -19,6 +19,7 @@
 //= require capstone
 //= require bootstrap
 //= require heatmap.min.js
+//= require jquery-ui/sortable
 //= require_tree ./utils
 //= require_tree ../templates
 //= require_tree ./models

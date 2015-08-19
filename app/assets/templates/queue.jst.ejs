@@ -20,10 +20,10 @@
 
 <div class="dropup">
   <button type="button" class="btn btn-default glyphicon glyphicon-menu-up" data-toggle='dropdown'></button>
-  <ul class="dropdown-menu">
+  <ul class="dropdown-menu" id="queue-sortable">
     <% var counter = 0 %>
     <% queue.reverse().forEach(function(song) { %>
-      <li class="queue-list-item">
+      <li class="queue-list-item ui-state-default">
         <p class="floatleft">
           <a class="queue-item-song-name" data-song-position=<%= counter %> href="#"><%= song.get("name") %></a>
         </p>
