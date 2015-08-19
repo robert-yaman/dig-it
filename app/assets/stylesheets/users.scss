@@ -3,8 +3,8 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .user-info {
-  width: 30%;
-  margin-left: 25px;
+  margin-left: 10px;
+  width: 100%;
   background-color: #7A8288;
   border-radius: 15px;
   padding-top: 20px;
@@ -12,45 +12,33 @@
   border-radius: 4px;
 }
 
-.user-info.current-user-info {
-  margin-left: 10px;
-  width: 100%;
-}
-
-.user-info.current-user-info h4 {
+.user-info h4 {
   padding-left: 14px;
 }
 
-.user-info.current-user-info .about-me {
+.user-info .about-me + p {
+  padding-left: 14px;
+}
+
+.current-user-info .about-me {
   padding-left: 14px;
 }
 
 .user-info .user-avatar {
-  margin-left: 20px;
-  float: left;
-}
-
-.user-info.current-user-info .user-avatar {
   margin-left: 30px;
+  float: left;
 }
 
 .user-info .user-facts {
-  float: left;
-}
-
-.user-info.current-user-info .user-facts{
   padding-left: 30px;
+  float: left;
+  list-style: none;
+  padding-top: 7px
 }
 
 .user-info .user-username {
   float: left;
   margin: 0 14px;
-}
-
-.user-info .user-facts {
-  list-style: none;
-  padding-left: 14px;
-  padding-top: 7px
 }
 
 .user-info .user-info-heading {
