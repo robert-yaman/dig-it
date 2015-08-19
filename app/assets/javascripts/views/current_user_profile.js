@@ -10,6 +10,7 @@ Capstone.Views.CurrentUserProfile = Backbone.CompositeView.extend({
     this.addUserSongList();
     this.addFollowingList();
 
+    //So re renders after followed users can be fetched
     this.listenTo(this.model, "sync", this.addFollowingList.bind(this));
   },
 
@@ -24,6 +25,11 @@ Capstone.Views.CurrentUserProfile = Backbone.CompositeView.extend({
   },
 
   addFollowingList: function () {
+    //in case this.model re-renders for some other reason
+    if (this.subviews(".followed-by").first()) {
+      this.removeSubview(".followed-by", this.subviews(".followed-by").first());
+    }
+
     //If model.id is 0, the model hasn't been fetched (see BB initialize), if won't have any followed users to fetch
     if (this.model.id === 0) return
     var followed_by = new Capstone.Collections.Users();
