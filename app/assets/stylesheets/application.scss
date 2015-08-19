@@ -18,9 +18,22 @@
 // @import "bootstrap-sprockets";
 // @import "bootstrap";
 
-#app-navbar .navbar-fixed-top {
-  background-image: none;
-  background-color: #32383E;
+#app-navbar .navbar-fixed-top:before {
+  position:absolute;
+  content: "";
+  width: 100%;
+  z-index: -1;
+  height: 51px;
   opacity: .95;
   box-shadow: 0 4px 3px rgba(50,50,50, .75);
+  background-color: #32383E;
+}
+
+#app-navbar .navbar-fixed-top {
+  background-image: none;
+  background-color: transparent;
+}
+
+#new-song-button{
+  opacity: 1;
 }
