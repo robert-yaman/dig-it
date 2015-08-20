@@ -1,4 +1,8 @@
 class Song < ActiveRecord::Base
+  def self.by_user(user_id)
+    where(user_id: user_id).includes(:user)
+  end
+
   def self.following(current_user_id) #any particular order?
     songs_by_users_followed = find_by_sql(<<-SQL)
       SELECT *

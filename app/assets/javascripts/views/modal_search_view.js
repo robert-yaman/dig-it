@@ -44,8 +44,12 @@ Capstone.Views.ModalSearchView = Backbone.CompositeView.extend({
   },
 
   render: function () {
-    //TODO make this a conditioal when incorporating songs
-    var content = this.template({users: this.collection});
+    var content
+    if (this.collection.constructor === Capstone.Collections.Users){
+      content = this.template({ users: this.collection });
+    } else if (this.collection.constructor === Capstone.Collections.Songs) {
+      content = this.template({ songs: this.collection })
+    }
     this.$el.html(content);
     this.attachSubviews();
     return this;

@@ -1,10 +1,15 @@
 Capstone.Views.UserFeed = Backbone.CompositeView.extend({
   template: JST["user_feed"],
-  className: "user_feed",
+  className: "user-feed",
 
   events: {
     "click .recent" : "userRecentSongs",
     "click .top" : "userTopSongs",
+    "click a.all-songs" : "renderAllSongs"
+  },
+
+  initialize: function () {
+    this.listenTo(this.model, "sync", this.render)
   },
 
   userRecentSongs: function(event) {
@@ -25,7 +30,20 @@ Capstone.Views.UserFeed = Backbone.CompositeView.extend({
     //click on whatever tab I have chosen to be active
     this.$("li.active").trigger("click");
 
+    this.$("a.all-songs").leanModal(); //not using this the way it was meant...
+
     return this;
+  },
+
+  renderAllSongs: function (event) {
+    event.preventDefault();
+    var allSongs = new Capstone.Collections.Songs();
+    allSongs.fetch({data : {which_user : this.model.id}})
+    Capstone.modalSearchView.collection = allSongs;
+    Capstone.modalSearchView.configSongList();
+    Capstone.modalSearchView.render()
+    Capstone.modalSearchView.$el.css("display", "block")
+    Capstone.modalSearchView.$el.addClass("showing")
   },
 
   userTopSongs: function(event) {

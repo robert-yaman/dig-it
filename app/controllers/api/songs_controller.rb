@@ -21,6 +21,8 @@ class Api::SongsController < ApplicationController
       @songs = Song.top(params[:which_user])
     elsif params[:following]
       @songs = Song.following(current_user.id)
+    elsif params[:which_user]
+      @songs = Song.by_user(params[:which_user])
     else
       @songs = Song.all
     end
