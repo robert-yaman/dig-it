@@ -38,7 +38,6 @@ Capstone.Routers.AppRouter = Backbone.Router.extend({
   },
 
   search: function() {
-    alert("in router search")
     var searchResults = new Capstone.Views.SearchResults({
       userSearchResults: this.userSearchResults,
       songSearchResults: this.songSearchResults
