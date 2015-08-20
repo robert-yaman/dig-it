@@ -11,6 +11,7 @@ class Api::UsersController < ApplicationController
   end
 
   def index
+    @followed_users_hash = current_user.followed_users_hash
     if params[:query]
       @users = User.search_by_query_string(params[:query])
     elsif params[:new_user]
@@ -18,9 +19,8 @@ class Api::UsersController < ApplicationController
     elsif params[:leaders]
       @users = User.leaders
     elsif params[:followed_by]
-      @users = User.followed_by(params[:followed_by])
-      #we know that all users are followed by current user, so no need to query db
-      render :followed_by
+      @users = User.find(params[:followed_by]).followed_users.includes(:top_three_songs)
+      # @users = User.followed_by(params[:followed_by])
     elsif params[:six_followed_by]
       @users = User.six_followed_by(params[:six_followed_by])
       #only need name and md5

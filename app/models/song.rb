@@ -15,6 +15,7 @@ class Song < ActiveRecord::Base
         WHERE current.id = #{current_user_id}
       )
     SQL
+    ActiveRecord::Associations::Preloader.new.preload(songs_by_users_followed, :user)
     #this is temporary
     songs_by_users_followed.sample(5)
   end
@@ -38,7 +39,7 @@ class Song < ActiveRecord::Base
   after_initialize :create_digs_array
   before_validation :add_length_if_not_there
 
-  belongs_to :user
+  belongs_to :user, inverse_of: :songs
 
   def add_length_if_not_there
     #indicates that length was not stored correctly on patch request

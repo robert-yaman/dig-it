@@ -1,9 +1,7 @@
 json.extract! user, :id, :username, :md5
 
-follow_by_current_user = user.followings_as_object.where(follower_id: current_user.id)
-
-if !follow_by_current_user.empty?
-  json.follow_by_current_user follow_by_current_user.first
+if followed_users_hash && followed_users_hash[user.id]
+  json.follow_by_current_user followed_users_hash[user.id]
 end
 
 if with_all_songs
@@ -17,7 +15,7 @@ end
 if with_top_three_songs
   json.songs do
     json.array! user.top_three_songs do |song|
-      json.partial! 'api/songs/song', song: song
+      json.partial! 'api/songs/song', song: song, with_username: false
     end
   end
 end
