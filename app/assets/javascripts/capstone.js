@@ -19,7 +19,7 @@ window.Capstone = {
     }).render().$el);
 
     var $rootEl = $('#content');
-    new Capstone.Routers.AppRouter({
+    Capstone.appRouter = new Capstone.Routers.AppRouter({
       $rootEl: $rootEl,
       userSearchResults: userSearchResults,
       songSearchResults: songSearchResults

@@ -39,7 +39,7 @@ class User < ActiveRecord::Base
 
   def self.search_by_query_string(string, offset)
     includes(:top_three_songs).where("LOWER(username) LIKE '%#{string.downcase}%'")
-    .limit(10).offset(10 * offset)
+    .limit(2).offset(2 * offset)
   end
 
   validates :username, :email, :password_digest, :session_token, presence: true

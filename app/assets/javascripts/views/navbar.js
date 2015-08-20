@@ -20,24 +20,27 @@ Capstone.Views.Navbar = Backbone.View.extend({
     var content = this.template();
     this.$el.html(content);
     this.setupNewSongbutton();
-    this.setupModalSearchViews();
+    // this.setupModalSearchViews();
     return this;
   },
 
   fireSearch: function(event) {
+    // alert("in fireSearch")
     event.preventDefault();
     var searchString = $("#search-bar").val();
     if (searchString === "") return;
+
+    //for fetching more data later
+    this.userSearchResults.query = decodeURI(searchString);
+    this.songSearchResults.query = decodeURI(searchString);
 
     this.userSearchResults.fetch({ data : {query: decodeURI(searchString)} })
     this.songSearchResults.fetch({ data : {query: decodeURI(searchString)} })
 
     Backbone.history.navigate("#search", {trigger: true})
+    //in case searching from the search page
+    Capstone.appRouter.search()
     $("#search-bar").val("");
-  },
-
-  setupModalSearchViews: function () {
-
   },
 
   setupNewSongbutton: function () {

@@ -30,9 +30,9 @@ class Song < ActiveRecord::Base
     which_user ? tops.where(user_id: which_user.to_i) : tops
   end
 
-  def self.search_by_query_string(string)
+  def self.search_by_query_string(string, offset)
     where("LOWER(name) LIKE '%#{string.downcase}%' OR LOWER(artist_name) LIKE '%#{string.downcase}%'").includes(:user)
-    .limit(10).offset(10 * offset)
+    .limit(2).offset(2 * offset)
   end
 
   validates :name, :user, :file_path, presence: true
