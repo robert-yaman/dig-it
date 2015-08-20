@@ -61,6 +61,7 @@ Capstone.Views.Queue = Backbone.View.extend({
       this.queue.unshift(new Capstone.Models.Song(Capstone.queueSong.attributes))
     }
     Capstone.queueSong.set("playNext", false)
+
     this.render()
   }
 });

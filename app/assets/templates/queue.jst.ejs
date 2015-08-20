@@ -5,9 +5,9 @@
 </div>
 
 <div class="next-song-info">
+  <span class="up-next">Up Next:</span>
   <% if (firstSong) { %>
 
-    <span class="up-next">Up Next:</span>
     <marquee class="up-next-song-info" scrolldelay="200">
       <%= firstSong.escape("name") %>, <%= firstSong.escape("username") %>,
       <% if (firstSong.escape("artist_name")) { %>
@@ -21,18 +21,22 @@
 <div class="dropup">
   <button type="button" class="btn btn-default glyphicon glyphicon-menu-up" data-toggle='dropdown'></button>
   <ul class="dropdown-menu" id="queue-sortable">
-    <% var counter = 0 %>
-    <% queue.forEach(function(song) { %>
-      <li class="queue-list-item ui-state-default">
-        <p class="floatleft">
-          <a class="queue-item-song-name" data-song-position=<%= counter %> href="#"><%= song.get("name") %></a>
-        </p>
-        <p class="floatright">
-          <span class="glyphicon glyphicon-remove" data-song-position=<%= counter %>></span><span class="glyphicon glyphicon-menu-hamburger"></span>
-        </p>
-      </li>
+    <% if (queue.length === 0) { %>
+      <li style="text-align: center">Add something to the queue!</li>
+    <% } else { %>
+      <% var counter = 0 %>
+      <% queue.forEach(function(song) { %>
+        <li class="queue-list-item ui-state-default">
+          <p class="floatleft">
+            <a class="queue-item-song-name" data-song-position=<%= counter %> href="#"><%= song.get("name") %></a>
+          </p>
+          <p class="floatright">
+            <span class="glyphicon glyphicon-remove" data-song-position=<%= counter %>></span><span class="glyphicon glyphicon-menu-hamburger"></span>
+          </p>
+        </li>
 
-      <% counter++ %>
-    <% }) %>
+        <% counter++ %>
+      <% }) %>
+    <% } %>
   </ul>
 </div>

@@ -273,10 +273,5 @@ Capstone.Views.Playback = Backbone.CompositeView.extend({
 
     //these digs now accounted for
     this.digsGiven = 0;
-
-    //note: never need to turn of the playback bar click handler
-    // this.$(".playback-bar").off("click")
-    //Can't do this here b/c won't be able to continue playing
-    // Capstone.currentSong = null;
   }
 });
