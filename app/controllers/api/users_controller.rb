@@ -34,7 +34,7 @@ class Api::UsersController < ApplicationController
     if params[:current]
       @user = current_user
     else
-      @user = User.includes(:songs, :followings_as_object).find(params[:id])
+      @user = User.includes(:top_three_songs).find(params[:id])
     end
 
     if params[:extra_profile_info]

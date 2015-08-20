@@ -27,7 +27,6 @@ Capstone.Views.SongForm = Backbone.View.extend({
     event.preventDefault();
     var data = $(event.currentTarget).serializeJSON();
     var song = new Capstone.Models.Song();
-    debugger
     song.save(data.song, {
       success: function(newSong) {
 

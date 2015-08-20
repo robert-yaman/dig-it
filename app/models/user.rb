@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
     user = User.find_by_username(username)
     (user.is_password?(password) ? user : nil) if user
   end
-  
+
   def self.followed_by(current_user_id)
     ##just call current_user.followered.users you idiot!
 
@@ -63,8 +63,8 @@ class User < ActiveRecord::Base
       @fuh
     else
       @fuh = {}
-      followings_as_object.each do |following|
-        @fuh[following.id] = following
+      followings_as_subject.each do |following|
+        @fuh[following.followed_user_id] = following
       end
       @fuh
     end
@@ -91,7 +91,7 @@ class User < ActiveRecord::Base
   end
 
   def most_popular_song
-    songs.order(total_digs: :desc).first
+    top_three_songs.first
   end
 
   def password=(value)
@@ -104,10 +104,6 @@ class User < ActiveRecord::Base
     save!
     session_token
   end
-
-  # def top_three_songs
-  #   songs.order(total_digs: :desc).limit(3)
-  # end
 
   private
 

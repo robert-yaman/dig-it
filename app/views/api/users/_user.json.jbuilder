@@ -7,7 +7,7 @@ end
 if with_all_songs
   json.songs do
     json.array! user.songs do |song|
-      json.partial! 'api/songs/song', song: song
+      json.partial! 'api/songs/song', song: song, with_username: true
     end
   end
 end

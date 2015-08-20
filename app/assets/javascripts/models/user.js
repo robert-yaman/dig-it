@@ -33,7 +33,7 @@ Capstone.Models.User = Backbone.Model.extend({
 
       delete payload.most_popular_song;
     }
-
+    
     if (payload.follow_by_current_user) {
       this.follow().set(payload.follow_by_current_user);
 
