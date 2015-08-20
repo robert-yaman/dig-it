@@ -19,10 +19,12 @@ class Api::UsersController < ApplicationController
       @users = User.leaders
     elsif params[:followed_by]
       @users = User.followed_by(params[:followed_by])
+      #we know that all users are followed by current user, so no need to query db
+      render :followed_by
     elsif params[:six_followed_by]
       @users = User.six_followed_by(params[:six_followed_by])
       #only need name and md5
-      render :followed_by
+      render :six_followed_by
     else
       @users = User.all
     end

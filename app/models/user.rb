@@ -12,13 +12,24 @@ class User < ActiveRecord::Base
 
   def self.followed_by(current_user_id)
     #any particular order?
-    find_by_sql(<<-SQL)
-      SELECT fu.*
-      FROM  users fu
-        INNER JOIN followings ON fu.id = followings.followed_user_id
-        INNER JOIN  users cu ON  cu.id = followings.follower_id
-      WHERE cu.id = #{current_user_id}
-    SQL
+
+
+    joins('INNER JOIN followings ON users.id = followings.followed_user_id')
+    .joins('INNER JOIN  users cu ON  cu.id = followings.follower_id')
+    .where("cu.id = #{current_user_id}").includes(:followings_as_object)
+    #actually, I know that the user is following all these ppl anyways...
+
+
+    #
+    # users = find_by_sql(<<-SQL)
+    #   SELECT fu.*
+    #   FROM  users fu
+    #     INNER JOIN followings ON fu.id = followings.followed_user_id
+    #     INNER JOIN  users cu ON  cu.id = followings.follower_id
+    #   WHERE cu.id = #{current_user_id}
+    # SQL
+    # ActiveRecord::Associations::Preloader.new.preload(users, :followings_as_object)
+    # users
   end
 
   def self.six_followed_by(current_user_id)
