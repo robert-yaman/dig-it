@@ -1,4 +1,5 @@
 nav.navbar-fixed-bottom {
+  bottom: -160px;
   height: 160px;
   // background-image: radial-gradient(ellipse 90% 95px, #565656, #2b3035);
   // opacity: .95;
@@ -7,7 +8,7 @@ nav.navbar-fixed-bottom {
   background-color: transparent;
 }
 
-nav.navbar-fixed-bottom:before {
+nav.navbar-fixed-bottom.active:before {
   position:absolute;
   content: "";
   height: 160px;
@@ -15,6 +16,11 @@ nav.navbar-fixed-bottom:before {
   background-color: #32383E;
   opacity: .95;
   z-index: -1;
+}
+
+nav.navbar-fixed-bottom.active {
+  bottom: 0;
+  transition: 1s;
 }
 
 button#dig-button {
