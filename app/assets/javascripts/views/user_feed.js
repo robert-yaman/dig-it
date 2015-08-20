@@ -5,18 +5,32 @@ Capstone.Views.UserFeed = Backbone.CompositeView.extend({
   events: {
     "click .recent" : "userRecentSongs",
     "click .top" : "userTopSongs",
-    "click a.all-songs" : "renderAllSongs"
+    "click a.all-songs" : "renderAllSongs",
+    "click .expand-button" : "expandCurrentList"
   },
 
   initialize: function () {
+    this.dataHash = {offset: 0}
     this.listenTo(this.model, "sync", this.render)
+  },
+
+  expandCurrentList: function () {
+    this.dataHash.offset++;
+    var newItems = new Capstone.Collections.Songs();
+    newItems.fetch({data : this.dataHash})
+    var newView = new Capstone.Views.SongList({ collection: newItems });
+    //check if these in the onPageSongs collections
+    this.addSubview('.current-list', newView);
   },
 
   userRecentSongs: function(event) {
     event.preventDefault();
+    this.dataHash.offset = 0
+
+    this.dataHash = {recent: true, which_user: this.model.id, offset: this.dataHash.offset};
 
     var recents = new Capstone.Collections.Songs();
-    recents.fetch({data: {recent: true, which_user: this.model.id }});
+    recents.fetch({data: this.dataHash});
     var view = new Capstone.Views.SongList({ collection: recents });
 
     this._switchFeed(event, view);
@@ -48,9 +62,12 @@ Capstone.Views.UserFeed = Backbone.CompositeView.extend({
 
   userTopSongs: function(event) {
     event.preventDefault();
+    this.dataHash.offset = 0
+
+    this.dataHash = {top: true, which_user: this.model.id, offset: this.dataHash.offset};
 
     var tops = new Capstone.Collections.Songs();
-    tops.fetch({data: {top: true, which_user: this.model.id }});
+    tops.fetch({data: this.dataHash});
     var view = new Capstone.Views.SongList({ collection: tops });
 
     this._switchFeed(event, view);

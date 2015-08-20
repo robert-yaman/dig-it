@@ -30,6 +30,7 @@ Capstone.Views.Feed = Backbone.CompositeView.extend({
 
   following: function (event) {
     event.preventDefault();
+    this.dataHash.offset = 0
 
     this.dataHash = {following: true, offset: this.dataHash.offset, dataType: "song"};
 
@@ -42,6 +43,7 @@ Capstone.Views.Feed = Backbone.CompositeView.extend({
 
   newUsers: function(event) {
     event.preventDefault();
+    this.dataHash.offset = 0
 
     this.dataHash = {new_user: true, offset: this.dataHash.offset, dataType: "user"};
 
@@ -54,6 +56,7 @@ Capstone.Views.Feed = Backbone.CompositeView.extend({
 
   recentSongs: function(event) {
     event.preventDefault();
+    this.dataHash.offset = 0
 
     this.dataHash = {recent: true, offset: this.dataHash.offset, dataType: "song"};
 
@@ -77,6 +80,7 @@ Capstone.Views.Feed = Backbone.CompositeView.extend({
 
   topSongs: function(event) {
     event.preventDefault();
+    this.dataHash.offset = 0
 
     this.dataHash = {top: true, offset: this.dataHash.offset, dataType: "song"};
 
@@ -90,8 +94,6 @@ Capstone.Views.Feed = Backbone.CompositeView.extend({
   _switchFeed: function (event, view) {
     this.$(".nav-tabs").children().removeClass("active");
     $(event.currentTarget).addClass("active");
-
-    this.dataHash.offset = 0
 
     this.subviews(".current-list").each(function (view) {view.remove(); });
     this.addSubview(".current-list", view);
