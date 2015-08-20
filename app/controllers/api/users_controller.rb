@@ -13,9 +13,9 @@ class Api::UsersController < ApplicationController
   def index
     @followed_users_hash = current_user.followed_users_hash
     if params[:query]
-      @users = User.search_by_query_string(params[:query])
+      @users = User.search_by_query_string(params[:query], params[:offset].to_i)
     elsif params[:new_user]
-      @users = User.recent
+      @users = User.recent(params[:offset].to_i)
     elsif params[:leaders]
       @users = User.leaders
     elsif params[:followed_by]

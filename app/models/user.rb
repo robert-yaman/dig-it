@@ -1,8 +1,8 @@
 class User < ActiveRecord::Base
   include ActionView::Helpers::DateHelper
 
-  def self.recent
-    order(created_at: :desc).includes(:top_three_songs).limit(5)
+  def self.recent(offset)
+    order(created_at: :desc).includes(:top_three_songs).limit(5).offset(5 * offset)
   end
 
   def self.find_by_credentials(username, password)
@@ -10,16 +10,16 @@ class User < ActiveRecord::Base
     (user.is_password?(password) ? user : nil) if user
   end
 
-  def self.followed_by(current_user_id)
-    ##just call current_user.followered.users you idiot!
-
-    #any particular order?
-
-    joins('INNER JOIN followings ON users.id = followings.followed_user_id')
-    .joins('INNER JOIN  users cu ON  cu.id = followings.follower_id')
-    .where("cu.id = #{current_user_id}").includes(:top_three_songs)
-    #actually, I know that the user is following all these ppl anyways...
-  end
+  # def self.followed_by(current_user_id)
+  #   ##just call current_user.followered.users you idiot!
+  #
+  #   #any particular order?
+  #
+  #   joins('INNER JOIN followings ON users.id = followings.followed_user_id')
+  #   .joins('INNER JOIN  users cu ON  cu.id = followings.follower_id')
+  #   .where("cu.id = #{current_user_id}").includes(:top_three_songs)
+  #   #actually, I know that the user is following all these ppl anyways...
+  # end
 
   def self.six_followed_by(current_user_id)
     ## just use followed_users!!!
@@ -37,8 +37,9 @@ class User < ActiveRecord::Base
     order(digs_received: :desc).limit(3).includes(:top_three_songs)
   end
 
-  def self.search_by_query_string(string)
+  def self.search_by_query_string(string, offset)
     includes(:top_three_songs).where("LOWER(username) LIKE '%#{string.downcase}%'")
+    .limit(10).offset(10 * offset)
   end
 
   validates :username, :email, :password_digest, :session_token, presence: true

@@ -14,15 +14,15 @@ class Api::SongsController < ApplicationController
 
   def index
     if params[:query]
-      @songs = Song.search_by_query_string(params[:query])
+      @songs = Song.search_by_query_string(params[:query], params[:offset].to_i)
     elsif params[:recent]
-      @songs = Song.recent(params[:which_user])
+      @songs = Song.recent(params[:offset].to_i, params[:which_user])
     elsif params[:top]
-      @songs = Song.top(params[:which_user])
+      @songs = Song.top(params[:offset].to_i, params[:which_user])
     elsif params[:following]
       @songs = Song.following(current_user.id)
     elsif params[:which_user]
-      @songs = Song.by_user(params[:which_user])
+      @songs = Song.by_user(params[:which_user].to_i)
     else
       @songs = Song.all
     end
