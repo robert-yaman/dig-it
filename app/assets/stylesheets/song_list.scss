@@ -73,10 +73,18 @@ button.song-list-item-queue-dropdown:hover {
   margin-left: -217px;
 }
 
-ul.queue-options li a {
+ul.queue-options  a {
   padding: 3px 12px;
 }
 
-ul.queue-options li .glyphicon {
+ul.queue-options .glyphicon {
   padding-right: 5px;
+}
+
+ul.queue-options .delete-song:hover .glyphicon {
+  color: red;
+}
+
+ul.queue-options .glyphicon-remove {
+  padding-right: 7px;
 }
