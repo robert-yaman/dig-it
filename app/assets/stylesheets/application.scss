@@ -18,6 +18,10 @@
 // @import "bootstrap-sprockets";
 // @import "bootstrap";
 
+button:focus {
+  outline: none;
+}
+
 #app-navbar .navbar-fixed-top:before {
   position:absolute;
   content: "";

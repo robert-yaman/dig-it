@@ -130,19 +130,21 @@ nav .placeholder {
 }
 
 nav .playback-play-button {
-  cursor: default;
   top: 32px;
   background-color: #32383E;
   float: right;
   border-radius: 100%;
-  border: 1px solid black;
   height: 60px;
   width: 60px;
-}
-
-nav.active .playback-play-button {
+  font-size: 21px;
   border: 4px solid #4CBB17;
   cursor: pointer;
+  transition: border-width .5s;
+}
+
+nav .playback-play-button:hover {
+  border-width: 8px;
+  transition: .5s;
 }
 
 nav ul.vol-bars {
