@@ -47,8 +47,9 @@ Capstone.Views.Queue = Backbone.View.extend({
     this.render();
   },
 
-  removeSong: function () {
+  removeSong: function (event) {
     event.preventDefault();
+    // debugger
     var pos = $(event.currentTarget).data("song-position")
     this.queue.splice(pos, 1)
     this.render();
