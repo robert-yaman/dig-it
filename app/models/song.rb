@@ -37,7 +37,7 @@ class Song < ActiveRecord::Base
 
   validates :name, :user, :file_path, presence: true
   validate :digs_array_length_equals_length
-  after_initialize :create_digs_array
+  before_validation :create_digs_array
   before_validation :add_length_if_not_there
 
   belongs_to :user, inverse_of: :songs
@@ -47,8 +47,17 @@ class Song < ActiveRecord::Base
     self.length = -1 unless length
   end
 
+
+  # def length=(value)
+  #   write_attribute(:length, value)
+  #   create_digs_array
+  # end
+
   def create_digs_array
-    length.times { digs << 0} if digs == [] && length
+    if self.digs == [] && length && length != -1
+      length.times { self.digs << 0}
+      # self.save!
+    end
   end
 
   def digs_array_length_equals_length

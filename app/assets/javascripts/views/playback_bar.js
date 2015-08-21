@@ -2,7 +2,7 @@ Capstone.Views.PlaybackBar = Backbone.View.extend({
   template: JST["playback_bar"],
 
   initialize: function () {
-    this.listenTo(this.model, "gotDigs", this.render)
+    this.listenTo(this.model, "gotDigs", this.render);
   },
 
   render: function () {
@@ -13,7 +13,6 @@ Capstone.Views.PlaybackBar = Backbone.View.extend({
   },
 
   renderHeatmaps: function () {
-    console.log("rerending")
     this.model.fetch({data: { canvas_width : this.$el.width() } , success: function(model, response) {
       // $(".heatmap-canvas").remove(); // don't need to remove anymore since removing entire view when switching songs
       var heatmap = h337.create({

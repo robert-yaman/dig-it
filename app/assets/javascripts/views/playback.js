@@ -2,6 +2,7 @@ Capstone.Views.Playback = Backbone.CompositeView.extend({
   template: JST["playback"],
 
   initialize: function() {
+    Capstone.playback = this
     this.digsGiven = 0;
     this.queue = []
 
@@ -13,6 +14,8 @@ Capstone.Views.Playback = Backbone.CompositeView.extend({
     this.replaceSongInfo();
 
     this.addSubview(".time-counter", new Capstone.Views.TimeCounter());
+
+    //TODO also reconfigure dig count so that connected to the right model?
   },
 
   events: {

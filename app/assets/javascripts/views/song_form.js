@@ -39,12 +39,18 @@ Capstone.Views.SongForm = Backbone.View.extend({
 
         $("audio").one('loadedmetadata', function() {
           newSong.set("length", Math.ceil($("audio")[0].duration))
-          newSong.save({}, {success: function () {
-            console.log("in success")
+          // newSong.set("digs", function () {
+          //   newSong.get("length")
+          // }())
+          newSong.save({}, {success: function (newerSong) {
+            // so heatmap knows to rerender
             newSong.trigger("gotDigs")
+            Capstone.newerSong = newerSong
+            newSong.set("digs", newerSong.get("digs"));
           }});
         });
 
+        //won't actually play
         newSong.play();
         Capstone.currentUser.songs().add(newSong);
       }.bind(this),
