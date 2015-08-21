@@ -26,6 +26,20 @@ a {
   color: #c8c8c8;
 }
 
+#app-navbar {
+  position: absolute;
+  z-index: 901;
+}
+
+#playback {
+  position: absolute;
+  z-index: 901;
+}
+
+#new-song-form {
+  z-index: 902;
+}
+
 #app-navbar .navbar-fixed-top:before {
   position:absolute;
   content: "";
