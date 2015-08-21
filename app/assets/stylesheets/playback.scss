@@ -61,7 +61,7 @@ button#dig-button {
     hsl(0,0%,70%)100%);
 }
 
-button#dig-button:active {
+button#dig-button.can-light-up:active {
   color: #FF8C00;
   text-shadow: hsla(33,100%,20%,.3) 0 -1px 0, hsl(33,100%,85%) 0 2px 1px, hsla(33,100%,80%,1) 0 0 5px, hsla(33,100%,50%,.6) 0 0 20px;
   box-shadow:

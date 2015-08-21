@@ -117,7 +117,6 @@ Capstone.Views.Playback = Backbone.CompositeView.extend({
     //if this is the first song played
     if (!this.$("nav").hasClass("active")) {
       this.$("nav").addClass("active");
-      this.$("#dig-button").html("DIG");
       this.$(".playback-play-button").addClass("playing").addClass("glyphicon-pause");
       this.setUpVolBars();
       this.setUpPointers();
@@ -212,6 +211,7 @@ Capstone.Views.Playback = Backbone.CompositeView.extend({
 
     //install dig button and song jumping
     this.$("#dig-button").click(this.digNow.bind(this))
+    this.$("#dig-button").addClass("can-light-up")
     this.$(".playback-bar").click(this.jumpSpots.bind(this));
     this.digInterval = setInterval(function(){
       this.fpsCounter++
@@ -265,6 +265,7 @@ Capstone.Views.Playback = Backbone.CompositeView.extend({
   wrapUpSong: function () {
     clearInterval(this.digInterval)
     this.$("#dig-button").off("click");
+    this.$("#dig-button").removeClass("can-light-up")
 
     //don't update if no new digs
     if (this.digsGiven > 0) {
