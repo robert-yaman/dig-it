@@ -9,7 +9,7 @@ Capstone.Views.SongForm = Backbone.View.extend({
   initialize: function () {
     this.listenTo(Capstone.currentUser, "sync", this.render);
 
-    filepicker.setKey("AyAZuXgnZQEa0BfWshuLAz");
+    // filepicker.setKey(ENV["FILEPICKER"]);
   },
 
   render: function () {
