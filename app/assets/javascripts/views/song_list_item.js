@@ -40,7 +40,8 @@ Capstone.Views.SongListItem = Backbone.View.extend({
 
   deleteMe: function (event) {
     event.preventDefault()
-
+    this.model.collection.remove(this.model);
+    this.model.destroy();
   },
 
   togglePlay: function () {

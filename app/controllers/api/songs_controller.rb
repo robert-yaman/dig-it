@@ -12,6 +12,12 @@ class Api::SongsController < ApplicationController
     end
   end
 
+  def destroy
+    @song = Song.find(params[:id])
+    @song.destroy
+    render json: @song, status: 200
+  end
+
   def index
     if params[:query]
       @songs = Song.search_by_query_string(params[:query], params[:offset].to_i)
