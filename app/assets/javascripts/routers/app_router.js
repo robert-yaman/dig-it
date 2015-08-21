@@ -20,6 +20,10 @@ Capstone.Routers.AppRouter = Backbone.Router.extend({
     this._switch(new Capstone.Views.AboutDigIt())
   },
 
+  feedback: function () {
+    this._switch(new Capstone.Views.Feedback())
+  },
+
   feedPage : function () {
     var feed = new Capstone.Views.FeedPage();
     this._switch(feed);
