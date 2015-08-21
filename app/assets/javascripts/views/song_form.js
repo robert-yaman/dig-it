@@ -37,14 +37,16 @@ Capstone.Views.SongForm = Backbone.View.extend({
         //reset fields
         this.render()
 
-        //janky
-        $("audio").one('loadedmetadata', function(){
+        $("audio").one('loadedmetadata', function() {
           newSong.set("length", Math.ceil($("audio")[0].duration))
-          newSong.save();
+          newSong.save({}, {success: function () {
+            console.log("in success")
+            newSong.trigger("gotDigs")
+          }});
         });
 
-        Capstone.currentUser.songs().add(newSong);
         newSong.play();
+        Capstone.currentUser.songs().add(newSong);
       }.bind(this),
 
       error: function(model, response) {

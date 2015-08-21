@@ -214,7 +214,6 @@ Capstone.Views.Playback = Backbone.CompositeView.extend({
     this.$("#dig-button").addClass("can-light-up")
     this.$(".playback-bar").click(this.jumpSpots.bind(this));
     this.digInterval = setInterval(function(){
-      console.log(this.secondsCounter)
       this.fpsCounter++
       this.fpsCounter = this.fpsCounter % fps
       //reassigning each time in case browser is resized. In terms of secondsCounter to facilitate pausing
