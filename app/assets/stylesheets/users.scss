@@ -75,3 +75,14 @@
   position: relative;
   top: 36px;
 }
+
+.current-user-info h4 .glyphicon {
+  font-size: 14px;
+  padding-left: 6px;
+  display: none;
+}
+
+.current-user-info h4:hover .glyphicon {
+  display: inline;
+  cursor: pointer;
+}

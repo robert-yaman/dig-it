@@ -3,7 +3,8 @@ Capstone.Views.CurrentUserInfo = Backbone.CompositeView.extend({
 
   events: {
     "click .tell-us" : "displayAboutMeForm",
-    "dblclick .about-me" : "displayAboutMeForm"
+    "dblclick .about-me" : "displayAboutMeForm",
+    "click .glyphicon-edit" : "displayAboutMeForm"
   },
 
   initialize: function () {
