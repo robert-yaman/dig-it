@@ -4,13 +4,20 @@ Capstone.Routers.AppRouter = Backbone.Router.extend({
     "profile" : "profile",
     "users/:id" : "userShow",
     "search" : "search",
-    "log_out" : "logOut"
+    "log_out" : "logOut",
+    "about" : "aboutDigIt",
+    "feedback" : "feedback",
+    "tutorial" : "tutorial"
   },
 
   initialize: function(options) {
     this.$rootEl = options.$rootEl;
     this.userSearchResults = options.userSearchResults;
     this.songSearchResults = options.songSearchResults;
+  },
+
+  aboutDigIt: function () {
+    this._switch(new Capstone.Views.AboutDigIt())
   },
 
   feedPage : function () {
@@ -43,6 +50,11 @@ Capstone.Routers.AppRouter = Backbone.Router.extend({
       songSearchResults: this.songSearchResults
     });
     this._switch(searchResults);
+  },
+
+  tutorial: function () {
+    Capstone.tutorialMode = 1;
+    Backbone.history.navigate("/#", {trigger: true})
   },
 
   userShow: function(id) {

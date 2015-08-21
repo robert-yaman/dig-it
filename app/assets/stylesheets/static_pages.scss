@@ -109,3 +109,33 @@ button.sign-in-button {
   box-shadow: 0 0 10px red;
   transition: .5s;
 }
+
+.about-dig-it {
+  position: relative;
+  top: 30px;
+}
+
+.about-dig-it ul {
+  list-style: none;
+  padding: 0px;
+  position: relative;
+  left: -77px;
+  top: 93px;
+}
+
+.about-dig-it a {
+  color: white;
+}
+
+.about-dig-it h1 {
+  font-size: 50px;
+}
+
+.about-dig-it .thumbnails img {
+  height: 120px;
+}
+
+.about-dig-it .thumbnails {
+  position: relative;
+  top: 40px;
+}
