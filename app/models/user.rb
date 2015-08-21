@@ -56,7 +56,7 @@ class User < ActiveRecord::Base
   has_many :followed_users, through: :followings_as_subject, source: :followed_user
 
   has_many :top_three_songs, -> { order(total_digs: :desc).limit(3) },
-            class_name: :Song, foreign_key: :user_id
+            class_name: :Song, foreign_key: :user_id, inverse_of: :user
 
   def followed_users_hash
     # to avoid N+1 queries when fetching list of users

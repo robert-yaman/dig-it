@@ -1,5 +1,5 @@
 <h2 class="playback-song-name"><%= song.escape("name") %>
-  <small class="artist-info username"> <%= song.get("username") %>
+  <small class="artist-info username"><a href="#users/<%= song.get("user_id") %>"><%= song.escape("username") %></a>
     <span class="artist-info artist_name">
       <% if (song.escape("artist_name")) { %>
           <span class="playback-divider">|</span>by <%= song.escape("artist_name") %>

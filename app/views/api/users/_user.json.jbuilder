@@ -15,7 +15,7 @@ end
 if with_top_three_songs
   json.songs do
     json.array! user.top_three_songs do |song|
-      json.partial! 'api/songs/song', song: song, with_username: false
+      json.partial! 'api/songs/song', song: song, with_username: true
     end
   end
 end
