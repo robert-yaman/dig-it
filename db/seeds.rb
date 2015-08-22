@@ -6,23 +6,150 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-u1 = User.create!(username: "robert", email: "digitrobert@gmail.com", password: "robertdigit")
-u2 = User.create!(username: "michaela", email: "digitmichaela@gmail.com", password: "michaeladigit", about_me: "Hey everyone! I'm michaela and I'm an inspiring indie artist who plays the ukelele and the washboard. Check out my song Summe of Haze, its my favorite! I definitely did not misspell \"Summer\".")
-u3 = User.create!(username: "linda", email: "digitlinda@gmail.com", password: "lindadigit123")
-u4 = User.create!(username: "bill", email: "digitbill@gmail.com", password: "billdigit", about_me: "Hi there, I am Robert's dad Bill. I'm haven't uploaded any music myself, but I'm happy just digging what I dig.")
-u5 = User.create!(username: "Death Grips", email: "dg@lalala.com", password: "deathgripsdigit")
-guest = User.create(username: "ludwig_vanB_123", email: "ludwig_vanB_123@gmail.com", password: "IAmBeethoven", about_me: "Guten Tag everyone.")
+beethoven = User.create(username: "ludwig_vanB_123", email: "ludwig-vanB-123@SharedMailbox.org",
+                        password: "IAmBeethoven",
+                        about_me: "Born in Bonn, then the capital of the
+                        Electorate of Cologne and part of the Holy Roman Empire,
+                        I displayed my musical talents at an early age and was
+                        taught by me father Johann van Beethoven and by Christian
+                        Gottlob Neefe. During my first 22 years in Bonn, I intended
+                        to study with Wolfgang Amadeus Mozart and befriended Joseph Haydn.
+                        I moved to Vienna in 1792 and began studying with Haydn,
+                        quickly gaining a reputation as a virtuoso pianist. I
+                        lived in Vienna until my death. In about 1800, my hearing
+                        began to deteriorate, and by the last decade of my life, I was almost totally deaf.
+                        I gave up conducting and performing in public but
+                        continued to compose; many of my most admired works come from this period.")
 
-u5.songs.create!(name: "The Fever (Aye Aye)", length: 187, file_path: "https://www.filepicker.io/api/file/N8If2Ko5TD2gx10iDmea")
-u5.songs.create!(name: "I've Seen Footage", length: 202, file_path: "https://www.filepicker.io/api/file/PHXQCL4OTuR5rLc1rskT")
-u5.songs.create!(name: "Get Got", length: 171, file_path: "https://www.filepicker.io/api/file/dXkOr1w0TCmkW7JazFJS")
+ligeti = User.create(username: "ligeti-splitz", email: "ligeti-splitz-123@SharedMailbox.org",
+                password: "IAmLigeti",
+                about_me: "I was born in 1923 at Dicsőszentmárton, which was renamed
+                Târnăveni in 1945, in Transylvania to a Hungarian Jewish family.
+                I recalls that my first exposure to languages other than Hungarian
+                came one day while listening to a conversation among the
+                Romanian-speaking town police. Before that I hadn't known that
+                other languages existed. I moved to Cluj (Kolozsvár) with my family
+              when aged six and I was not to return to the town of my birth until the 1990s.")
 
-u1.songs.create!(name: "Zonnestraal", artist_name: "De Hofnar", length: 257, file_path: "https://www.filepicker.io/api/file/9np5MpBQlyod6DOgGzFi")
-u1.songs.create!(name: "Emily", length: 130, artist_name: "Gaba Kulka", file_path: "https://www.filepicker.io/api/file/xuKVsP81Ti2u3uGyGNPh")
-u1.songs.create!(name: "If I had a Reason in My Mind", length: 225, file_path: "https://www.filepicker.io/api/file/Ac6QIg33QiZ0j0Q9rjBg")
-u1.songs.create!(name: "El Guarda Forestal", artist_name: "Pony Bravo", length: 350, file_path: "https://www.filepicker.io/api/file/giMHdqCjQpRIMLbZRMHc")
-u1.songs.create!(name: "Graveyard", length: 226, artist_name: "Trailer Bride", file_path: "https://www.filepicker.io/api/file/O4OV4ZyOR3WeqTMs2ARt")
-u1.songs.create!(name: "Ghost Town", length: 165, file_path: "https://www.filepicker.io/api/file/MnQEeITeGBkY2MQzjcCg")
+sarah = User.create(username: "sarah_vonVaughan", email: "sarah-sarah_vonVaughan-123@SharedMailbox.org",
+                password: "IAmSarah",
+                about_me: "My father, Asbury \"Jake\" Vaughan, was a carpenter by
+                trade and played guitar and piano. My mother, Ada Vaughan, was a
+                laundress and sang in the church choir. They had migrated to Newark
+                from Virginia during the First World War. I was their only
+                biological child, although in the 1960s they adopted Donna, the
+                child of a woman who traveled on the road with me.")
 
-u2.songs.create!(name: "Odyseey", length: 277, file_path: "https://www.filepicker.io/api/file/oUKsUCnTq6NWhf24sDGw")
-u2.songs.create!(name: "Summe of Haze", length: 291, file_path: "https://www.filepicker.io/api/file/ptnsNufsQTSgGtcME8Lv")
+bird = User.create(username: "bird", email: "bird-bird-bird@SharedMailbox.org",
+                password: "IAmCharlie",
+                about_me: "I. was born in Kansas City, Kansas, and raised in Kansas
+                City, Missouri, the only child of Adelaide \"Addie\" (Bailey)
+                and Charles Parker. I attended Lincoln High School in September
+                1934, but withdrew in December 1935, just before joining the local
+                musicians' union.")
+
+lady_gaga = User.create(username: "gAgA", email: "lady-gaga-123@SharedMailbox.org",
+                password: "IAmGaga",
+                about_me: "I rose to prominence with mu debut album The Fame (2008),
+                a critical and commercial success which produced global chart-topping
+                singles such as \"Just Dance\" and \"Poker Face\". A follow-up EP,
+                The Fame Monster (2009), was met with a similar reception and
+                released the successful singles \"Bad Romance\", \"Telephone\",
+                and \"Alejandro\".")
+
+buble = User.create(username: "bubbly_bublé", email: "bubbly-buble-123@SharedMailbox.org",
+                password: "IAmBuble",
+                about_me: "My first album reached the top ten in Canada and the UK.
+                I found a worldwide audience with my 2005 album It's Time, and my
+                2007 album Call Me Irresponsible which reached number one on the
+                Canadian Albums Chart, the UK Albums Chart, the U.S. Billboard
+                200 albums chart, the Australian ARIA Albums Chart and several
+                European charts.")
+
+
+drake = User.create(username: "dragon", email: "dragon-dragon-123@SharedMailbox.org",
+                    password: "IAmDrake",
+                    about_me: "I have sold over 5 million albums worldwide. My
+                    work has earned me a Grammy Award, three Juno Awards, six BET
+                    Awards, and set several significant Billboard records. With
+                    twelve number-one singles, I have more than any other artist
+                    on Billboard's Hot Rap Songs chart. With ten number-one singles,
+                    I also has more than any other rapper on Billboard‍ '​s Hot
+                    R&B/Hip-Hop Songs chart, passing Jay-Z in August 2012. I am
+                    one of two artists (the other being 50 Cent) that has
+                    simultaneously occupied the chart's top three positions.")
+
+elvis = User.create(username: "the_king", email: "the-king-123@SharedMailbox.org",
+                    passowrd: "IAmElvis",
+                    about_me: "I was born on January 8, 1935, in Tupelo, Mississippi,
+                    the son of Gladys Love and Vernon Elvis Presley in the two-room
+                    shotgun house built by Vernon's father in preparation for
+                    the child's birth. Jesse Garon Presley, my identical twin
+                    brother, was delivered stillborn 35 minutes before him.
+                    As an only child, I became close to both parents and formed
+                    an especially close bond with his mother. My family attended
+                    an Assembly of God church, where I found my initial musical
+                    inspiration.")
+
+thom = User.create(username: "yorkshire_thomming", email: "yorkshire-thomming-123@SharedMailbox.org",
+                    passowrd: "IAmThom",
+                    about_me: "I received my first guitar when I was seven; my
+                    earliest musical inspiration was guitarist Brian May of Queen.
+                    At 10, I made my own guitar, inspired by May's Red Special.
+                    By 11, I had joined my first band and written my first song.
+                    In Oxford I attended the boys' public school Abingdon, where
+                    I met Ed O'Brien, Phil Selway, and brothers Colin and Jonny
+                    Greenwood and formed On a Friday, named for the only day we
+                    were allowed to rehearse. I said: \"School was bearable for
+                    me because the music department was separate from the rest
+                    of the school. It had pianos in tiny booths, and I used to
+                    spend a lot of time hanging around there after school.\"
+                    After leaving school, I took a gap year, during which I worked
+                    in a few jobs and was involved in a car accident that influenced
+                    the lyrics of some of my songs including the Bends B-side
+                    \"Killer Cars\" and \"Airbag\" from OK Computer.")
+
+ravi = User.create(username: "ravi_ssss_123", email: "ravi-ssss-123@SharedMailbox.org",
+                    passowrd: "IAmRavi",
+                    about_me: "I was born to a Bengali family in Varanasi, India,
+                    and spent my youth touring India and Europe with the dance
+                    group of my brother Uday Shankar. I gave up dancing in 1938
+                    to study sitar playing under court musician Allauddin Khan.
+                    After finishing my studies in 1944, I worked as a composer,
+                    creating the music for the Apu Trilogy by Satyajit Ray,
+                    and was music director of All India Radio, New Delhi,
+                    from 1949 to 1956.")
+
+led = User.create(username: "lead_zeppelin", email: "lead-zeppelin-123@SharedMailbox.org",
+                    passowrd: "IAmLed",
+                    about_me: "We are widely considered one of the most successful,
+                    innovative, and influential rock groups in history. We are
+                    one of the best-selling music artists in the history of audio
+                    recording; various sources estimate our record sales at 200
+                    to 300 million units worldwide. With RIAA-certified sales of
+                    111.5 million units, we are the second-best-selling band in
+                    the United States. Each of our nine studio albums placed in
+                     the top 10 of the Billboard album chart and six reached the
+                     number-one spot. Rolling Stone magazine described us as
+                     \"the heaviest band of all time\", \"the biggest band of the
+                      '70s\",[4] and \"unquestionably one of the most enduring
+                      bands in rock history\". We were inducted into the Rock and
+                      Roll Hall of Fame in 1995; the museum's biography of the
+                      band states that they were \"as influential\" during the
+                      1970s as the Beatles were during the 1960s.")
+
+
+
+ledsongs.create!(name: "The Fever (Aye Aye)", length: 187, file_path: "https://www.filepicker.io/api/file/N8If2Ko5TD2gx10iDmea")
+ledsongs.create!(name: "I've Seen Footage", length: 202, file_path: "https://www.filepicker.io/api/file/PHXQCL4OTuR5rLc1rskT")
+ledsongs.create!(name: "Get Got", length: 171, file_path: "https://www.filepicker.io/api/file/dXkOr1w0TCmkW7JazFJS")
+
+ravi.songs.create!(name: "Zonnestraal", artist_name: "De Hofnar", length: 257, file_path: "https://www.filepicker.io/api/file/9np5MpBQlyod6DOgGzFi")
+ravi.songs.create!(name: "Emily", length: 130, artist_name: "Gaba Kulka", file_path: "https://www.filepicker.io/api/file/xuKVsP81Ti2u3uGyGNPh")
+ravi.songs.create!(name: "If I had a Reason in My Mind", length: 225, file_path: "https://www.filepicker.io/api/file/Ac6QIg33QiZ0j0Q9rjBg")
+ravi.songs.create!(name: "El Guarda Forestal", artist_name: "Pony Bravo", length: 350, file_path: "https://www.filepicker.io/api/file/giMHdqCjQpRIMLbZRMHc")
+ravi.songs.create!(name: "Graveyard", length: 226, artist_name: "Trailer Bride", file_path: "https://www.filepicker.io/api/file/O4OV4ZyOR3WeqTMs2ARt")
+ravi.songs.create!(name: "Ghost Town", length: 165, file_path: "https://www.filepicker.io/api/file/MnQEeITeGBkY2MQzjcCg")
+
+thom.songs.create!(name: "Odyseey", length: 277, file_path: "https://www.filepicker.io/api/file/oUKsUCnTq6NWhf24sDGw")
+thom.songs.create!(name: "Summe of Haze", length: 291, file_path: "https://www.filepicker.io/api/file/ptnsNufsQTSgGtcME8Lv")

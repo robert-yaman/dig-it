@@ -115,12 +115,16 @@ button.sign-in-button {
   top: 30px;
 }
 
+.about-dig-it img {
+  float: left;
+}
+
 .about-dig-it ul {
+  position: relative;
   list-style: none;
   padding: 0px;
-  position: relative;
-  left: -77px;
-  top: 93px;
+  float: left;
+  left: 10px;
 }
 
 .about-dig-it a {
@@ -129,6 +133,7 @@ button.sign-in-button {
 
 .about-dig-it h1 {
   font-size: 50px;
+  margin-top: 0;
 }
 
 .about-dig-it .thumbnails img {
@@ -137,5 +142,6 @@ button.sign-in-button {
 
 .about-dig-it .thumbnails {
   position: relative;
-  top: 40px;
+  top: 25px;
+  margin-bottom: 50px;
 }
