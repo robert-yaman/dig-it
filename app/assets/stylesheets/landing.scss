@@ -1,3 +1,7 @@
+h1.you-dig {
+  text-align: center;
+}
+
 video#bgvid {
   position: fixed;
   top: 50%;
@@ -16,9 +20,11 @@ video#bgvid {
   text-align: center;
 }
 
-.sign-up-form {
+#sign-up-form {
   position: absolute;
-  top: 100px;
+  top: 45%;
+  left:35%;
+  width: 30%;
 }
 
 .sign-up-button {
