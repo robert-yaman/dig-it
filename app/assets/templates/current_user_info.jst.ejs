@@ -11,7 +11,7 @@
 
 <div class="row">
   <ul class="user-facts">
-    <li class="member-since"><span class="user-info-heading">Member since:</span><%= user.get("joined") %></li>
+    <li class="member-since"><span class="user-info-heading">Member since:</span><%= user.get("joined") %> ago</li>
 
     <% if (!user.mostPopularSong().isNew()) { %>
       <li class="most-popular-song"><span class="user-info-heading">Most Popular Song:</span><span class="song-item"></span></li>
