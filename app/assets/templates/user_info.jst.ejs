@@ -26,10 +26,14 @@
 
     <li class="karma">
       <span class="user-info-heading">Karma:</span>
-      <% if (user.get("karma") === -1) { %>
+      <% if (user.get("karma") === 0) { %>
         Get Digging!
       <% } else { %>
-        <%= user.get("karma") %>
+        <% if (user.get("karma") < 0) { %>
+          <span style="color:#FF8C00"><%= user.get("karma") %></span>
+        <% } else { %>
+          <span style="color:#4CBB17"><%= user.get("karma") %></span>
+        <% } %>
       <% } %>
     </li>
   </ul>

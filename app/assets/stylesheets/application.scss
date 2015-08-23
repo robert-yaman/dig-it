@@ -85,6 +85,8 @@ ul.list-of-items {
 }
 
 button.expand-button {
+  display: block;
+  margin: 0 auto;
   top: 10px;
   padding: 2px 8px;
 }

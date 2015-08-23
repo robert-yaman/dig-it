@@ -81,9 +81,11 @@ class User < ActiveRecord::Base
 
   def karma
     if digs_received == 0 || digs_given == 0
-      -1
-    else
+      0
+    elsif digs_given > digs_received
       digs_given / digs_received
+    else
+      (digs_received / digs_given) * -1
     end
   end
 
