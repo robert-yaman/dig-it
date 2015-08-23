@@ -3,7 +3,8 @@ Capstone.Views.Queue = Backbone.View.extend({
 
   events: {
     "click li .queue-item-song-name" : "playQueuedSong",
-    "click .glyphicon-remove" : "removeSong"
+    "click .glyphicon-remove" : "removeSong",
+    "click .dropup button.glyphicon-menu-up" : "runSeventhTutorial"
   },
 
   initialize: function (options) {
@@ -55,6 +56,10 @@ Capstone.Views.Queue = Backbone.View.extend({
     this.render();
   },
 
+  runSeventhTutorial: function () {
+    Capstone.runSeventhTutorial();
+  },
+
   updateQueue: function () {
     if (Capstone.queueSong.get("playNext")){
       this.queue.push(new Capstone.Models.Song(Capstone.queueSong.attributes))
@@ -64,5 +69,9 @@ Capstone.Views.Queue = Backbone.View.extend({
     Capstone.queueSong.set("playNext", false)
 
     this.render()
+
+    if (Capstone.tutorialMode === 6 && this.queue.length === 2) {
+      Capstone.runSixthTutorial();
+    }
   }
 });

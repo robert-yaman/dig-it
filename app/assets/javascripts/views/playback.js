@@ -14,8 +14,6 @@ Capstone.Views.Playback = Backbone.CompositeView.extend({
     this.replaceSongInfo();
 
     this.addSubview(".time-counter", new Capstone.Views.TimeCounter());
-
-    //TODO also reconfigure dig count so that connected to the right model?
   },
 
   events: {
@@ -52,16 +50,15 @@ Capstone.Views.Playback = Backbone.CompositeView.extend({
   },
 
   digNow: function () {
-    // this.lightUp();
-
     this.digsGiven++
     //add to model for db
     this.model.get("digs")[this.secondsCounter]++;
 
     //add to canvas for live update
     var heatmapView = this.subviews(".playback-bar").first();
-
     heatmapView.heatmap.addData({x : this.secondsCounter * heatmapView.radius, y : 0, value: heatmapView.max / 4, radius: heatmapView.radius * 1.6}); //changing radius for more instant feedback
+
+    if (Capstone.tutorialMode === 4) Capstone.runFourthTutorial();
   },
 
   installListeners: function () {
@@ -88,6 +85,8 @@ Capstone.Views.Playback = Backbone.CompositeView.extend({
       var pointerPos = (this.$(".playback-bar").width() * (this.secondsCounter * this.fps + this.fpsCounter)) / (Capstone.currentSong.get("length") * this.fps)
       this.$(".playback-pointers").css("transform", "translate(" + pointerPos + "px,0)")
     }
+
+    if (Capstone.tutorialMode === 3) Capstone.runThirdTutorial();
   },
 
   nextSong: function (event) {
@@ -103,8 +102,6 @@ Capstone.Views.Playback = Backbone.CompositeView.extend({
     this.$(".audio-tag")[0].pause();
     this.wrapUpSong();
     Capstone.currentSong.playing = false;
-    //re-render the heatmap (actually, do I need to do this?)
-    // this.subviews(".playback-bar").first().render();
   },
 
   playOrPause: function (event) {
@@ -157,7 +154,7 @@ Capstone.Views.Playback = Backbone.CompositeView.extend({
       this.$(".audio-tag").one("canplaythrough", function (){
         Capstone.dontPlayMoreSongs = false;
         //to make sure that if the user pauses while the song is loading, the dig interval doesn't still run
-        if (this.currentSong.playing) this.setDigInterval();
+        if (Capstone.currentSong.playing) this.setDigInterval();
       }.bind(this));
     }
 

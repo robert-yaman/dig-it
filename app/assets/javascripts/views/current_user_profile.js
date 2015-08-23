@@ -1,9 +1,5 @@
 Capstone.Views.CurrentUserProfile = Backbone.CompositeView.extend({
   template: JST["current_user_profile"],
-  //
-  // events: {
-  //   "click .all-following" : "showAllFollowedUsers"
-  // },
 
   initialize: function () {
     this.addUserInfo();

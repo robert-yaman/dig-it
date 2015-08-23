@@ -1,6 +1,10 @@
 Capstone.Views.Leaderboard = Backbone.CompositeView.extend({
   template: JST["leaderboard"],
 
+  events: {
+    "click .leader-list-item:first-child li.user-list-item-song-item:first-child button" : "runSecondTutorial"
+  },
+
   initialize: function () {
     this.listenTo(this.collection, "sync", this.render);
     this.listenTo(this.collection, "add", this.addLeader);
@@ -28,5 +32,9 @@ Capstone.Views.Leaderboard = Backbone.CompositeView.extend({
     this.attachSubviews();
     this.onRender();
     return this;
+  },
+
+  runSecondTutorial: function () {
+    Capstone.runSecondTutorial();
   }
 });

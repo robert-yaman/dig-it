@@ -42,10 +42,12 @@ Capstone.Routers.AppRouter = Backbone.Router.extend({
   //TODO combine with userShow so that there is not one current user show page that current user can't edit
   //low priority
   //COULD make a conditional in Show to see if id is currentuser.id, but then have to wait for current user to fetch
-  //be easier now that I switched order in initialize
+  //It will be easier now that I switched order in initialize
   profile: function() {
     var profile = new Capstone.Views.CurrentUserProfile({model: Capstone.currentUser});
     this._switch(profile);
+
+    if (Capstone.tutorialMode === 5) Capstone.runFifthTutorial();
   },
 
   search: function() {
