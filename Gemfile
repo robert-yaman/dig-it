@@ -31,6 +31,8 @@ gem 'jquery-ui-rails'
 
 gem 'figaro'
 
+gem 'seed_dump'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

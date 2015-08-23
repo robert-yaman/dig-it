@@ -20,12 +20,12 @@ Capstone.Views.PlaybackBar = Backbone.View.extend({
         radius: response.radius,
         blur: .9,
         gradient: {
-          '.25': '#0094D2', //light-blue
-          '.5' : '#4CBB17', //dark - green
-          '.65' : '#66FF33', // light-green
-          '.7': '#FF8C00', //theme-orange
-          '.83' : 'yellow',
-          '.95': 'red'
+          '.15': '#0094D2', //light-blue
+          '.3' : '#4CBB17', //dark - green
+          '.45' : '#66FF33', // light-green
+          '.5': '#FF8C00', //theme-orange
+          '.68' : 'yellow',
+          '.83': 'red'
         }
       });
 
