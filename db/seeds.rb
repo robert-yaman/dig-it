@@ -80,7 +80,7 @@ drake = User.create(username: "dragon", email: "dragon-dragon-123@SharedMailbox.
                     simultaneously occupied the chart's top three positions.")
 
 elvis = User.create(username: "the_king", email: "the-king-123@SharedMailbox.org",
-                    passowrd: "IAmElvis",
+                    password: "IAmElvis",
                     about_me: "I was born on January 8, 1935, in Tupelo, Mississippi,
                     the son of Gladys Love and Vernon Elvis Presley in the two-room
                     shotgun house built by Vernon's father in preparation for
@@ -92,7 +92,7 @@ elvis = User.create(username: "the_king", email: "the-king-123@SharedMailbox.org
                     inspiration.")
 
 thom = User.create(username: "yorkshire_thomming", email: "yorkshire-thomming-123@SharedMailbox.org",
-                    passowrd: "IAmThom",
+                    password: "IAmThom",
                     about_me: "I received my first guitar when I was seven; my
                     earliest musical inspiration was guitarist Brian May of Queen.
                     At 10, I made my own guitar, inspired by May's Red Special.
@@ -110,7 +110,7 @@ thom = User.create(username: "yorkshire_thomming", email: "yorkshire-thomming-12
                     \"Killer Cars\" and \"Airbag\" from OK Computer.")
 
 ravi = User.create(username: "ravi_ssss_123", email: "ravi-ssss-123@SharedMailbox.org",
-                    passowrd: "IAmRavi",
+                    password: "IAmRavi",
                     about_me: "I was born to a Bengali family in Varanasi, India,
                     and spent my youth touring India and Europe with the dance
                     group of my brother Uday Shankar. I gave up dancing in 1938
@@ -121,7 +121,7 @@ ravi = User.create(username: "ravi_ssss_123", email: "ravi-ssss-123@SharedMailbo
                     from 1949 to 1956.")
 
 led = User.create(username: "lead_zeppelin", email: "lead-zeppelin-123@SharedMailbox.org",
-                    passowrd: "IAmLed",
+                    password: "IAmLed",
                     about_me: "We are widely considered one of the most successful,
                     innovative, and influential rock groups in history. We are
                     one of the best-selling music artists in the history of audio
@@ -138,11 +138,74 @@ led = User.create(username: "lead_zeppelin", email: "lead-zeppelin-123@SharedMai
                       band states that they were \"as influential\" during the
                       1970s as the Beatles were during the 1960s.")
 
+sufjan = User.create(username: "-(s_s)-", email: "sufjan-stevens-123@SharedMailbox.org",
+                    password: "IAmSufjan",
+                    about_me: "I have released albums of varying styles, from the
+                    electronica of Enjoy Your Rabbit and the lo-fi folk of Seven
+                    Swans to the symphonic instrumentation of Illinois and
+                    Christmas-themed Songs for Christmas. I make use of a variety
+                    of instruments, often playing many of them myself on the same
+                    recording, and write music in various time signatures.
+                    Though I have repeatedly stated an intent to separate my beliefs
+                    from my music, I also freely draw from the Bible and Christian
+                    tradition.")
 
 
-ledsongs.create!(name: "The Fever (Aye Aye)", length: 187, file_path: "https://www.filepicker.io/api/file/N8If2Ko5TD2gx10iDmea")
-ledsongs.create!(name: "I've Seen Footage", length: 202, file_path: "https://www.filepicker.io/api/file/PHXQCL4OTuR5rLc1rskT")
-ledsongs.create!(name: "Get Got", length: 171, file_path: "https://www.filepicker.io/api/file/dXkOr1w0TCmkW7JazFJS")
+beethoven.songs.create!(artist_name: "Testament", length: 327, name: "True American Hate", file_path: "https://www.filepicker.io/api/file/O9epzCYyRltxSOj2dZvj")
+beethoven.songs.create!(artist_name: "Pictureplane", length: 200, name: "Goth Star", file_path: "https://www.filepicker.io/api/file/BlcxNm1TH6lIiMZt51fA")
+beethoven.songs.create!(artist_name: "Chrome Sprks", length: 261, name: "All There Is (Feat. Steffaloo)", file_path: "https://www.filepicker.io/api/file/2Zy5ABLSMixgDE5tlDN4")
+beethoven.songs.create!(length: 170, name: "Goliath", file_path: "https://www.filepicker.io/api/file/XFyR4DomTVKafy9ewTBE")
+beethoven.songs.create!(artist_name: "Waxahatchee", length: 150, name: "Grass Stain", file_path: "https://www.filepicker.io/api/file/A1p6AAIbQ12kaQlJ0cqT")
+beethoven.songs.create!(artist_name: "Graveyard", length: 167, name: "Endless Night", file_path: "https://www.filepicker.io/api/file/RDtWF7U8SXO0NLjmFrAB")
+
+ligeti.songs.create!(artist_name: "Poets of the Fall", length: 285, name: "Maybe Tomorrow is a Better Day", file_path: "https://www.filepicker.io/api/file/ZBnxVPXaSVKKcwqeh7EC")
+ligeti.songs.create!(artist_name: "Lifetheory", length: 138, name: "Daisy", file_path: "https://www.filepicker.io/api/file/rjldl7xSdS8HJP0zfBww")
+ligeti.songs.create!(artist_name: "Tin Man", length: 185, name: "Future Islands", file_path: "https://www.filepicker.io/api/file/PyhyQwlLTeOBbZK5WWBQ")
+ligeti.songs.create!(length: 206, name: "Pú ert sólin", file_path: "https://www.filepicker.io/api/file/y8Zgv4lRuI6Dn0Vil2wU")
+ligeti.songs.create!(artist_name: "Mac DeMarco", length: 191, name: "Rock and Roll Night Club", file_path: "https://www.filepicker.io/api/file/kgHhbCLrQxeHLZ13F9On")
+ligeti.songs.create!(artist_name: "Blackbird Blackbird", length: 144, name: "Pure", file_path: "https://www.filepicker.io/api/file/m70XfUbUTgWXifabIZyR")
+ligeti.songs.create!(artist_name: "Nils Frahm", length: 189, name: "You", file_path: "https://www.filepicker.io/api/file/75uKl0qyR2qU5vCLalr8")
+ligeti.songs.create!(length: 117, name: "Cyanide Sisters", file_path: "https://www.filepicker.io/api/file/HrLq3aS0TN0FgBgQgljF")
+
+sarah.songs.create!(name: "2080", length: 324, file_path: "https://www.filepicker.io/api/file/nodac3D0QsOswyMFvCyk")
+sarah.songs.create!(artist_name: "Gardens & Villa", name: "Black Hills", length: 285, file_path: "https://www.filepicker.io/api/file/PZKgiWsCRs2i07FafsWa")
+sarah.songs.create!(name: "Your First Light My Eventide", artist_name: "The Echelon Effect", length: 311, file_path: "https://www.filepicker.io/api/file/6PvrfjsKTcGV1bSQqJ4N")
+sarah.songs.create!(name: "Baby Missiles", artist_name: "The War on Drugs", length: 214, file_path: "https://www.filepicker.io/api/file/iZP43GoGQpu2cY9tVFdM")
+sarah.songs.create!(name: "Lionheart", artist_name: "Bury Tomorrow", length: 220, file_path: "https://www.filepicker.io/api/file/yLb3zAl6RaSzf07iZuDQ")
+sarah.songs.create!(artist_name: "Motorama", name: "Alps", length: 253, file_path: "https://www.filepicker.io/api/file/WOQ1iNBR6mBZAq6aLU93")
+sarah.songs.create!(name: "Catching Fireflies", artist_name: "The Soul's Release", length: 289, file_path: "https://www.filepicker.io/api/file/sVxepQqRiF5b7iCj6oCQ")
+
+sufjan.songs.create!(name: "Too Much", length: 404, file_path: "https://www.filepicker.io/api/file/nWSxTgT3TjWywjEldoIp")
+sufjan.songs.create!(name: "I Walked", length: 301, file_path: "https://www.filepicker.io/api/file/tv4wESzzQoqH2Bxw8FLg")
+
+bird.songs.create!(name: "Mlèdek", artist_name: "Russian Circles", length: 187, file_path: "https://www.filepicker.io/api/file/hvrqxNkSFykwzugePi7p")
+bird.songs.create!(name: "Re", artist_name: "Nils Frahm", length: 231, file_path: "https://www.filepicker.io/api/file/0pBAgHwuQuSh00SDS3sA")
+bird.songs.create!(artist_name: "Nils Frahm", name: "Do", length: 186, file_path: "https://www.filepicker.io/api/file/9yU4qqnSRhipJ8ksAarg")
+bird.songs.create!(name: "Thirteen Thirtyfive", artist_name: "Dillon", length: 224, file_path: "https://www.filepicker.io/api/file/l9w5XsdGRlegcK38GeiF")
+bird.songs.create!(name: "Little League", artist_name: "Cap'n Jazz", length: 237, file_path: "https://www.filepicker.io/api/file/f2Ir9dmESrmk9NBpCDf4")
+bird.songs.create!(artist_name: "Future Islands", name: "Before the Bridge", length: 256, file_path: "https://www.filepicker.io/api/file/2oROa3QRCmoIFUwZfkbn")
+
+lady_gaga.songs.create!(artist_name: "Evenings", length: 175, name: "Babe", file_path: "https://www.filepicker.io/api/file/lr3naXk7RFawEGQp4fDC")
+lady_gaga.songs.create!(artist_name: "Jens Lekman", length: 228, name: "An Argument With Myself", file_path: "https://www.filepicker.io/api/file/5U2At7jTaRMh52dCDZCA")
+lady_gaga.songs.create!(artist_name: "General Fuzz", length: 363, name: "Comfort Zone", file_path: "https://www.filepicker.io/api/file/IQZqmcP2RlG7GJQ5EQ4i")
+lady_gaga.songs.create!(length: 195, name: "Said And Done", file_path: "https://www.filepicker.io/api/file/P0EjhGP9ThCz6QYqqNmC")
+lady_gaga.songs.create!(length: 248, name: "Sunrise", file_path: "https://www.filepicker.io/api/file/ZG58pjcoR44VyjCVX3Fw")
+
+buble.songs.create!(artist_name: "Museum", length: 263, name: "The Law", file_path: "https://www.filepicker.io/api/file/t75GzsnaQFadhzPIyXZW")
+buble.songs.create!(artist_name: "The Glitch Mob", length: 220, name: "Warrior Concerto", file_path: "https://www.filepicker.io/api/file/PdlbvTzAQCwZFTplfiSY")
+buble.songs.create!(artist_name: "Alkaline Trio", length: 160, name: "Clavicle", file_path: "https://www.filepicker.io/api/file/GNPCZxg6Tf7IQaiIHAuA")
+buble.songs.create!(length: 191, name: "Bury Us Alive", file_path: "https://www.filepicker.io/api/file/a6Ep16pZS32kX1FXgswc")
+
+drake.songs.create!(name: "Mlèdek", artist_name: "Russian Circles", length: 187, file_path: "https://www.filepicker.io/api/file/hvrqxNkSFykwzugePi7p")
+drake.songs.create!(name: "Wind in Her Hair", artist_name: "Motorama", length: 288, file_path: "https://www.filepicker.io/api/file/h2uBio0URUWZNzmVZ3Lu")
+drake.songs.create!(artist_name: "Sonata Arctica", name: "I Have A Right", length: 289, file_path: "https://www.filepicker.io/api/file/txo367VR72JHT4OlmS11")
+
+elvis.songs.create!(artist_name: "Gem Club", length: 260, name: "Twins", file_path: "https://www.filepicker.io/api/file/B4P58xzmSSK8946POFY2")
+elvis.songs.create!(artist_name: "The Glitch Mob", length: 220, name: "Warrior Concerto", file_path: "https://www.filepicker.io/api/file/PdlbvTzAQCwZFTplfiSY")
+
+led.songs.create!(name: "The Fever (Aye Aye)", length: 187, file_path: "https://www.filepicker.io/api/file/N8If2Ko5TD2gx10iDmea")
+led.songs.create!(name: "I've Seen Footage", length: 202, file_path: "https://www.filepicker.io/api/file/PHXQCL4OTuR5rLc1rskT")
+led.songs.create!(name: "Get Got", length: 171, file_path: "https://www.filepicker.io/api/file/dXkOr1w0TCmkW7JazFJS")
 
 ravi.songs.create!(name: "Zonnestraal", artist_name: "De Hofnar", length: 257, file_path: "https://www.filepicker.io/api/file/9np5MpBQlyod6DOgGzFi")
 ravi.songs.create!(name: "Emily", length: 130, artist_name: "Gaba Kulka", file_path: "https://www.filepicker.io/api/file/xuKVsP81Ti2u3uGyGNPh")
@@ -153,3 +216,14 @@ ravi.songs.create!(name: "Ghost Town", length: 165, file_path: "https://www.file
 
 thom.songs.create!(name: "Odyseey", length: 277, file_path: "https://www.filepicker.io/api/file/oUKsUCnTq6NWhf24sDGw")
 thom.songs.create!(name: "Summe of Haze", length: 291, file_path: "https://www.filepicker.io/api/file/ptnsNufsQTSgGtcME8Lv")
+
+((User.count - 1) * 6).times do
+  following = Following.new(follower_id: (2..User.count).to_a.sample, followed_user_id: (1..User.count).to_a.sample)
+  until following.save
+    following = Following.new(follower_id: (2..User.count).to_a.sample, followed_user_id: (1..User.count).to_a.sample)
+  end
+end
+
+(1..7).each do |num|
+  beethoven.followings_as_subject.create!(followed_user_id: num + 2)
+end
