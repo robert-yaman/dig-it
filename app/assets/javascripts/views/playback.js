@@ -156,7 +156,8 @@ Capstone.Views.Playback = Backbone.CompositeView.extend({
       this.replaceSongInfo();
       this.$(".audio-tag").one("canplaythrough", function (){
         Capstone.dontPlayMoreSongs = false;
-        this.setDigInterval();
+        //to make sure that if the user pauses while the song is loading, the dig interval doesn't still run
+        if (this.currentSong.playing) this.setDigInterval();
       }.bind(this));
     }
 
