@@ -22,7 +22,12 @@ Capstone.Views.Feed = Backbone.CompositeView.extend({
       var newItems = new Capstone.Collections.Users();
     }
 
-    newItems.fetch({data : this.dataHash})
+    newItems.fetch({data : this.dataHash, success: function(response, collection) {
+      if (collection.length < 5) { // no more results
+        this.$(".expand-button").remove();
+      };
+    }.bind(this)});
+
     var newView = new Capstone.Views.SongList({ collection: newItems });
     //check if these in the onPageSongs collections
     this.addSubview('.current-list', newView);

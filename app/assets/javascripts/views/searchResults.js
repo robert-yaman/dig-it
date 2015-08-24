@@ -14,17 +14,6 @@ Capstone.Views.SearchResults = Backbone.CompositeView.extend({
     this.songOffset = 0;
     this.userOffset = 0;
 
-    // //listening for it another search is fired
-    // this.listenTo(this.songSearchResults, "sync", function() {
-    //   this.resetSearchResults();
-    //   this.render();
-    // });
-    //
-    // this.listenTo(this.userSearchResults, "sync", function() {
-    //   this.resetSearchResults();
-    //   this.render();
-    // });
-
     this.addSongResults();
     this.addUserResults();
   },
@@ -37,11 +26,13 @@ Capstone.Views.SearchResults = Backbone.CompositeView.extend({
   addUserResults: function () {
     var userResults = new Capstone.Views.UserList({collection: this.userSearchResults});
     this.addSubview(".user-results", userResults);  },
-    
+
   expandSongs: function () {
     this.songOffset++
     var newSongs = new Capstone.Collections.Songs();
-    newSongs.fetch({data: {query: this.songSearchResults.query, offset: this.songOffset}})
+    newSongs.fetch({data: {query: this.songSearchResults.query, offset: this.songOffset}, success: function (response, collection) {
+      if (collection.length < 7) {this.$(".song-expand-button").remove()}
+    }});
     var newView = new Capstone.Views.SongList({collection: newSongs})
     this.addSubview(".song-results", newView)
   },
@@ -49,7 +40,9 @@ Capstone.Views.SearchResults = Backbone.CompositeView.extend({
   expandUsers: function () {
     this.userOffset++
     var newUsers = new Capstone.Collections.Users();
-    newUsers.fetch({data: {query: this.userSearchResults.query, offset: this.userOffset}})
+    newUsers.fetch({data: {query: this.userSearchResults.query, offset: this.userOffset}, success: function (response, collection) {
+      if (collection.length < 7) {this.$(".user-expand-button").remove()}
+    }})
     var newView = new Capstone.Views.UserList({collection: newUsers})
     this.addSubview(".user-results", newView)
   },
