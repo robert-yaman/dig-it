@@ -10,17 +10,6 @@ class User < ActiveRecord::Base
     (user.is_password?(password) ? user : nil) if user
   end
 
-  # def self.followed_by(current_user_id)
-  #   ##just call current_user.followered.users you idiot!
-  #
-  #   #any particular order?
-  #
-  #   joins('INNER JOIN followings ON users.id = followings.followed_user_id')
-  #   .joins('INNER JOIN  users cu ON  cu.id = followings.follower_id')
-  #   .where("cu.id = #{current_user_id}").includes(:top_three_songs)
-  #   #actually, I know that the user is following all these ppl anyways...
-  # end
-
   def self.six_followed_by(current_user_id)
     ## just use followed_users!!!
     find_by_sql(<<-SQL)
