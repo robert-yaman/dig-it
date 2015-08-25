@@ -33,17 +33,15 @@ Capstone.Views.SongForm = Backbone.View.extend({
         $("#new-song-form").css({"display":"none"});
 
         //reset fields
-        this.render()
+        this.render();
 
+        //store the length in the db
         $("audio").one('loadedmetadata', function() {
-          newSong.set("length", Math.ceil($("audio")[0].duration))
-          // newSong.set("digs", function () {
-          //   newSong.get("length")
-          // }())
+          newSong.set("length", Math.ceil($("audio")[0].duration));
           newSong.save({}, {success: function (newerSong) {
             // so heatmap knows to rerender
-            newSong.trigger("gotDigs")
-            Capstone.newerSong = newerSong
+            newSong.trigger("gotDigs");
+            Capstone.newerSong = newerSong;
             newSong.set("digs", newerSong.get("digs"));
           }});
         });
