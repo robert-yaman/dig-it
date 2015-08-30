@@ -3,14 +3,21 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 #new-song-button {
-  background-color: #FF8C00;
-  color: #272B30;
   font-size: 18px;
   margin-right: 17px;
   margin-top: 5px;
   width: 37px;
   height: 37px;
   border-radius: 6px;
+  opacity: 1;
+  border: 4px solid #ff8c00;
+  background-color: inherit;
+  color: #c8c8c8
+}
+
+#new-song-button:hover {
+  color: #ff8c00;
+  border-color: #c8c8c8;
 }
 
 #lean_overlay {

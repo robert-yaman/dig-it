@@ -88,3 +88,11 @@ ul.queue-options .delete-song:hover .glyphicon {
 ul.queue-options .glyphicon-remove {
   padding-right: 7px;
 }
+
+.song-results.search-results .song-list-item:first-child {
+  border-top: 1px solid black;
+}
+
+.user-results.search-results .user-list-item:first-child {
+  border-top: 1px solid black;
+}
