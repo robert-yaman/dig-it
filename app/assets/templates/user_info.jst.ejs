@@ -8,10 +8,12 @@
     <%= user.escape("username") %>
   </h3>
 
-  <% if (user.isBeingFollowed()) { %>
-    <button class="btn btn-default follow-button following">Following</button>
-  <% } else { %>
-    <button class="btn btn-default follow-button not-following">+ Follow</button>
+  <% if (user.id !== Capstone.currentUser.id ) { %>
+    <% if (user.isBeingFollowed()) { %>
+      <button class="btn btn-default follow-button following">Following</button>
+    <% } else { %>
+      <button class="btn btn-default follow-button not-following">+ Follow</button>
+    <% } %>
   <% } %>
 
 </div>
