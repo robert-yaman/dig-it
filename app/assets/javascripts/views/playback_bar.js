@@ -19,7 +19,7 @@ Capstone.Views.PlaybackBar = Backbone.View.extend({
         container: $(".playback-bar")[0],
         radius: response.radius,
         blur: 0.7,
-        minOpacity: 0.45,
+        minOpacity: 0.49,
         maxOpacity: 1,
         gradient: {
           '.15': '#0094D2', //light-blue
