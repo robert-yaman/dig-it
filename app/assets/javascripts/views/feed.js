@@ -7,35 +7,35 @@ Capstone.Views.Feed = Backbone.CompositeView.extend({
     "click .top" : "topSongs",
     "click .new-user" :"newUsers",
     "click .following" : "following",
-    "click .expand-button" : "expandCurrentList"
+    "click .expand-button" : "renderNextCollection"
   },
 
   initialize: function () {
-    this.dataHash = {offset: 0}
+    //the dataHash will keep track of what sort of data is being displayed (songs or users), how many times the results have been expanded, and any other information that needs to be send to the server
+    this.dataHash = {offset: 0};
   },
 
-  expandCurrentList: function () {
+  fetchNextCollection: function () {
     this.dataHash.offset++;
+
     if (this.dataHash.dataType === "song") {
-      var newItems = new Capstone.Collections.Songs();
+      this.nextCollection = new Capstone.Collections.Songs();
     } else if (this.dataHash.dataType === "user") {
-      var newItems = new Capstone.Collections.Users();
+      this.nextCollection = new Capstone.Collections.Users();
     }
 
-    newItems.fetch({data : this.dataHash, success: function(response, collection) {
-      if (collection.length < 5) { // no more results
-        this.$(".expand-button").remove();
-      };
+    this.nextCollection.fetch({data : this.dataHash, success: function(response, collection) {
+      if (collection.length === 0) { // no more results to display
+        this.$(".expand-button").css("display", "none");
+      } else {
+        this.$(".expand-button").css("display", "block");
+      }
     }.bind(this)});
-
-    var newView = new Capstone.Views.SongList({ collection: newItems });
-    //check if these in the onPageSongs collections
-    this.addSubview('.current-list', newView);
   },
 
   following: function (event) {
     event.preventDefault();
-    this.dataHash.offset = 0
+    this.dataHash.offset = 0;
 
     this.dataHash = {following: true, offset: this.dataHash.offset, dataType: "song"};
 
@@ -43,12 +43,14 @@ Capstone.Views.Feed = Backbone.CompositeView.extend({
     followingSongsView.fetch({data: this.dataHash});
     var view = new Capstone.Views.SongList({ collection: followingSongsView });
 
+    this.fetchNextCollection();
+
     this._switchFeed(event, view);
   },
 
   newUsers: function(event) {
     event.preventDefault();
-    this.dataHash.offset = 0
+    this.dataHash.offset = 0;
 
     this.dataHash = {new_user: true, offset: this.dataHash.offset, dataType: "user"};
 
@@ -56,12 +58,14 @@ Capstone.Views.Feed = Backbone.CompositeView.extend({
     newUsers.fetch({data: this.dataHash});
     var view = new Capstone.Views.UserList({ collection: newUsers });
 
+    this.fetchNextCollection();
+
     this._switchFeed(event, view);
   },
 
   recentSongs: function(event) {
     event.preventDefault();
-    this.dataHash.offset = 0
+    this.dataHash.offset = 0;
 
     this.dataHash = {recent: true, offset: this.dataHash.offset, dataType: "song"};
 
@@ -69,11 +73,13 @@ Capstone.Views.Feed = Backbone.CompositeView.extend({
     recents.fetch({data: this.dataHash});
     var view = new Capstone.Views.SongList({ collection: recents });
 
+    this.fetchNextCollection();
+
     this._switchFeed(event, view);
   },
 
   render: function () {
-    var content = this.template({ });
+    var content = this.template();
     this.$el.html(content);
     this.attachSubviews();
 
@@ -83,15 +89,30 @@ Capstone.Views.Feed = Backbone.CompositeView.extend({
     return this;
   },
 
+  renderNextCollection: function () {
+    var newView;
+    if (this.dataHash.dataType === "song") {
+      newView = new Capstone.Views.SongList({ collection: this.nextCollection });
+    } else if (this.dataHash.dataType === "user") {
+      newView = new Capstone.Views.UserList({ collection: this.nextCollection });
+    }
+
+    this.addSubview('.current-list', newView);
+    this.fetchNextCollection();
+  },
+
   topSongs: function(event) {
     event.preventDefault();
-    this.dataHash.offset = 0
+    this.dataHash.offset = 0;
 
     this.dataHash = {top: true, offset: this.dataHash.offset, dataType: "song"};
 
     var tops = new Capstone.Collections.Songs();
     tops.fetch({data: this.dataHash});
     var view = new Capstone.Views.SongList({ collection: tops });
+
+    //the next collection is fetched ahead of time to improve perceived load time
+    this.fetchNextCollection();
 
     this._switchFeed(event, view);
   },
