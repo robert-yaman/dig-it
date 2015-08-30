@@ -6,12 +6,12 @@ Capstone.Views.UserFeed = Backbone.CompositeView.extend({
     "click .recent" : "userRecentSongs",
     "click .top" : "userTopSongs",
     "click a.all-songs" : "renderAllSongs",
-    "click .expand-button" : "expandCurrentList"
+    "click .expand-button" : "renderNextCollection"
   },
 
   initialize: function () {
-    this.dataHash = {offset: 0}
-    this.listenTo(this.model, "sync", this.render)
+    this.dataHash = {offset: 0};
+    this.listenTo(this.model, "sync", this.render);
   },
 
   expandCurrentList: function () {
@@ -20,8 +20,8 @@ Capstone.Views.UserFeed = Backbone.CompositeView.extend({
     newItems.fetch({data : this.dataHash, success: function(response, collection) {
       if (collection.length < 5) { // no more results
         this.$(".expand-button").remove();
-      };
-    }.bind(this)})
+      }
+    }.bind(this)});
     var newView = new Capstone.Views.SongList({ collection: newItems });
     //check if these in the onPageSongs collections
     this.addSubview('.current-list', newView);
@@ -29,7 +29,7 @@ Capstone.Views.UserFeed = Backbone.CompositeView.extend({
 
   userRecentSongs: function(event) {
     event.preventDefault();
-    this.dataHash.offset = 0
+    this.dataHash.offset = 0;
 
     this.dataHash = {recent: true, which_user: this.model.id, offset: this.dataHash.offset};
 
@@ -56,17 +56,17 @@ Capstone.Views.UserFeed = Backbone.CompositeView.extend({
   renderAllSongs: function (event) {
     event.preventDefault();
     var allSongs = new Capstone.Collections.Songs();
-    allSongs.fetch({data : {which_user : this.model.id}})
+    allSongs.fetch({data : {which_user : this.model.id}});
     Capstone.modalSearchView.collection = allSongs;
     Capstone.modalSearchView.configSongList();
-    Capstone.modalSearchView.render()
-    Capstone.modalSearchView.$el.css("display", "block")
-    Capstone.modalSearchView.$el.addClass("showing")
+    Capstone.modalSearchView.render();
+    Capstone.modalSearchView.$el.css("display", "block");
+    Capstone.modalSearchView.$el.addClass("showing");
   },
 
   userTopSongs: function(event) {
     event.preventDefault();
-    this.dataHash.offset = 0
+    this.dataHash.offset = 0;
 
     this.dataHash = {top: true, which_user: this.model.id, offset: this.dataHash.offset};
 
