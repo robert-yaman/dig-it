@@ -1,6 +1,5 @@
 Capstone.Views.Feed = Backbone.CompositeView.extend(
   _.extend({}, Capstone.Mixins.Expandable, {
-
     template: JST["feed"],
     className: "feed",
 
