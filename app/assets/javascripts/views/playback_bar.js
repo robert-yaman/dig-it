@@ -18,7 +18,9 @@ Capstone.Views.PlaybackBar = Backbone.View.extend({
       var heatmap = h337.create({
         container: $(".playback-bar")[0],
         radius: response.radius,
-        blur: .9,
+        blur: 0.7,
+        minOpacity: 0.45,
+        maxOpacity: 1,
         gradient: {
           '.15': '#0094D2', //light-blue
           '.3' : '#4CBB17', //dark - green
@@ -33,9 +35,9 @@ Capstone.Views.PlaybackBar = Backbone.View.extend({
       $(".playback-bar canvas").css("height", this.model.get("length") * 15);
 
       //storing info for life data update later
-      this.heatmap = heatmap
+      this.heatmap = heatmap;
       this.radius = response.radius;
-      this.max = response.max
+      this.max = response.max;
 
       delete response.radius;
 
@@ -43,7 +45,7 @@ Capstone.Views.PlaybackBar = Backbone.View.extend({
       heatmap.setData(response);
 
       //getting set as side effect
-      delete this.model.attributes.data
+      delete this.model.attributes.data;
     }.bind(this), silent: true}); //silent true is to avoid infinite loop with listener made in initialize (should I also create that conditional for list items?)
   }
 });
