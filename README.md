@@ -33,7 +33,7 @@ Dig-it is a non-commercial music sharing app inspired by SoundCloud. Users can  
 - Ruby on Rails
 - PostgreSQL
 - Boostrap
-- [https://www.filepicker.com/](Filepicker)
-- [http://www.patrick-wied.at/static/heatmapjs/](heatmap.js)
-- [https://en.gravatar.com/](Gravatar)
-- [http://leanmodal.finelysliced.com.au/](leanModal)
+- [Filepicker](https://www.filepicker.com/)
+- [heatma.js](http://www.patrick-wied.at/static/heatmapjs/)
+- [Gravatar](https://en.gravatar.com/)
+- [leanModal](http://leanmodal.finelysliced.com.au/)
