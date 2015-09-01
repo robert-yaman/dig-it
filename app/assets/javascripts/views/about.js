@@ -3,7 +3,7 @@ Capstone.Views.About = Backbone.View.extend({
   classname: "about",
 
   initialize: function() {
-    this.listenTo(Capstone.currentUser, "sync", this.render)
+    this.listenTo(Capstone.currentUser, "sync", this.render);
   },
 
   render: function () {

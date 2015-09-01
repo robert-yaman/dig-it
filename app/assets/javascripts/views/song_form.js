@@ -53,14 +53,16 @@ Capstone.Views.SongForm = Backbone.View.extend({
 
       error: function(model, response) {
         if (response.responseText.match("Name can't be blank")) {
-          this.$("#song-name").addClass("error")
+          this.$("#song-name").addClass("error");
         }
 
         if (response.responseText.match("File path can't be blank")) {
           if (this.$(".error-message").length === 0) {
-            var $error = $("<p class=error-message>Please choose a file</p>")
-            $error.css("color", "red").css("margin-top", 5).css("margin-bottom", 5)
-            this.$(".form-group.fp").append($error)
+            var $error = $("<p class=error-message>Please choose a file</p>");
+            $error.css("color", "red")
+                  .css("margin-top", 5)
+                  .css("margin-bottom", 5);
+            this.$(".form-group.fp").append($error);
           }
         }
 

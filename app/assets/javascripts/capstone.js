@@ -8,7 +8,9 @@ window.Capstone = {
   initialize: function(options) {
     //id 0 so that it will go to the right controller action
     window.Capstone.currentUser = new Capstone.Models.User({id: 0});
-    window.Capstone.currentUser.fetch({data : {current: true, extra_profile_info: true}});
+    window.Capstone.currentUser.fetch({
+      data : {current: true, extra_profile_info: true}
+    });
 
     var userSearchResults = new Capstone.Collections.Users();
     var songSearchResults = new Capstone.Collections.Songs();
@@ -28,7 +30,9 @@ window.Capstone = {
     //this model represents the song most recently added to the queue. Not a collection b/c I want to allow duplicates of the same song on the queue
     Capstone.queueSong = new Capstone.Models.Song();
 
-    var playback = new Capstone.Views.Playback({model: new Capstone.Models.Song()});
+    var playback = new Capstone.Views.Playback({
+      model: new Capstone.Models.Song()
+    });
     $('#playback').html(playback.$el);
     playback.render();
 

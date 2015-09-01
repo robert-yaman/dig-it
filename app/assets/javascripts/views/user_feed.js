@@ -19,7 +19,12 @@ Capstone.Views.UserFeed = Backbone.CompositeView.extend(
       event.preventDefault();
       this.dataHash.offset = 0;
 
-      this.dataHash = {recent: true, which_user: this.model.id, offset: this.dataHash.offset, dataType: "song"};
+      this.dataHash = {
+        recent: true,
+        which_user: this.model.id,
+        offset: this.dataHash.offset,
+        dataType: "song"
+      };
 
       var recents = new Capstone.Collections.Songs();
       recents.fetch({data: this.dataHash});
@@ -38,7 +43,7 @@ Capstone.Views.UserFeed = Backbone.CompositeView.extend(
       //click on whatever tab I have chosen to be active
       this.$("li.active").trigger("click");
 
-      this.$("a.all-songs").leanModal(); //not using this the way it was meant...
+      this.$("a.all-songs").leanModal();
 
       return this;
     },

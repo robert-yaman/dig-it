@@ -17,11 +17,11 @@ Capstone.Routers.AppRouter = Backbone.Router.extend({
   },
 
   aboutDigIt: function () {
-    this._switch(new Capstone.Views.AboutDigIt())
+    this._switch(new Capstone.Views.AboutDigIt());
   },
 
   feedback: function () {
-    this._switch(new Capstone.Views.Feedback())
+    this._switch(new Capstone.Views.Feedback());
   },
 
   feedPage : function () {
@@ -44,7 +44,9 @@ Capstone.Routers.AppRouter = Backbone.Router.extend({
   //COULD make a conditional in Show to see if id is currentuser.id, but then have to wait for current user to fetch
   //It will be easier now that I switched order in initialize
   profile: function() {
-    var profile = new Capstone.Views.CurrentUserProfile({model: Capstone.currentUser});
+    var profile = new Capstone.Views.CurrentUserProfile({
+      model: Capstone.currentUser
+    });
     this._switch(profile);
 
     if (Capstone.tutorialMode === 5) Capstone.runFifthTutorial();
@@ -60,7 +62,7 @@ Capstone.Routers.AppRouter = Backbone.Router.extend({
 
   tutorial: function () {
     Capstone.tutorialMode = 1;
-    Backbone.history.navigate("/#", {trigger: true})
+    Backbone.history.navigate("/#", {trigger: true});
   },
 
   userShow: function(id) {

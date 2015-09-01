@@ -23,7 +23,7 @@ Capstone.Views.LeaderListItem = Backbone.CompositeView.extend(
       var cur; var model;
 
       for (var i = 0; i < 3; i++) {
-        cur = songs.at(i)
+        cur = songs.at(i);
         if (cur) {
           if (cur.id === (Capstone.currentSong && Capstone.currentSong.id)) {
             model = Capstone.currentSong;

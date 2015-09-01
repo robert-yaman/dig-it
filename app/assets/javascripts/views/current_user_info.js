@@ -17,19 +17,20 @@ Capstone.Views.CurrentUserInfo = Backbone.CompositeView.extend({
   displayAboutMeForm: function (event) {
     event.preventDefault();
     var form = new Capstone.Views.AboutMeForm({model :this.model});
-    this.removeModelSubview(".about-me", this.model)
+    this.removeModelSubview(".about-me", this.model);
     this.$(".tell-us").remove();
-    this.addSubview(".about-me", form)
-    this.$(".about-me-textarea").focus()
+    this.addSubview(".about-me", form);
+    this.$(".about-me-textarea").focus();
     this.$(".about-me-textarea").one("blur", function () {
-      this.$(".about-me-form").submit()
-      this.displayNormalAboutMe()
-    }.bind(this))
+      this.$(".about-me-form").submit();
+      this.displayNormalAboutMe();
+    }.bind(this));
   },
 
   displayNormalAboutMe: function () {
-    this.removeModelSubview(".about-me", this.model)
-    this.addSubview(".about-me", new Capstone.Views.AboutMe({model: this.model}));
+    this.removeModelSubview(".about-me", this.model);
+    this.addSubview(".about-me",
+                    new Capstone.Views.AboutMe({model: this.model}));
   },
 
   render: function () {

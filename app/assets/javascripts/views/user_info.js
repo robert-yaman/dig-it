@@ -8,9 +8,13 @@ Capstone.Views.UserInfo = Backbone.CompositeView.extend(
 
     initialize: function () {
       this.listenTo(this.model, "sync", this.render);
-      this.listenTo(this.model.follow(), "change", this.render)
+      this.listenTo(this.model.follow(), "change", this.render);
 
-      this.addSubview(".most-popular-song .song-item", new Capstone.Views.UserListItemSongItem({model: this.model.mostPopularSong() }))
+      this.addSubview(".most-popular-song .song-item",
+                      new Capstone.Views.UserListItemSongItem({
+                        model: this.model.mostPopularSong()
+                      })
+      );
     },
 
     render: function () {

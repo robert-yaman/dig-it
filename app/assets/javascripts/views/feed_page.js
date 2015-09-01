@@ -14,7 +14,7 @@ Capstone.Views.FeedPage = Backbone.CompositeView.extend({
 
   addLeaderboard: function () {
     var leaders = new Capstone.Collections.Users();
-    leaders.fetch({data : { leaders : true } })
+    leaders.fetch({data : { leaders : true } });
 
     var leaderboard = new Capstone.Views.Leaderboard({collection: leaders});
     this.addSubview(".leaderboard", leaderboard);

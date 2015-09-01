@@ -10,8 +10,8 @@ Capstone.Views.AboutMeForm = Backbone.View.extend({
   },
 
   submitAboutMe: function (event) {
-    event.preventDefault()
-    this.model.set("about_me", this.$(".about-me-textarea").val())
-    this.model.save()
+    event.preventDefault();
+    this.model.set("about_me", this.$(".about-me-textarea").val());
+    this.model.save();
   }
 });

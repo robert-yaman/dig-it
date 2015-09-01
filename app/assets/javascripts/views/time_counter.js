@@ -6,4 +6,4 @@ Capstone.Views.TimeCounter = Backbone.View.extend({
     this.$el.html(content);
     return this;
   }
-})
+});

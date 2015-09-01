@@ -25,18 +25,18 @@ Capstone.Views.FollowingList = Backbone.CompositeView.extend({
     var content = this.template();
     this.$el.html(content);
     this.attachSubviews();
-    this.$("a.all-following").leanModal(); //not using this the way it was meant...
+    this.$("a.all-following").leanModal();
     return this;
   },
 
   renderFollowingUsers: function (event) {
     event.preventDefault();
     var followedUsers = new Capstone.Collections.Users();
-    followedUsers.fetch({data : {followed_by : this.model.id}})
+    followedUsers.fetch({data : {followed_by : this.model.id}});
     Capstone.modalSearchView.collection = followedUsers;
     Capstone.modalSearchView.configUserList();
-    Capstone.modalSearchView.render()
-    Capstone.modalSearchView.$el.css("display", "block")
-    Capstone.modalSearchView.$el.addClass("showing")
+    Capstone.modalSearchView.render();
+    Capstone.modalSearchView.$el.css("display", "block");
+    Capstone.modalSearchView.$el.addClass("showing");
   }
 });

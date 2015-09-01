@@ -13,18 +13,18 @@ Capstone.Views.SongListItem = Backbone.View.extend({
   initialize: function () {
     //so doesn't re-render when digs array is saved
     this.model.on("sync", function(model, resp, options) {
-      if (options.silent) return
+      if (options.silent) return;
       this.render;
     })
     // this.listenTo(this.model, "sync", this.render)
-    this.listenTo(this.model, "play", this.activate)
-    this.listenTo(this.model, "pause", this.deactivate)
+    this.listenTo(this.model, "play", this.activate);
+    this.listenTo(this.model, "pause", this.deactivate);
   },
 
   activate: function () {
-    this.$(".playback-button").addClass("playing")
-    this.$(".playback-button .glyphicon").removeClass("glyphicon-play")
-    this.$(".playback-button .glyphicon").addClass("glyphicon-pause")
+    this.$(".playback-button").addClass("playing");
+    this.$(".playback-button .glyphicon").removeClass("glyphicon-play");
+    this.$(".playback-button .glyphicon").addClass("glyphicon-pause");
   },
 
   addToQueue: function (event) {
@@ -33,13 +33,13 @@ Capstone.Views.SongListItem = Backbone.View.extend({
   },
 
   deactivate: function () {
-    this.$(".playback-button").removeClass("playing")
-    this.$(".playback-button .glyphicon").removeClass("glyphicon-pause")
-    this.$(".playback-button .glyphicon").addClass("glyphicon-play")
+    this.$(".playback-button").removeClass("playing");
+    this.$(".playback-button .glyphicon").removeClass("glyphicon-pause");
+    this.$(".playback-button .glyphicon").addClass("glyphicon-play");
   },
 
   deleteMe: function (event) {
-    event.preventDefault()
+    event.preventDefault();
     this.model.collection.remove(this.model);
     this.model.destroy();
   },
@@ -62,7 +62,9 @@ Capstone.Views.SongListItem = Backbone.View.extend({
     var content = this.template({ song: this.model });
     this.$el.html(content);
 
-    if (this.model === Capstone.currentSong && Capstone.currentSong.playing) this.activate();
+    if (this.model === Capstone.currentSong && Capstone.currentSong.playing) {
+       this.activate();
+     }
 
     return this;
   }

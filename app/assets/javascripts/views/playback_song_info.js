@@ -3,7 +3,7 @@ Capstone.Views.PlaybackSongInfo = Backbone.View.extend({
   className: "playback_song_info",
 
   initialize: function() {
-    this.listenTo(this.model, "sync", this.render)
+    this.listenTo(this.model, "sync", this.render);
   },
 
   render: function () {

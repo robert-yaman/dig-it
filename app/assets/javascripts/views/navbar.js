@@ -34,12 +34,12 @@ Capstone.Views.Navbar = Backbone.View.extend({
     this.userSearchResults.query = decodeURI(searchString);
     this.songSearchResults.query = decodeURI(searchString);
 
-    this.userSearchResults.fetch({ data : {query: decodeURI(searchString)} })
-    this.songSearchResults.fetch({ data : {query: decodeURI(searchString)} })
+    this.userSearchResults.fetch({ data : {query: decodeURI(searchString)} });
+    this.songSearchResults.fetch({ data : {query: decodeURI(searchString)} });
 
-    Backbone.history.navigate("#search", {trigger: true})
+    Backbone.history.navigate("#search", {trigger: true});
     //in case searching from the search page
-    Capstone.appRouter.search()
+    Capstone.appRouter.search();
     $("#search-bar").val("");
   },
 
@@ -47,7 +47,7 @@ Capstone.Views.Navbar = Backbone.View.extend({
     var song = new Capstone.Models.Song();
     var view = new Capstone.Views.SongForm({model: song});
     $("body").append(view.$el);
-    view.$el.css("display", "none") //setting up modal
+    view.$el.css("display", "none"); //setting up modal
     view.render();
     $("#new-song-button").leanModal();
   }

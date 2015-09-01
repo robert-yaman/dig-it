@@ -46,6 +46,7 @@ Capstone.Views.PlaybackBar = Backbone.View.extend({
 
       //getting set as side effect
       delete this.model.attributes.data;
-    }.bind(this), silent: true}); //silent true is to avoid infinite loop with listener made in initialize (should I also create that conditional for list items?)
+    }.bind(this), silent: true});
+    //silent true is to avoid infinite loop with listener made in initialize
   }
 });

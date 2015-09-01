@@ -20,11 +20,17 @@ Capstone.Views.Feed = Backbone.CompositeView.extend(
       event.preventDefault();
       this.dataHash.offset = 0;
 
-      this.dataHash = {following: true, offset: this.dataHash.offset, dataType: "song"};
+      this.dataHash = {
+        following: true,
+        offset: this.dataHash.offset,
+        dataType: "song"
+      };
 
       var followingSongsView = new Capstone.Collections.Songs();
       followingSongsView.fetch({data: this.dataHash});
-      var view = new Capstone.Views.SongList({ collection: followingSongsView });
+      var view = new Capstone.Views.SongList({
+        collection: followingSongsView
+      });
 
       this.fetchNextCollection();
 
@@ -35,7 +41,11 @@ Capstone.Views.Feed = Backbone.CompositeView.extend(
       event.preventDefault();
       this.dataHash.offset = 0;
 
-      this.dataHash = {new_user: true, offset: this.dataHash.offset, dataType: "user"};
+      this.dataHash = {
+        new_user: true,
+        offset: this.dataHash.offset,
+        dataType: "user"
+      };
 
       var newUsers = new Capstone.Collections.Users();
       newUsers.fetch({data: this.dataHash});
@@ -76,7 +86,11 @@ Capstone.Views.Feed = Backbone.CompositeView.extend(
       event.preventDefault();
       this.dataHash.offset = 0;
 
-      this.dataHash = {top: true, offset: this.dataHash.offset, dataType: "song"};
+      this.dataHash = {
+        top: true,
+        offset: this.dataHash.offset,
+        dataType: "song"
+      };
 
       var tops = new Capstone.Collections.Songs();
       tops.fetch({data: this.dataHash});

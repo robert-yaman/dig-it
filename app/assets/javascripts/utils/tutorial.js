@@ -5,6 +5,7 @@ Capstone.runFirstTutorial = function () {
   helper.html("Welcome to Dig-it! Over here is the leaderboard, with the hottest songs and users. To begin, click play for the song at the top of the list, Bury Us Alive.");
   helper.css("top", "124px").css("left", "-218px");
   $(".leaderboard").append(helper);
+  $(".leaderboard :first-child.leader-list-item :first-child.user-list-item-song-item button");
 };
 
 Capstone.runSecondTutorial = function () {

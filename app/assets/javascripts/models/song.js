@@ -15,7 +15,7 @@ Capstone.Models.Song = Backbone.Model.extend({
       if (song.id === this.id) {
         song.trigger("pause");
       }
-    }.bind(this))
+    }.bind(this));
   },
 
   play: function () {

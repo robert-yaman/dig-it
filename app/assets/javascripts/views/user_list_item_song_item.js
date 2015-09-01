@@ -11,21 +11,21 @@ Capstone.Views.UserListItemSongItem = Backbone.View.extend({
 
   initialize: function () {
     //change listener is for most popular song on user show page
-    this.listenTo(this.model, "change", this.render)
-    
+    this.listenTo(this.model, "change", this.render);
+
     this.model.on("sync", function(model, resp, options) {
-      if (options.silent) return
+      if (options.silent) return;
       this.render;
-    })
+    });
     // this.listenTo(this.model, "sync", this.render)
-    this.listenTo(this.model, "play", this.activate)
-    this.listenTo(this.model, "pause", this.deactivate)
+    this.listenTo(this.model, "play", this.activate);
+    this.listenTo(this.model, "pause", this.deactivate);
   },
 
   activate: function () {
-    this.$(".mini-playback-button").addClass("playing")
-    this.$(".mini-playback-button").removeClass("glyphicon-play")
-    this.$(".mini-playback-button").addClass("glyphicon-pause")
+    this.$(".mini-playback-button").addClass("playing");
+    this.$(".mini-playback-button").removeClass("glyphicon-play");
+    this.$(".mini-playback-button").addClass("glyphicon-pause");
   },
 
   addToQueue: function (event) {
@@ -34,9 +34,9 @@ Capstone.Views.UserListItemSongItem = Backbone.View.extend({
   },
 
   deactivate: function () {
-    this.$(".mini-playback-button").removeClass("playing")
-    this.$(".mini-playback-button").removeClass("glyphicon-pause")
-    this.$(".mini-playback-button").addClass("glyphicon-play")
+    this.$(".mini-playback-button").removeClass("playing");
+    this.$(".mini-playback-button").removeClass("glyphicon-pause");
+    this.$(".mini-playback-button").addClass("glyphicon-play");
   },
 
   togglePlay: function () {

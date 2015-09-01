@@ -2,9 +2,9 @@ Capstone.Views.Playback = Backbone.CompositeView.extend({
   template: JST["playback"],
 
   initialize: function() {
-    Capstone.playback = this
+    Capstone.playback = this;
     this.digsGiven = 0;
-    this.queue = []
+    this.queue = [];
 
     //maybe move the button to the song-info -- or make its own view!
     this.installListeners();
@@ -50,13 +50,17 @@ Capstone.Views.Playback = Backbone.CompositeView.extend({
   },
 
   digNow: function () {
-    this.digsGiven++
+    this.digsGiven++;
     //add to model for db
     this.model.get("digs")[this.secondsCounter]++;
 
     //add to canvas for live update
     var heatmapView = this.subviews(".playback-bar").first();
-    heatmapView.heatmap.addData({x : this.secondsCounter * heatmapView.radius, y : 0, value: heatmapView.max / 4, radius: heatmapView.radius * 1.6}); //changing radius for more instant feedback
+    heatmapView.heatmap.addData({
+      x : this.secondsCounter * heatmapView.radius,
+      y : 0, value: heatmapView.max / 4,
+      radius: heatmapView.radius * 1.6
+    }); //changing radius for more instant feedback
 
     if (Capstone.tutorialMode === 4) Capstone.runFourthTutorial();
   },
@@ -69,21 +73,32 @@ Capstone.Views.Playback = Backbone.CompositeView.extend({
 
   jumpSpots: function(event) {
     var proportionOfSong = event.offsetX / $(".playback-bar").width();
-    var newSecondValue = Math.floor(proportionOfSong * Capstone.currentSong.get("length"));
-    var newFpsCounter = Math.floor(((proportionOfSong * Capstone.currentSong.get("length")) - newSecondValue) / this.fps)
+    var newSecondValue = Math.floor(
+      proportionOfSong * Capstone.currentSong.get("length")
+    );
+    var newFpsCounter = Math.floor(
+      ((proportionOfSong * Capstone.currentSong.get("length")) -
+      newSecondValue) / this.fps
+    );
 
     this.$("audio")[0].currentTime = newSecondValue;
     this.secondsCounter = newSecondValue;
     this.fpsCounter = newFpsCounter;
 
     //re-render time-counter
-    this.subviews(".time-counter").first().time = Capstone.timify(newSecondValue)
+    this.subviews(".time-counter").first().time = Capstone.timify(newSecondValue);
     this.subviews(".time-counter").first().render();
 
     //re-render visual pointers in case paused
     if (!Capstone.currentSong.playing) {
-      var pointerPos = (this.$(".playback-bar").width() * (this.secondsCounter * this.fps + this.fpsCounter)) / (Capstone.currentSong.get("length") * this.fps)
-      this.$(".playback-pointers").css("transform", "translate(" + pointerPos + "px,0)")
+      var pointerPos = (
+        this.$(".playback-bar").width() *
+        (this.secondsCounter * this.fps + this.fpsCounter)) /
+        (Capstone.currentSong.get("length") *
+        this.fps
+      );
+      this.$(".playback-pointers")
+          .css("transform", "translate(" + pointerPos + "px,0)");
     }
 
     if (Capstone.tutorialMode === 3) Capstone.runThirdTutorial();
@@ -92,7 +107,7 @@ Capstone.Views.Playback = Backbone.CompositeView.extend({
   nextSong: function (event) {
     event && event.preventDefault();
     if (this.queue[0]) {
-      this.queue[this.queue.length - 1].play()
+      this.queue[this.queue.length - 1].play();
       this.queue.pop();
       this.subviews(".queue").first().render();
     }
@@ -105,7 +120,7 @@ Capstone.Views.Playback = Backbone.CompositeView.extend({
   },
 
   playOrPause: function (event) {
-    if (!this.$("nav").hasClass("active")) return
+    if (!this.$("nav").hasClass("active")) return;
     if (this.$(".playback-play-button").hasClass("playing")) {
       this.model.pause();
     } else {
@@ -117,7 +132,9 @@ Capstone.Views.Playback = Backbone.CompositeView.extend({
     //if this is the first song played
     if (!this.$("nav").hasClass("active")) {
       this.$("nav").addClass("active");
-      this.$(".playback-play-button").addClass("playing").addClass("glyphicon-pause");
+      this.$(".playback-play-button")
+          .addClass("playing")
+          .addClass("glyphicon-pause");
       this.setUpVolBars();
       this.setUpPointers();
     }
@@ -136,15 +153,15 @@ Capstone.Views.Playback = Backbone.CompositeView.extend({
       Capstone.currentSong = song;
       this.model = song;
 
-      this.subviews(".time-counter").first().time = "0:00"
+      this.subviews(".time-counter").first().time = "0:00";
       this.subviews(".time-counter").first().render();
 
-      this.$(".playback-pointers").css("transform", "translate(0, 0)")
+      this.$(".playback-pointers").css("transform", "translate(0, 0)");
 
-      this.secondsCounter = 0
-      this.fpsCounter = 0
+      this.secondsCounter = 0;
+      this.fpsCounter = 0;
 
-      this.$(".audio-tag").attr("src", song.escape("file_path"))
+      this.$(".audio-tag").attr("src", song.escape("file_path"));
       this.$(".audio-tag")[0].play();
 
       //need to install new listeners because the model has changed
@@ -158,7 +175,7 @@ Capstone.Views.Playback = Backbone.CompositeView.extend({
       }.bind(this));
     }
 
-    Capstone.currentSong.playing = true
+    Capstone.currentSong.playing = true;
   },
 
   replaceQueue: function () {
@@ -171,10 +188,11 @@ Capstone.Views.Playback = Backbone.CompositeView.extend({
 
   replacePlaybackBar: function () {
     //remove heatmaps
-    $("canvas.heatmap-canvas").remove()
+    $("canvas.heatmap-canvas").remove();
 
     if (this.subviews(".playback-bar").first()) {
-      this.removeSubview(".playback-bar", this.subviews(".playback-bar").first());
+      this.removeSubview(".playback-bar",
+                         this.subviews(".playback-bar").first());
     }
     var view = new Capstone.Views.PlaybackBar({model: this.model});
     this.addSubview(".playback-bar", view);
@@ -182,7 +200,8 @@ Capstone.Views.Playback = Backbone.CompositeView.extend({
 
   replaceSongInfo: function () {
     if (this.subviews(".playback-song-info").first()) {
-      this.removeSubview(".playback-song-info", this.subviews(".playback-song-info").first());
+      this.removeSubview(".playback-song-info",
+                        this.subviews(".playback-song-info").first());
     }
     var view = new Capstone.Views.PlaybackSongInfo({model: this.model});
     this.addSubview(".playback-song-info", view);
@@ -196,34 +215,37 @@ Capstone.Views.Playback = Backbone.CompositeView.extend({
     this.fpsCounter = 0;
 
     //re-render time-counter
-    this.subviews(".time-counter").first().time = Capstone.timify(0)
+    this.subviews(".time-counter").first().time = Capstone.timify(0);
     this.subviews(".time-counter").first().render();
 
     //re-render visual pointers in case paused
     if (!Capstone.currentSong.playing) {
-      this.$(".playback-pointers").css("transform", "translate(0, 0)")
+      this.$(".playback-pointers").css("transform", "translate(0, 0)");
     }
   },
 
   setDigInterval: function () {
-    var fps = this.fps = 12
-    this.fpsCounter = this.fpsCounter || 0
-    var pointerPos
+    var fps = this.fps = 12;
+    this.fpsCounter = this.fpsCounter || 0;
+    var pointerPos;
 
     //install dig button and song jumping
-    this.$("#dig-button").click(this.digNow.bind(this))
-    this.$("#dig-button").addClass("can-light-up")
+    this.$("#dig-button").click(this.digNow.bind(this));
+    this.$("#dig-button").addClass("can-light-up");
     this.$(".playback-bar").click(this.jumpSpots.bind(this));
     this.digInterval = setInterval(function(){
-      this.fpsCounter++
-      this.fpsCounter = this.fpsCounter % fps
+      this.fpsCounter++;
+      this.fpsCounter = this.fpsCounter % fps;
       //reassigning each time in case browser is resized. In terms of secondsCounter to facilitate pausing
-      pointerPos = (this.$(".playback-bar").width() * (this.secondsCounter * fps + this.fpsCounter)) / (Capstone.currentSong.get("length") * fps)
-      this.$(".playback-pointers").css("transform", "translate(" + pointerPos + "px,0)")
+      pointerPos = (this.$(".playback-bar").width() *
+                   (this.secondsCounter * fps + this.fpsCounter)) /
+                   (Capstone.currentSong.get("length") * fps);
+      this.$(".playback-pointers")
+          .css("transform", "translate(" + pointerPos + "px,0)");
 
       //if on the second mark
       if (this.fpsCounter === fps - 1) {
-        this.secondsCounter++
+        this.secondsCounter++;
 
         //song is over
         if (this.secondsCounter === this.model.get("length")) {
@@ -236,14 +258,17 @@ Capstone.Views.Playback = Backbone.CompositeView.extend({
           }
         }
         //update time counter
-        this.subviews(".time-counter").first().time = Capstone.timify(this.secondsCounter);
+        this.subviews(".time-counter").first().time =
+                                  Capstone.timify(this.secondsCounter);
         this.subviews(".time-counter").first().render();
       }
-    }.bind(this), 1000 / fps)
+    }.bind(this), 1000 / fps);
   },
 
   setUpPointers: function () {
-    this.$(".playback-pointers").html("<span class='glyphicon glyphicon-chevron-down'></span><span class='glyphicon glyphicon-chevron-up'></span>")
+    this.$(".playback-pointers").html(
+      "<span class='glyphicon glyphicon-chevron-down'></span><span class='glyphicon glyphicon-chevron-up'></span>"
+    );
   },
 
   setUpVolBars: function () {
@@ -253,7 +278,7 @@ Capstone.Views.Playback = Backbone.CompositeView.extend({
       }
     });
 
-    this.$(".audio-tag")[0].volume = 4 / 6
+    this.$(".audio-tag")[0].volume = 4 / 6;
   },
 
   render: function () {
@@ -264,9 +289,9 @@ Capstone.Views.Playback = Backbone.CompositeView.extend({
   },
 
   wrapUpSong: function () {
-    clearInterval(this.digInterval)
+    clearInterval(this.digInterval);
     this.$("#dig-button").off("click");
-    this.$("#dig-button").removeClass("can-light-up")
+    this.$("#dig-button").removeClass("can-light-up");
 
     //don't update if no new digs
     if (this.digsGiven > 0) {

@@ -19,8 +19,11 @@ Capstone.Views.UserProfile = Backbone.CompositeView.extend({
 
   addFollowingList: function () {
     var followed_by = new Capstone.Collections.Users();
-    followed_by.fetch({data : {six_followed_by : this.model.id }})
-    var followingList = new Capstone.Views.FollowingList({collection: followed_by, model: this.model});
+    followed_by.fetch({data : {six_followed_by : this.model.id }});
+    var followingList = new Capstone.Views.FollowingList({
+      collection: followed_by,
+      model: this.model
+    });
     this.addSubview(".followed-by", followingList);
   },
 
