@@ -1,17 +1,28 @@
 Capstone.runFirstTutorial = function () {
   if (Capstone.tutorialMode !== 1) return;
   Capstone.tutorialMode++;
+  $(".tutorial-helper").remove();
   var helper = $("<div class=tutorial-helper></div>");
   helper.html("Welcome to Dig-it! Over here is the leaderboard, with the hottest songs and users. To begin, click play for the song at the top of the list, Bury Us Alive.");
   helper.css("top", "124px").css("left", "-218px");
   $(".leaderboard").append(helper);
-  $(".leaderboard :first-child.leader-list-item :first-child.user-list-item-song-item button");
+
+  var arrow = $("<div class='glyphicon glyphicon-arrow-right'></div>");
+  $(".leaderboard").append(arrow);
+
+  setTimeout(function () {
+    $(".leaderboard .glyphicon-arrow-right").addClass('glowing');
+  }, 0);
+  $(".leaderboard .glyphicon-arrow-right").on("transitionend", function(){
+    $(".leaderboard .glyphicon-arrow-right").toggleClass("glowing");
+  });
 };
 
 Capstone.runSecondTutorial = function () {
   if (Capstone.tutorialMode !== 2) return;
   Capstone.tutorialMode++;
   $(".tutorial-helper").remove();
+  $(".leaderboard .glyphicon-arrow-right").remove();
   var helper = $("<div class=tutorial-helper></div>");
   helper.html("The hottest parts of the playback bar are also the hottest parts of the song. Find the best part of the song and skip to it!");
   helper.css("top", "-44px").css("left", "44%");

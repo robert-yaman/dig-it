@@ -81,3 +81,25 @@ button.queue-dropdown {
 .leader-list-item:hover .follow-button {
   display: block;
 }
+
+.leaderboard .glyphicon-arrow-right {
+  position: absolute;
+  top: 121px;
+  left: 34px;
+  font-size: 38px;
+  background-color: transparent;
+  z-index: 5;
+}
+
+.leaderboard .glyphicon-arrow-right:before {
+  color: #4CBB17;
+  transition: color .5s;
+}
+
+.glyphicon-arrow-right.glowing:before {
+  transition: color .5s;
+}
+
+.glyphicon-arrow-right.glowing:before {
+  color: #FEFCD7;
+}

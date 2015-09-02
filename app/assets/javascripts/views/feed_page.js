@@ -31,6 +31,7 @@ Capstone.Views.FeedPage = Backbone.CompositeView.extend({
     this.attachSubviews();
 
     if (Capstone.tutorialMode === 1) Capstone.runFirstTutorial();
+
     return this;
   }
 });
