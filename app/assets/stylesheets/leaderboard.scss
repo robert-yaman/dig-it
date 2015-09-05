@@ -82,24 +82,39 @@ button.queue-dropdown {
   display: block;
 }
 
-.leaderboard .glyphicon-arrow-right {
+.helper-arrow.glyphicon-arrow-right {
   position: absolute;
-  top: 121px;
-  left: 34px;
   font-size: 38px;
   background-color: transparent;
   z-index: 5;
 }
 
-.leaderboard .glyphicon-arrow-right:before {
+.helper-arrow.glyphicon-arrow-right:before {
   color: #4CBB17;
   transition: color .5s;
 }
 
-.glyphicon-arrow-right.glowing:before {
+.helper-arrow.glyphicon-arrow-right.glowing:before {
   transition: color .5s;
 }
 
-.glyphicon-arrow-right.glowing:before {
+.helper-arrow.glyphicon-arrow-right.glowing:before {
   color: #FEFCD7;
+}
+
+.helper-circle {
+  position: absolute;
+  height: 30px;
+  width: 30px;
+  background-color: transparent;
+  z-index: 5;
+  border: 5px solid #4CBB17;
+  border-radius: 100%;
+  top: 126px;
+  left: 66px;
+}
+
+
+ul.leaderboard .leader-list-item:first-child li.user-list-item-song-item:first-child button:first-child {
+  z-index: 6;
 }

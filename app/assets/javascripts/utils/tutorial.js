@@ -3,26 +3,51 @@ Capstone.runFirstTutorial = function () {
   Capstone.tutorialMode++;
   $(".tutorial-helper").remove();
   var helper = $("<div class=tutorial-helper></div>");
-  helper.html("Welcome to Dig-it! Over here is the leaderboard, with the hottest songs and users. To begin, click play for the song at the top of the list, Bury Us Alive.");
+  helper.html("Welcome to Dig-it! Click play for the hottest song on Dig-it, Bury Us Alive.");
   helper.css("top", "124px").css("left", "-218px");
   $(".leaderboard").append(helper);
 
-  var arrow = $("<div class='glyphicon glyphicon-arrow-right'></div>");
-  $(".leaderboard").append(arrow);
+  var circle = $("<div class='helper-circle'>");
+  $(".leaderboard").append(circle);
 
-  setTimeout(function () {
-    $(".leaderboard .glyphicon-arrow-right").addClass('glowing');
-  }, 0);
-  $(".leaderboard .glyphicon-arrow-right").on("transitionend", function(){
-    $(".leaderboard .glyphicon-arrow-right").toggleClass("glowing");
-  });
+  function circleGlow() {
+    $(".leaderboard .helper-circle").animate({ opacity: 0.2 }, 600, 'linear')
+                     .animate({ opacity: 1 }, 600, 'linear', circleGlow);
+
+    // .animate({
+    //   borderTopColor: "#4CBB17",
+    //   borderLeftColor: "#4CBB17",
+    //   borderRightColor: "#4CBB17",
+    //   borderBottomColor: "#4CBB17"
+    // }, 500, "linear").animate({
+    //   borderTopColor: "#FEFCD7",
+    //   borderLeftColor: "#FEFCD7",
+    //   borderRightColor: "#FEFCD7",
+    //   borderBottomColor: "#FEFCD7"
+    // }, 500, "linear", circleGlow);
+  }
+
+  $(circleGlow);
+
+  // setTimeout(function () {
+  //   $(".leaderboard .helper-circle").addClass("glowing");
+  // }, 0);
+  //
+  // $(".leaderboard .helper-circle").on("transitionend", function(){
+  //   alert("transitionend")
+  //   if ($(".leaderboard .helper-circle").hasClass("glowing")) {
+  //     $(".leaderboard .helper-circle").removeClass("glowing");
+  //   } else {
+  //     $(".leaderboard .helper-circle").addClass("glowing");
+  //   }
+  // });
 };
 
 Capstone.runSecondTutorial = function () {
   if (Capstone.tutorialMode !== 2) return;
   Capstone.tutorialMode++;
+  $(".helper-circle").remove();
   $(".tutorial-helper").remove();
-  $(".leaderboard .glyphicon-arrow-right").remove();
   var helper = $("<div class=tutorial-helper></div>");
   helper.html("The hottest parts of the playback bar are also the hottest parts of the song. Find the best part of the song and skip to it!");
   helper.css("top", "-44px").css("left", "44%");
@@ -46,6 +71,9 @@ Capstone.runFourthTutorial = function () {
   var helper = $("<div class=tutorial-helper></div>");
   helper.html("Awesome! Now lets check out your profile.");
   helper.css("top", "60px").css("right", "3%").css("text-shadow", "none");
+
+  var arrow = $("<div class='helper-arrow glyphicon glyphicon-arrow-right'></div>");
+
   $("#app-navbar .navbar-fixed-top").append(helper);
 };
 
