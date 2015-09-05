@@ -11,36 +11,12 @@ Capstone.runFirstTutorial = function () {
   $(".leaderboard").append(circle);
 
   function circleGlow() {
-    $(".leaderboard .helper-circle").animate({ opacity: 0.2 }, 600, 'linear')
+    $(".leaderboard .helper-circle")
+                     .animate({ opacity: 0.2 }, 600, 'linear')
                      .animate({ opacity: 1 }, 600, 'linear', circleGlow);
-
-    // .animate({
-    //   borderTopColor: "#4CBB17",
-    //   borderLeftColor: "#4CBB17",
-    //   borderRightColor: "#4CBB17",
-    //   borderBottomColor: "#4CBB17"
-    // }, 500, "linear").animate({
-    //   borderTopColor: "#FEFCD7",
-    //   borderLeftColor: "#FEFCD7",
-    //   borderRightColor: "#FEFCD7",
-    //   borderBottomColor: "#FEFCD7"
-    // }, 500, "linear", circleGlow);
   }
 
   $(circleGlow);
-
-  // setTimeout(function () {
-  //   $(".leaderboard .helper-circle").addClass("glowing");
-  // }, 0);
-  //
-  // $(".leaderboard .helper-circle").on("transitionend", function(){
-  //   alert("transitionend")
-  //   if ($(".leaderboard .helper-circle").hasClass("glowing")) {
-  //     $(".leaderboard .helper-circle").removeClass("glowing");
-  //   } else {
-  //     $(".leaderboard .helper-circle").addClass("glowing");
-  //   }
-  // });
 };
 
 Capstone.runSecondTutorial = function () {
@@ -49,7 +25,7 @@ Capstone.runSecondTutorial = function () {
   $(".helper-circle").remove();
   $(".tutorial-helper").remove();
   var helper = $("<div class=tutorial-helper></div>");
-  helper.html("The hottest parts of the playback bar are also the hottest parts of the song. Find the best part of the song and skip to it!");
+  helper.html("The hottest parts of the playback bar are also the hottest parts of the song. Click on the playback bar to skip to the best part!");
   helper.css("top", "-44px").css("left", "44%");
   $("#playback .navbar-fixed-bottom").append(helper);
 };
@@ -59,7 +35,7 @@ Capstone.runThirdTutorial = function () {
   Capstone.tutorialMode++;
   $(".tutorial-helper").remove();
   var helper = $("<div class=tutorial-helper></div>");
-  helper.html("What did you think of that part? If you hear a spot in a song that you dig, hit the DIG button. Don't be afraid to really mash that button if you're feeling it!");
+  helper.html("If you hear a spot in a song that you dig, hit the DIG button. Don't be afraid to really mash that button if you're feeling it!");
   helper.css("top", "-100px").css("right", "3%");
   $("#playback .navbar-fixed-bottom").append(helper);
 };
@@ -70,17 +46,30 @@ Capstone.runFourthTutorial = function () {
   $(".tutorial-helper").remove();
   var helper = $("<div class=tutorial-helper></div>");
   helper.html("Awesome! Now lets check out your profile.");
-  helper.css("top", "60px").css("right", "3%").css("text-shadow", "none");
+  helper.css("top", "60px").css("right", "95px").css("text-shadow", "none");
 
-  var arrow = $("<div class='helper-arrow glyphicon glyphicon-arrow-right'></div>");
+  var arrow = $("<div class='helper-arrow glyphicon glyphicon-arrow-right'></div>")
+      .css("right", "50px")
+      .css("top", "62px")
+      .css("transform", "rotate(270deg)");
 
   $("#app-navbar .navbar-fixed-top").append(helper);
+  $("#app-navbar .navbar-fixed-top").append(arrow);
+
+  function arrowGlow() {
+    $(".helper-arrow")
+                     .animate({ opacity: 0.2 }, 600, 'linear')
+                     .animate({ opacity: 1 }, 600, 'linear', arrowGlow);
+  }
+
+  arrowGlow();
 };
 
 Capstone.runFifthTutorial = function () {
   if (Capstone.tutorialMode !== 5) return;
   Capstone.tutorialMode++;
   $(".tutorial-helper").remove();
+  $(".helper-arrow").remove();
   var helper = $("<div class=tutorial-helper></div>");
   helper.html("Here are the songs you've uploaded so far. Try adding them both to the queue using the dropdowns on the right.");
   helper.css("top", "52px").css("right", "11%");
