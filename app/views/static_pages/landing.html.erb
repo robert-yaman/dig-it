@@ -20,17 +20,40 @@
 </script>
 
 <script type="text/javascript" name="guest-login">
+  function fillInField(field, text) {
+    if (text === "") return;
+
+    field.val(field.val() + text[0]);
+    setTimeout(function () {
+      fillInField(field, text.slice(1, text.length))
+    }, 60);
+  }
+
   $(function(){
     $("button.guest-pass").click(function(event) {
       event.preventDefault();
-      $.ajax({
-        url: "/session",
-        type: "POST",
-        data: {user : {username: "ludwig_vanB_123", password: "IAmBeethoven" } },
-        success: function () {
-          window.location.href = "/#tutorial";
-        }
-      });
+      $("a#sign-in-button").trigger("click");
+      setTimeout(function () {
+        fillInField($(".login-username"), "ludwig_vanB_123")
+      }, 800);
+
+      setTimeout(function () {
+        fillInField($(".login-password"), "IAmBeethoven")
+      }, 2000);
+
+      setTimeout(function () {
+        $.ajax({
+          url: "/session",
+          type: "POST",
+          data: {user : {
+            username: "ludwig_vanB_123",
+            password: "IAmBeethoven"
+          } },
+          success: function () {
+            window.location.href = "/#tutorial";
+          }
+        });
+      }, 3000);
     });
   });
 </script>
@@ -108,8 +131,8 @@
 <div class="col-xs-3 col-xs-offset-9 sign-in-form">
   <form id="sign-in-form">
     <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token%>">
-    <input type="text" class="form-control" name="user[username]" placeholder="Username">
-    <input type="password" class="form-control" name="user[password]" placeholder="Password">
+    <input type="text" class="form-control login-username" name="user[username]" placeholder="Username">
+    <input type="password" class="form-control login-password" name="user[password]" placeholder="Password">
     <button class="sign-in-button btn btn-default" name="name">Go!</button>
   </form>
 
